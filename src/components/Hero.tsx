@@ -17,7 +17,7 @@ const TAGLINE = "Desarrollamos software que impulsa negocios.";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-6 py-24 text-center sm:py-32">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 py-20 text-center sm:py-28">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ export default function Hero() {
       {/* Detalle decorativo sutil de fondo */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-24 -z-10 mx-auto h-72 max-w-4xl rounded-full bg-secondary/50 blur-3xl"
+        className="pointer-events-none absolute inset-x-0 -bottom-16 z-0 mx-auto h-72 max-w-4xl rounded-full bg-secondary/80 blur-3xl"
       />
     </section>
   );

@@ -1,26 +1,14 @@
 /**
  * Configuración central del sitio.
  *
- * Editá estos valores para actualizar el email de contacto, las redes
- * sociales y los proyectos del portafolio sin tener que tocar los
- * componentes visuales.
+ * Editá estos valores para actualizar el email de contacto y los
+ * proyectos del portafolio sin tener que tocar los componentes
+ * visuales.
  */
 
 export const SITE_NAME = "Codezun";
 
 export const CONTACT_EMAIL = "codezun@gmail.com";
-
-/**
- * Redes sociales. Son placeholders: reemplazá cada `href: "#"` por el
- * link real cuando estén creadas las cuentas. Si una red no aplica,
- * simplemente borrá su entrada del array.
- */
-export const SOCIAL_LINKS = [
-  { name: "LinkedIn", href: "#" },
-  { name: "Instagram", href: "#" },
-  { name: "GitHub", href: "#" },
-  { name: "X", href: "#" },
-] as const;
 
 /**
  * Proyectos del portafolio.

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import Logo from "./Logo";
-import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site-config";
+import { CONTACT_EMAIL } from "@/lib/site-config";
 
 const LEGAL_LINKS = [
   { label: "Términos y condiciones", href: "/terminos-y-condiciones" },
@@ -60,24 +60,6 @@ export default function Footer() {
               <Mail size={16} />
               {CONTACT_EMAIL}
             </a>
-
-            {/*
-              Redes sociales: son placeholders (href: "#").
-              Actualizá los links reales en src/lib/site-config.ts (SOCIAL_LINKS).
-            */}
-            <div className="mt-4 flex gap-4">
-              {SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-white/80 transition-colors hover:text-highlight"
-                >
-                  {social.name}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 

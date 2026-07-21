@@ -28,25 +28,29 @@ export default function About() {
           <FadeIn delay={0.15}>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-2xl bg-secondary/40 p-6">
-                <p className="text-4xl font-bold text-primary">5+</p>
+                <p className="text-2xl font-bold text-primary sm:text-3xl">5+</p>
                 <p className="mt-2 text-sm text-foreground/70">
                   Años de experiencia en desarrollo de software
                 </p>
               </div>
               <div className="rounded-2xl bg-secondary/40 p-6">
-                <p className="text-4xl font-bold text-primary">SaaS</p>
+                <p className="text-2xl font-bold text-primary sm:text-3xl">SaaS</p>
                 <p className="mt-2 text-sm text-foreground/70">
                   Plataformas y productos propios
                 </p>
               </div>
               <div className="rounded-2xl bg-secondary/40 p-6">
-                <p className="text-4xl font-bold text-primary">E-commerce</p>
+                <p className="text-2xl font-bold text-primary sm:text-3xl">
+                  E&#8209;commerce
+                </p>
                 <p className="mt-2 text-sm text-foreground/70">
                   Tiendas online a medida
                 </p>
               </div>
               <div className="rounded-2xl bg-secondary/40 p-6">
-                <p className="text-4xl font-bold text-primary">Sitios web</p>
+                <p className="text-2xl font-bold text-primary sm:text-3xl">
+                  Sitios web
+                </p>
                 <p className="mt-2 text-sm text-foreground/70">
                   Landing pages y sitios completos
                 </p>
