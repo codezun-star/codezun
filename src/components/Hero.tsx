@@ -33,7 +33,7 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-white/92" />
+        <div className="absolute inset-0 bg-white/72" />
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 py-20 text-center sm:py-28">
