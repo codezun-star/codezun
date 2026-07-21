@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MessageCircle } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { WHATSAPP_LINK } from "@/lib/site-config";
 
 /**
@@ -24,7 +24,7 @@ export default function FloatingWhatsApp() {
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25"
     >
       <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-60" />
-      <MessageCircle size={28} className="relative z-10" />
+      <WhatsAppIcon size={28} className="relative z-10" />
     </motion.a>
   );
 }

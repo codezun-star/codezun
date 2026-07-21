@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import Logo from "./Logo";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { getAllPosts } from "@/lib/blog";
-import { CITIES } from "@/lib/cities";
+import { COUNTRIES } from "@/lib/cities";
 import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
 
 const LEGAL_LINKS = [
@@ -83,16 +84,18 @@ export default function Footer() {
               Ciudades
             </h3>
             <ul className="mt-4 space-y-2">
-              {CITIES.map((city) => (
-                <li key={city.slug}>
-                  <Link
-                    href={`/ciudades/${city.slug}`}
-                    className="text-sm text-white/80 transition-colors hover:text-highlight"
-                  >
-                    {city.name}
-                  </Link>
-                </li>
-              ))}
+              {COUNTRIES.flatMap((country) =>
+                country.cities.map((city) => (
+                  <li key={`${country.slug}-${city.slug}`}>
+                    <Link
+                      href={`/ciudades/${country.slug}/${city.slug}`}
+                      className="text-sm text-white/80 transition-colors hover:text-highlight"
+                    >
+                      {city.name}
+                    </Link>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
 
@@ -113,7 +116,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="mt-2 flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-highlight"
             >
-              <Phone size={16} />
+              <WhatsAppIcon size={16} />
               {WHATSAPP_DISPLAY}
             </a>
           </div>

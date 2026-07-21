@@ -27,7 +27,7 @@ export default async function Image() {
           background: "#FFFFFF",
         }}
       >
-        <img src={logoSrc} width={480} height={378} alt="" />
+        <img src={logoSrc} width={480} height={345} alt="" />
         <div
           style={{
             marginTop: 28,

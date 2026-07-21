@@ -14,8 +14,8 @@ export default function Logo({ className = "h-16" }: { className?: string }) {
       <Image
         src="/logo/logo.png"
         alt={SITE_NAME}
-        width={410}
-        height={323}
+        width={403}
+        height={290}
         priority
         className={`w-auto ${className}`}
       />

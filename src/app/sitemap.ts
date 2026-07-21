@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
-import { CITIES } from "@/lib/cities";
+import { COUNTRIES } from "@/lib/cities";
 import { SITE_URL } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,12 +32,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const cityEntries = CITIES.map((city) => ({
-    url: `${SITE_URL}/ciudades/${city.slug}`,
+  const countryEntries = COUNTRIES.map((country) => ({
+    url: `${SITE_URL}/ciudades/${country.slug}`,
     lastModified: new Date(),
     changeFrequency: "yearly" as const,
     priority: 0.5,
   }));
 
-  return [...staticEntries, ...postEntries, ...cityEntries];
+  const cityEntries = COUNTRIES.flatMap((country) =>
+    country.cities.map((city) => ({
+      url: `${SITE_URL}/ciudades/${country.slug}/${city.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    }))
+  );
+
+  return [...staticEntries, ...postEntries, ...countryEntries, ...cityEntries];
 }

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import FadeIn from "./FadeIn";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
 
 /**
@@ -57,7 +58,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20"
               >
-                <Phone size={20} />
+                <WhatsAppIcon size={20} />
                 {WHATSAPP_DISPLAY}
               </a>
             </div>
