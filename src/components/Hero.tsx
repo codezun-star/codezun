@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -17,6 +18,24 @@ const TAGLINE = "Desarrollamos software que impulsa negocios.";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white">
+      {/*
+        Foto de fondo del equipo (/public/hero/team.png) con un velo
+        blanco semitransparente encima para que el texto siga siendo
+        legible. Para reemplazarla, subí un archivo nuevo a esa misma
+        ruta (o cambiá el src de abajo si usás otro nombre).
+      */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/hero/team.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-white/92" />
+      </div>
+
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 py-20 text-center sm:py-28">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
@@ -65,12 +84,6 @@ export default function Hero() {
           </Link>
         </motion.div>
       </div>
-
-      {/* Detalle decorativo sutil de fondo */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-16 z-0 mx-auto h-72 max-w-4xl rounded-full bg-secondary/80 blur-3xl"
-      />
     </section>
   );
 }
