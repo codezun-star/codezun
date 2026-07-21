@@ -8,7 +8,7 @@ import { SITE_NAME } from "@/lib/site-config";
  * nuevo a esa misma ruta (manteniendo el nombre) o cambiá el `src` de
  * abajo si usás otro nombre de archivo.
  */
-export default function Logo({ className = "h-10" }: { className?: string }) {
+export default function Logo({ className = "h-16" }: { className?: string }) {
   return (
     <Link href="/" className="inline-flex items-center" aria-label={SITE_NAME}>
       <Image

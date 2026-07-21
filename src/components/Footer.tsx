@@ -23,8 +23,8 @@ export default function Footer() {
               blanca para mantenerlo legible sin necesitar una versión
               del logo pensada para fondos oscuros.
             */}
-            <div className="inline-block rounded-xl bg-white px-4 py-2.5">
-              <Logo className="h-8" />
+            <div className="inline-block rounded-xl bg-white px-4 py-3">
+              <Logo className="h-10" />
             </div>
             <p className="mt-3 max-w-xs text-sm text-white/70">
               SaaS, e-commerce y sitios web a medida.

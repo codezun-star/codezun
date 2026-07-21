@@ -37,11 +37,13 @@ export const SOCIAL_LINKS = [
  *          Acepta PNG, JPG o SVG. Si se deja null se muestra un bloque
  *          con las iniciales como placeholder visual.
  *
- * Ícono de Firmiu: no se pudo descargar automáticamente (este entorno
- * no tiene salida de red hacia dominios externos arbitrarios, incluido
- * firmiu.com). Para usarlo: descargá el icon.svg desde las devtools de
- * tu navegador (pestaña Network) y subilo a /public/portfolio/firmiu-icon.svg,
- * después cambiá `image: null` de abajo por "/portfolio/firmiu-icon.svg".
+ * Ícono de Firmiu (/public/portfolio/firmiu-icon.svg): no se pudo
+ * descargar el ícono real del sitio (este entorno no tiene salida de
+ * red hacia dominios externos arbitrarios, incluido firmiu.com), así
+ * que se diseñó un ícono propio (documento + firma + sello de
+ * verificado) con los colores de marca. Si preferís usar el ícono real
+ * del sitio, descargalo desde las devtools de tu navegador (pestaña
+ * Network) y reemplazá ese mismo archivo.
  *
  * Si en el futuro se agregan más proyectos, el grid vuelve a acomodarse
  * solo (ver Portfolio.tsx).
@@ -61,6 +63,6 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       "Plataforma SaaS de firma digital para empresas. Nuestro proyecto propio más consolidado.",
     href: "https://firmiu.com",
     category: "SaaS",
-    image: null,
+    image: "/portfolio/firmiu-icon.svg",
   },
 ];

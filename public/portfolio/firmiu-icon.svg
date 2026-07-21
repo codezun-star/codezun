@@ -1,0 +1,33 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Firmiu">
+  <!-- Documento -->
+  <rect x="45" y="30" width="110" height="145" rx="16" fill="#FFFFFF" stroke="#004E9B" stroke-width="8"/>
+
+  <!-- Título -->
+  <rect x="65" y="55" width="70" height="12" rx="6" fill="#0091B9"/>
+
+  <!-- Líneas de texto -->
+  <rect x="65" y="80" width="70" height="8" rx="4" fill="#BAE4F0"/>
+  <rect x="65" y="96" width="70" height="8" rx="4" fill="#BAE4F0"/>
+  <rect x="65" y="112" width="45" height="8" rx="4" fill="#BAE4F0"/>
+
+  <!-- Firma manuscrita -->
+  <path
+    d="M60 146 C 70 130, 78 160, 88 142 C 96 128, 102 154, 112 142"
+    fill="none"
+    stroke="#FF6500"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Sello de verificación -->
+  <circle cx="150" cy="150" r="28" fill="#0091B9" stroke="#FFFFFF" stroke-width="6"/>
+  <path
+    d="M137 150 L146 159 L164 139"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
