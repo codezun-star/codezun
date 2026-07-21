@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a2540;
+}
+
+/*
+ * Paleta de marca Codezun.
+ * Tailwind v4 no usa tailwind.config.js para el theme por defecto: los
+ * tokens se declaran aquí con @theme y Tailwind genera automáticamente
+ * las utilidades (bg-primary, text-dark, border-accent, etc).
+ * Si en el futuro se migra a un tailwind.config.ts, estos mismos
+ * nombres/valores deben trasladarse a `theme.extend.colors`.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Azul turquesa — color primario / acentos generales */
+  --color-primary: #0091b9;
+  /* Celeste claro — fondos suaves / secciones alternas */
+  --color-secondary: #bae4f0;
+  /* Azul oscuro — texto de headers/footer/elementos fuertes */
+  --color-dark: #004e9b;
+  /* Naranja — CTA principal / botones destacados */
+  --color-accent: #ff6500;
+  /* Amarillo — detalles / highlights puntuales */
+  --color-highlight: #ffd500;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
