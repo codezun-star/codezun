@@ -8,7 +8,21 @@
 
 export const SITE_NAME = "Codezun";
 
+/** Dominio final del sitio, usado para SEO (metadataBase, sitemap, JSON-LD). */
+export const SITE_URL = "https://codezun.com";
+
 export const CONTACT_EMAIL = "codezun@gmail.com";
+
+/**
+ * WhatsApp / teléfono de contacto.
+ * NUMBER va sin "+" ni espacios (formato que requiere el link de wa.me).
+ * DISPLAY es la versión legible que se muestra en la UI.
+ */
+export const WHATSAPP_NUMBER = "50432279672";
+export const WHATSAPP_DISPLAY = "+504 3227-9672";
+export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hola, quiero más información sobre sus servicios."
+)}`;
 
 /**
  * Proyectos del portafolio.

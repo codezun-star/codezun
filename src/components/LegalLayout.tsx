@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Prose from "./Prose";
 
 export default function LegalLayout({
   title,
@@ -19,9 +20,7 @@ export default function LegalLayout({
           Última actualización: {updatedAt}
         </p>
 
-        <div className="mt-10 space-y-6 text-foreground/80 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-dark [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_li]:leading-relaxed">
-          {children}
-        </div>
+        <Prose className="mt-10">{children}</Prose>
       </div>
     </section>
   );

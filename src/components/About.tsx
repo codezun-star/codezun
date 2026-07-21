@@ -1,3 +1,4 @@
+import { Globe } from "lucide-react";
 import FadeIn from "./FadeIn";
 
 export default function About() {
@@ -6,14 +7,20 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight text-dark sm:text-4xl">
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-dark">
+              <Globe size={16} />
+              Atendemos clientes en todo el mundo
+            </span>
+
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-dark sm:text-4xl">
               Sobre nosotros
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-foreground/70">
               Codezun es una empresa de desarrollo de software con más de
               5 años de experiencia diseñando y construyendo productos
               SaaS, tiendas online, landing pages y sitios web completos.
-              Trabajamos junto a nuestros clientes en cada etapa del
+              Trabajamos de forma 100% remota con clientes en cualquier
+              parte del mundo, acompañándolos en cada etapa del
               producto: desde la idea inicial hasta el desarrollo,
               lanzamiento y mantenimiento a largo plazo.
             </p>

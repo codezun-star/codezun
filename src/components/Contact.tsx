@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import FadeIn from "./FadeIn";
-import { CONTACT_EMAIL } from "@/lib/site-config";
+import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
 
 /**
  * Formulario de contacto simple.
@@ -39,16 +39,28 @@ export default function Contact() {
             </h2>
             <p className="mt-4 max-w-md text-lg text-white/70">
               Contanos qué necesitás y te respondemos a la brevedad.
-              También podés escribirnos directamente por correo.
+              También podés escribirnos directamente por correo o
+              WhatsApp.
             </p>
 
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20"
-            >
-              <Mail size={20} />
-              {CONTACT_EMAIL}
-            </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20"
+              >
+                <Mail size={20} />
+                {CONTACT_EMAIL}
+              </a>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20"
+              >
+                <Phone size={20} />
+                {WHATSAPP_DISPLAY}
+              </a>
+            </div>
           </FadeIn>
 
           <FadeIn delay={0.15}>

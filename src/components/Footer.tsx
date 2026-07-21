@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import Logo from "./Logo";
-import { CONTACT_EMAIL } from "@/lib/site-config";
+import { getAllPosts } from "@/lib/blog";
+import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
 
 const LEGAL_LINKS = [
   { label: "Términos y condiciones", href: "/terminos-y-condiciones" },
@@ -11,11 +12,12 @@ const LEGAL_LINKS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const posts = getAllPosts();
 
   return (
     <footer className="bg-dark text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             {/*
               El wordmark del logo usa azul oscuro, que pierde contraste
@@ -51,6 +53,24 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-white/60">
+              Blog
+            </h3>
+            <ul className="mt-4 space-y-2">
+              {posts.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-sm text-white/80 transition-colors hover:text-highlight"
+                  >
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-white/60">
               Contacto
             </h3>
             <a
@@ -59,6 +79,15 @@ export default function Footer() {
             >
               <Mail size={16} />
               {CONTACT_EMAIL}
+            </a>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-highlight"
+            >
+              <Phone size={16} />
+              {WHATSAPP_DISPLAY}
             </a>
           </div>
         </div>
