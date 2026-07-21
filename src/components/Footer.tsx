@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import Logo from "./Logo";
 import { getAllPosts } from "@/lib/blog";
+import { CITIES } from "@/lib/cities";
 import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
 
 const LEGAL_LINKS = [
@@ -12,12 +13,12 @@ const LEGAL_LINKS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const posts = getAllPosts();
+  const posts = getAllPosts().slice(0, 4);
 
   return (
     <footer className="bg-dark text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div>
             {/*
               El wordmark del logo usa azul oscuro, que pierde contraste
@@ -63,6 +64,32 @@ export default function Footer() {
                     className="text-sm text-white/80 transition-colors hover:text-highlight"
                   >
                     {post.title}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-sm font-medium text-highlight hover:text-highlight/80"
+                >
+                  Ver todos los artículos
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-white/60">
+              Ciudades
+            </h3>
+            <ul className="mt-4 space-y-2">
+              {CITIES.map((city) => (
+                <li key={city.slug}>
+                  <Link
+                    href={`/ciudades/${city.slug}`}
+                    className="text-sm text-white/80 transition-colors hover:text-highlight"
+                  >
+                    {city.name}
                   </Link>
                 </li>
               ))}

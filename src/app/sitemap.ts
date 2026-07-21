@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { CITIES } from "@/lib/cities";
 import { SITE_URL } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", changeFrequency: "monthly", priority: 1 },
     { path: "/contacto", changeFrequency: "yearly", priority: 0.6 },
     { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
+    { path: "/ciudades", changeFrequency: "yearly", priority: 0.5 },
     { path: "/terminos-y-condiciones", changeFrequency: "yearly", priority: 0.2 },
     { path: "/politica-de-privacidad", changeFrequency: "yearly", priority: 0.2 },
     { path: "/aviso-legal", changeFrequency: "yearly", priority: 0.2 },
@@ -30,5 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...postEntries];
+  const cityEntries = CITIES.map((city) => ({
+    url: `${SITE_URL}/ciudades/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.5,
+  }));
+
+  return [...staticEntries, ...postEntries, ...cityEntries];
 }
