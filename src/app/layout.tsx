@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Codezun — Desarrollo de software web y móvil",
+  title: "Codezun — SaaS, e-commerce y sitios web a medida",
   description:
-    "Codezun es una empresa de desarrollo de software con más de 5 años de experiencia creando aplicaciones web, móviles y herramientas SaaS a medida.",
+    "Codezun es una empresa de desarrollo de software con más de 5 años de experiencia creando productos SaaS, tiendas online, landing pages y sitios web completos.",
 };
 
 export default function RootLayout({

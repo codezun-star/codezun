@@ -25,110 +25,42 @@ export const SOCIAL_LINKS = [
 /**
  * Proyectos del portafolio.
  *
- * Para agregar un proyecto nuevo, sumá un objeto más a este array con
- * la misma forma. Los campos son:
+ * Por ahora mostramos solo Firmiu como proyecto propio destacado (es
+ * el más consolidado). Para sumar otro proyecto más adelante, agregá
+ * un objeto más a este array con la misma forma:
  * - name: nombre del proyecto/producto
  * - description: descripción corta (1-2 líneas)
  * - href: link al proyecto
- * - type: "web" o "app", solo para mostrar una etiqueta en la card
- * - image: ruta a una imagen/logo en /public (ej: "/portfolio/mi-app.png").
- *          Si se deja null se muestra un bloque con las iniciales como
- *          placeholder visual. Los ícono/logos reales de estos sitios
- *          no se pudieron descargar automáticamente (este entorno no
- *          tiene salida de red hacia dominios externos arbitrarios).
- *          Para usar el logo real de cada proyecto: subí el archivo a
- *          /public/portfolio/ (mismo flujo que /public/logo/) y poné
- *          esa ruta acá, ej: "/portfolio/calcfit.png".
+ * - category: etiqueta corta para la card (ej. "SaaS", "E-commerce",
+ *             "Landing page", "Sitio web")
+ * - image: ruta a una imagen/logo en /public (ej: "/portfolio/firmiu-icon.svg").
+ *          Acepta PNG, JPG o SVG. Si se deja null se muestra un bloque
+ *          con las iniciales como placeholder visual.
  *
- * No hay límite de proyectos: el grid se acomoda solo.
+ * Ícono de Firmiu: no se pudo descargar automáticamente (este entorno
+ * no tiene salida de red hacia dominios externos arbitrarios, incluido
+ * firmiu.com). Para usarlo: descargá el icon.svg desde las devtools de
+ * tu navegador (pestaña Network) y subilo a /public/portfolio/firmiu-icon.svg,
+ * después cambiá `image: null` de abajo por "/portfolio/firmiu-icon.svg".
+ *
+ * Si en el futuro se agregan más proyectos, el grid vuelve a acomodarse
+ * solo (ver Portfolio.tsx).
  */
 export type PortfolioProject = {
   name: string;
   description: string;
   href: string;
-  type: "web" | "app";
+  category: string;
   image: string | null;
 };
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
-    name: "calcfit.com",
-    description: "Calculadoras de salud",
-    href: "https://calcfit.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "lotohn.com",
-    description: "Resultados de la lotería de Honduras",
-    href: "https://lotohn.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "resultpowerball.com",
-    description: "Resultados del Powerball (USA)",
-    href: "https://resultpowerball.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "firmiu.com",
-    description: "SaaS de firma digital",
+    name: "Firmiu",
+    description:
+      "Plataforma SaaS de firma digital para empresas. Nuestro proyecto propio más consolidado.",
     href: "https://firmiu.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "toolsfoto.com",
-    description: "Herramientas de edición de imágenes",
-    href: "https://toolsfoto.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "inversax.com",
-    description: "Herramientas de finanzas / brokers",
-    href: "https://inversax.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "grupozh.net",
-    description: "Contabilidad para empresas en Honduras",
-    href: "https://grupozh.net",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "calzix.com",
-    description: "Herramientas variadas",
-    href: "https://calzix.com",
-    type: "web",
-    image: null,
-  },
-  {
-    name: "EasyGratuity",
-    // TODO: reemplazar por una descripción real de qué hace la app.
-    description: "Aplicación Android publicada en Google Play.",
-    href: "https://play.google.com/store/apps/details?id=com.jzuniga1995.EasyGratuity",
-    type: "app",
-    image: null,
-  },
-  {
-    name: "Mi Control",
-    // TODO: reemplazar por una descripción real de qué hace la app.
-    description: "Aplicación Android publicada en Google Play.",
-    href: "https://play.google.com/store/apps/details?id=com.rundriver.micontrol",
-    type: "app",
-    image: null,
-  },
-  {
-    name: "Mi promedio",
-    // TODO: reemplazar por una descripción real de qué hace la app.
-    description: "Aplicación Android publicada en Google Play.",
-    href: "https://play.google.com/store/apps/details?id=com.jzuniga1995.Mipromedio",
-    type: "app",
+    category: "SaaS",
     image: null,
   },
 ];

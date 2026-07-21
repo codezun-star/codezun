@@ -42,9 +42,9 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 max-w-2xl text-lg text-foreground/70"
         >
-          Creamos aplicaciones web, apps móviles y herramientas SaaS a
-          medida, con más de 5 años de experiencia acompañando el
-          crecimiento de nuestros clientes.
+          Construimos productos SaaS, tiendas online, landing pages y
+          sitios web completos, con más de 5 años de experiencia
+          acompañando el crecimiento de nuestros clientes.
         </motion.p>
 
         <motion.div

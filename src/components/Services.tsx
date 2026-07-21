@@ -1,19 +1,7 @@
-import { Code2, Smartphone, Layers, Wrench } from "lucide-react";
+import { Layers, ShoppingCart, Rocket, Globe } from "lucide-react";
 import FadeIn from "./FadeIn";
 
 const SERVICES = [
-  {
-    icon: Code2,
-    title: "Desarrollo web",
-    description:
-      "Sitios y aplicaciones web modernas, rápidas y escalables, construidas con las mejores prácticas del mercado.",
-  },
-  {
-    icon: Smartphone,
-    title: "Apps móviles",
-    description:
-      "Aplicaciones para iOS y Android pensadas para ofrecer una experiencia fluida a tus usuarios.",
-  },
   {
     icon: Layers,
     title: "Productos SaaS",
@@ -21,10 +9,22 @@ const SERVICES = [
       "Plataformas de software como servicio, desde el diseño de la arquitectura hasta el producto final.",
   },
   {
-    icon: Wrench,
-    title: "Herramientas a medida",
+    icon: ShoppingCart,
+    title: "E-commerce",
     description:
-      "Soluciones a medida para procesos específicos de tu negocio, integradas con tus sistemas actuales.",
+      "Tiendas online a medida, pensadas para vender y para que sean fáciles de mantener.",
+  },
+  {
+    icon: Rocket,
+    title: "Landing pages",
+    description:
+      "Páginas de aterrizaje enfocadas en conversión, para lanzar campañas o productos rápido.",
+  },
+  {
+    icon: Globe,
+    title: "Sitios web completos",
+    description:
+      "Sitios institucionales y corporativos completos, a la medida de cada negocio.",
   },
 ];
 

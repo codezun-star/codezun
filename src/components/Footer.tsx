@@ -27,7 +27,7 @@ export default function Footer() {
               <Logo className="h-8" />
             </div>
             <p className="mt-3 max-w-xs text-sm text-white/70">
-              Desarrollo de software web y móvil a medida.
+              SaaS, e-commerce y sitios web a medida.
             </p>
           </div>
 

@@ -11,10 +11,11 @@ export default function About() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-foreground/70">
               Codezun es una empresa de desarrollo de software con más de
-              5 años de experiencia diseñando y construyendo aplicaciones
-              web y móviles. Trabajamos junto a nuestros clientes en cada
-              etapa del producto: desde la idea inicial hasta el
-              desarrollo, lanzamiento y mantenimiento a largo plazo.
+              5 años de experiencia diseñando y construyendo productos
+              SaaS, tiendas online, landing pages y sitios web completos.
+              Trabajamos junto a nuestros clientes en cada etapa del
+              producto: desde la idea inicial hasta el desarrollo,
+              lanzamiento y mantenimiento a largo plazo.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-foreground/70">
               Además de proyectos para clientes, desarrollamos nuestras
@@ -29,25 +30,25 @@ export default function About() {
               <div className="rounded-2xl bg-secondary/40 p-6">
                 <p className="text-4xl font-bold text-primary">5+</p>
                 <p className="mt-2 text-sm text-foreground/70">
-                  Años de experiencia en desarrollo de aplicaciones
-                </p>
-              </div>
-              <div className="rounded-2xl bg-secondary/40 p-6">
-                <p className="text-4xl font-bold text-primary">Web</p>
-                <p className="mt-2 text-sm text-foreground/70">
-                  Y apps móviles, de punta a punta
+                  Años de experiencia en desarrollo de software
                 </p>
               </div>
               <div className="rounded-2xl bg-secondary/40 p-6">
                 <p className="text-4xl font-bold text-primary">SaaS</p>
                 <p className="mt-2 text-sm text-foreground/70">
-                  Herramientas y productos propios
+                  Plataformas y productos propios
                 </p>
               </div>
               <div className="rounded-2xl bg-secondary/40 p-6">
-                <p className="text-4xl font-bold text-primary">A medida</p>
+                <p className="text-4xl font-bold text-primary">E-commerce</p>
                 <p className="mt-2 text-sm text-foreground/70">
-                  Soluciones adaptadas a cada negocio
+                  Tiendas online a medida
+                </p>
+              </div>
+              <div className="rounded-2xl bg-secondary/40 p-6">
+                <p className="text-4xl font-bold text-primary">Sitios web</p>
+                <p className="mt-2 text-sm text-foreground/70">
+                  Landing pages y sitios completos
                 </p>
               </div>
             </div>
