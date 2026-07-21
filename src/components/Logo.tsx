@@ -1,28 +1,24 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SITE_NAME } from "@/lib/site-config";
 
 /**
- * Placeholder de logo.
- *
- * Por ahora muestra el nombre "Codezun" estilizado en texto. Cuando
- * tengas el archivo del logo real:
- *
- * 1. Subí la imagen a /public/logo/ (ej: /public/logo/codezun.svg)
- * 2. Reemplazá el <span> de abajo por, por ejemplo:
- *
- *    import Image from "next/image";
- *    <Image src="/logo/codezun.svg" alt={SITE_NAME} width={140} height={32} />
- *
- * Se recomienda un SVG o PNG con fondo transparente.
+ * Logo real de Codezun.
+ * Archivo: /public/logo/logo.png. Para actualizarlo, subí el archivo
+ * nuevo a esa misma ruta (manteniendo el nombre) o cambiá el `src` de
+ * abajo si usás otro nombre de archivo.
  */
-export default function Logo({ className = "" }: { className?: string }) {
+export default function Logo({ className = "h-10" }: { className?: string }) {
   return (
-    <Link
-      href="/"
-      className={`text-xl font-bold tracking-tight text-dark ${className}`}
-    >
-      {SITE_NAME}
-      <span className="text-primary">.</span>
+    <Link href="/" className="inline-flex items-center" aria-label={SITE_NAME}>
+      <Image
+        src="/logo/logo.png"
+        alt={SITE_NAME}
+        width={410}
+        height={323}
+        priority
+        className={`w-auto ${className}`}
+      />
     </Link>
   );
 }

@@ -17,7 +17,15 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
           <div>
-            <Logo className="!text-white [&_span]:!text-highlight" />
+            {/*
+              El wordmark del logo usa azul oscuro, que pierde contraste
+              sobre este fondo oscuro. Lo mostramos sobre una placa
+              blanca para mantenerlo legible sin necesitar una versión
+              del logo pensada para fondos oscuros.
+            */}
+            <div className="inline-block rounded-xl bg-white px-4 py-2.5">
+              <Logo className="h-8" />
+            </div>
             <p className="mt-3 max-w-xs text-sm text-white/70">
               Desarrollo de software web y móvil a medida.
             </p>

@@ -3,12 +3,22 @@ import { ArrowUpRight } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { PORTFOLIO_PROJECTS } from "@/lib/site-config";
 
+/** Iniciales de respaldo cuando el proyecto todavía no tiene imagen. */
+function getInitials(name: string) {
+  const clean = name.replace(/\.(com|net|org|io|co)$/i, "");
+  const words = clean.split(/\s+/).filter(Boolean);
+  if (words.length >= 2) {
+    return (words[0][0] + words[1][0]).toUpperCase();
+  }
+  return clean.slice(0, 2).toUpperCase();
+}
+
 /*
  * Cómo agregar un proyecto nuevo:
  * Toda la data de esta sección vive en src/lib/site-config.ts, en el
  * array PORTFOLIO_PROJECTS. Para sumar un proyecto, agregá un objeto
- * más ahí con name, description, href e image. No hace falta tocar
- * este archivo.
+ * más ahí con name, description, href, type e image. No hace falta
+ * tocar este archivo.
  */
 export default function Portfolio() {
   return (
@@ -26,14 +36,17 @@ export default function Portfolio() {
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PORTFOLIO_PROJECTS.map((project, index) => (
-            <FadeIn key={project.name} delay={index * 0.1}>
+            <FadeIn key={project.name} delay={(index % 4) * 0.1}>
               <a
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-black/5 transition-shadow hover:shadow-lg"
               >
-                <div className="flex aspect-video items-center justify-center bg-secondary/40">
+                <div className="relative flex aspect-video items-center justify-center bg-secondary/40">
+                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-dark">
+                    {project.type === "app" ? "App" : "Web"}
+                  </span>
                   {project.image ? (
                     <Image
                       src={project.image}
@@ -44,12 +57,7 @@ export default function Portfolio() {
                     />
                   ) : (
                     <span className="text-3xl font-bold text-primary/50">
-                      {project.name
-                        .split(" ")
-                        .map((word) => word[0])
-                        .join("")
-                        .slice(0, 2)
-                        .toUpperCase()}
+                      {getInitials(project.name)}
                     </span>
                   )}
                 </div>
