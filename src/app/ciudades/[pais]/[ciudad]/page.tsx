@@ -6,6 +6,7 @@ import FadeIn from "@/components/FadeIn";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import { getAllCityParams, getCity } from "@/lib/cities";
+import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 
 export async function generateStaticParams() {
   return getAllCityParams();
@@ -47,6 +48,45 @@ export default async function CiudadPage({
   const { country, city } = found;
 
   const otherCities = country.cities.filter((c) => c.slug !== city.slug);
+
+  const pageUrl = `${SITE_URL}/ciudades/${country.slug}/${city.slug}`;
+
+  /*
+   * Usamos "Service" (no "LocalBusiness") porque Codezun trabaja
+   * 100% remoto y no tiene oficina física en cada ciudad. LocalBusiness
+   * implica una dirección/local físico, que sería falso declarar acá.
+   * "Service" + areaServed describe honestamente que ofrecemos el
+   * servicio para esa zona, sin inventar presencia física.
+   */
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Desarrollo de software",
+    provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    areaServed: {
+      "@type": "City",
+      name: city.name,
+      containedInPlace: { "@type": "Country", name: country.name },
+    },
+    url: pageUrl,
+    description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}.`,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Ciudades", item: `${SITE_URL}/ciudades` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: country.name,
+        item: `${SITE_URL}/ciudades/${country.slug}`,
+      },
+      { "@type": "ListItem", position: 4, name: city.name, item: pageUrl },
+    ],
+  };
 
   return (
     <>
@@ -100,6 +140,15 @@ export default async function CiudadPage({
 
       <Services />
       <Contact />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
     </>
   );
 }

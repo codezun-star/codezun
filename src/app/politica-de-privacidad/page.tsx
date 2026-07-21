@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-import { CONTACT_EMAIL } from "@/lib/site-config";
+import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Política de privacidad — Codezun",
+  title: "Política de privacidad",
+  description:
+    "Cómo Codezun trata la información de contacto que compartís por email o por el formulario del sitio, y qué derechos tenés sobre esos datos.",
+  alternates: { canonical: "/politica-de-privacidad" },
 };
 
 export default function PoliticaDePrivacidad() {
   return (
-    <LegalLayout title="Política de privacidad" updatedAt="2026">
+    <LegalLayout title="Política de privacidad" updatedAt={SITE_CONTENT_DATE}>
       <p>
         En Codezun respetamos tu privacidad. Esta política describe qué
         información recopilamos a través de codezun.com (el

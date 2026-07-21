@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Desarrollo de software por país",
   description:
     "Codezun desarrolla sitios web, tiendas online, landing pages y plataformas SaaS para negocios en distintos países. Empezamos por Honduras, y seguimos sumando países.",
+  alternates: { canonical: "/ciudades" },
 };
 
 export default function PaisesPage() {

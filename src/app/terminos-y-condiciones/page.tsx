@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-import { CONTACT_EMAIL } from "@/lib/site-config";
+import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Términos y condiciones — Codezun",
+  title: "Términos y condiciones",
+  description:
+    "Términos y condiciones de uso del sitio web de Codezun: uso permitido, propiedad intelectual y alcance de nuestros servicios de desarrollo de software.",
+  alternates: { canonical: "/terminos-y-condiciones" },
 };
 
 export default function TerminosYCondiciones() {
   return (
-    <LegalLayout title="Términos y condiciones" updatedAt="2026">
+    <LegalLayout title="Términos y condiciones" updatedAt={SITE_CONTENT_DATE}>
       <p>
         Estos Términos y Condiciones regulan el uso del sitio web
         codezun.com (el &quot;Sitio&quot;), operado por Codezun

@@ -4,13 +4,30 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { getAllPosts, formatPostDate } from "@/lib/blog";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Artículos sobre desarrollo de software, tiendas online, landing pages y SaaS para negocios en Honduras.",
-};
-
 const PAGE_SIZE = 5;
+const BASE_DESCRIPTION =
+  "Artículos sobre desarrollo de software, tiendas online, landing pages y SaaS para negocios en Honduras.";
+
+function resolvePage(pageParam: string | undefined, totalPages: number) {
+  const requestedPage = Number(pageParam) || 1;
+  return Math.min(Math.max(requestedPage, 1), totalPages);
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}): Promise<Metadata> {
+  const { page: pageParam } = await searchParams;
+  const totalPages = Math.max(1, Math.ceil(getAllPosts().length / PAGE_SIZE));
+  const page = resolvePage(pageParam, totalPages);
+
+  return {
+    title: page > 1 ? `Blog — Página ${page}` : "Blog",
+    description: BASE_DESCRIPTION,
+    alternates: { canonical: page > 1 ? `/blog?page=${page}` : "/blog" },
+  };
+}
 
 export default async function BlogPage({
   searchParams,
@@ -20,9 +37,7 @@ export default async function BlogPage({
   const { page: pageParam } = await searchParams;
   const allPosts = getAllPosts();
   const totalPages = Math.max(1, Math.ceil(allPosts.length / PAGE_SIZE));
-
-  const requestedPage = Number(pageParam) || 1;
-  const page = Math.min(Math.max(requestedPage, 1), totalPages);
+  const page = resolvePage(pageParam, totalPages);
 
   const posts = allPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 

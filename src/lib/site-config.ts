@@ -14,6 +14,14 @@ export const SITE_URL = "https://codezun.com";
 export const CONTACT_EMAIL = "codezun@gmail.com";
 
 /**
+ * Fecha de referencia para contenido estático (páginas legales,
+ * contacto, ciudades). Se usa tanto en el texto "Última actualización"
+ * como en sitemap.xml, para no tener dos fuentes de verdad distintas.
+ * Actualizala cuando el contenido de esas páginas cambie de verdad.
+ */
+export const SITE_CONTENT_DATE = "2026-07-21";
+
+/**
  * WhatsApp / teléfono de contacto.
  * NUMBER va sin "+" ni espacios (formato que requiere el link de wa.me).
  * DISPLAY es la versión legible que se muestra en la UI.
