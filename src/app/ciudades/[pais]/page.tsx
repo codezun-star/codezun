@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import JsonLd from "@/components/JsonLd";
 import { COUNTRIES, getCountry } from "@/lib/cities";
+import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
 
 export async function generateStaticParams() {
   return COUNTRIES.map((country) => ({ pais: country.slug }));
@@ -36,6 +38,21 @@ export default async function PaisPage({
 
   return (
     <section className="bg-white py-16 sm:py-24">
+      <JsonLd
+        schemas={[
+          itemListSchema(
+            `Ciudades de ${country.name} atendidas por Codezun`,
+            country.cities.map((city) => ({
+              name: city.name,
+              path: `/ciudades/${country.slug}/${city.slug}`,
+            }))
+          ),
+          breadcrumbSchema([
+            { name: "Ciudades", path: "/ciudades" },
+            { name: country.name, path: `/ciudades/${country.slug}` },
+          ]),
+        ]}
+      />
       <div className="mx-auto max-w-4xl px-6">
         <Link
           href="/ciudades"

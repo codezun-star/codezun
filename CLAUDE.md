@@ -90,8 +90,21 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   it when legal/contact/city content actually changes, and it flows
   into both the visible date and `sitemap.xml`).
 - `src/lib/blog.ts` — reads/parses `content/blog/*.md`
-  (frontmatter: `title`, `description`, `date`, `keywords`). Add a
-  post by dropping a new `.md` file there; no code changes needed.
+  (frontmatter: `title`, `description`, `date`, optional `updated`,
+  `keywords`, optional `faq`). Add a post by dropping a new `.md` file
+  there; no code changes needed. `updated` is the real last-revision
+  date (falls back to `date`) and drives `dateModified` +
+  `sitemap.xml` — bump it only when the content actually changes.
+  `faq` is a list of `question`/`answer` pairs rendered at the end of
+  the post and emitted as `FAQPage`.
+- `src/lib/faq.ts` — `SITE_FAQ` (home) and `cityFaq()` (per city).
+  Text lives here, never in JSX, because the same strings feed both
+  the visible block and the `FAQPage` schema; declaring a question in
+  the markup that isn't on the page violates the structured-data
+  guidelines.
+- `src/lib/schema.ts` — every JSON-LD builder + `SERVICE_CATALOG` and
+  `SITE_DESCRIPTION`. `src/lib/crawlers.ts` — the answer-engine
+  user-agents listed in `robots.txt`.
 - `src/lib/cities.ts` — `COUNTRIES: Country[]`, each with nested
   `cities: City[]`. **Only Honduras exists today.** To add a country,
   append to `COUNTRIES` — the routes under `/ciudades` are fully
@@ -128,11 +141,19 @@ used by both `LegalLayout` (JSX children) and blog posts (`html` prop
 with the markdown-rendered string). Extend its class string, don't
 duplicate it, if a new tag needs styling.
 
-## SEO
+## SEO / AEO
 
 - Root layout (`src/app/layout.tsx`) sets `metadataBase`, a title
   template (`%s | Codezun`), OpenGraph/Twitter defaults, and a
   sitewide `Organization` JSON-LD script.
+- **All JSON-LD goes through `src/lib/schema.ts` + `<JsonLd>`**, never
+  hand-written per page. The builders share `@id`s
+  (`#organizacion`, `#sitio`) so the blocks link into one graph
+  instead of repeating the org inline — a page's `author`/`publisher`
+  is a `{"@id": …}` ref, not a fresh `Organization`. `<JsonLd>` also
+  escapes `<`, which raw `JSON.stringify` in a `<script>` does not.
+- `WebSite` is emitted **only on the home page** (that's where Search
+  reads the site name from); `Organization` rides in the layout.
 - **Every page needs its own `title` (no hardcoded "— Codezun" suffix
   — the template adds it), `description`, and `alternates.canonical`.**
   Forgetting `canonical` on a new top-level page means it silently
@@ -147,12 +168,41 @@ duplicate it, if a new tag needs styling.
   `generateStaticParams` — it does not inherit the page's) generate
   branded PNG cards via `next/og`'s `ImageResponse`, embedding the
   real logo as base64.
-- JSON-LD patterns already in place: `Organization` (sitewide),
-  `Article` (blog posts), `BreadcrumbList` (blog posts + city pages),
-  `Service` (city pages — **not** `LocalBusiness`: Codezun is fully
-  remote with no physical office per city, and `LocalBusiness` implies
-  a real address, which would be dishonest here. Keep using `Service`
-  + `areaServed` for any new local page).
+- JSON-LD patterns already in place: `Organization` (sitewide, with
+  `contactPoint` + `hasOfferCatalog`), `WebSite` (home only),
+  `FAQPage` (home, city pages, posts that declare `faq`), `Article`
+  with `dateModified` (blog posts), `Blog` (blog listing),
+  `BreadcrumbList` (posts + city + country pages), `ItemList`
+  (`/ciudades` and `/ciudades/[pais]`), `Service` (city pages —
+  **not** `LocalBusiness`: Codezun is fully remote with no physical
+  office per city, and `LocalBusiness` implies a real address, which
+  would be dishonest here. Keep using `Service` + `areaServed` for any
+  new local page).
+- **AEO (answer engines).** Three things carry it, and all three must
+  stay in sync with the pages:
+  - `FAQPage` — the schema answer engines extract a direct answer
+    from. Every question must also be visible on the page; `Faq.tsx`
+    renders the block *and* emits the schema from the same array so
+    they can't drift. `<details>` keeps the answer in the server HTML
+    even when collapsed.
+  - `/llms.txt` (`src/app/llms.txt/route.ts`, `force-static`) — the
+    site map written for a model: what the company is, what it sells,
+    plus one annotated line per page. Generated from `lib/blog.ts` /
+    `lib/cities.ts` / `lib/faq.ts` so publishing a post updates it for
+    free. It states explicitly that Codezun publishes no prices and
+    has no physical office, which is what stops an assistant from
+    inventing either. Linked from the footer — that link is the only
+    way the file gets discovered.
+  - `robots.ts` — an explicit `allow` group for the answer-engine
+    user-agents in `lib/crawlers.ts`. Not redundant with `*`: a
+    crawler obeys only its most specific matching group, so any future
+    `Disallow` written for one bot silently drops those agents out of
+    the `*` group. **If you ever add a disallow, add it to both
+    groups.**
+- `dateModified` / `lastModified` must always come from real content
+  dates (`post.updated`, `SITE_CONTENT_DATE`), never `new Date()` on
+  a static page: a freshness signal that lies gets discounted
+  site-wide once a crawler checks it twice.
 - Blog listing pagination is a dynamic route (`ƒ` in the build output,
   due to `searchParams`) with per-page `title`/`canonical` via
   `generateMetadata` — don't revert it to a static `metadata` export.

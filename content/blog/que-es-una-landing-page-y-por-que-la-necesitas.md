@@ -2,10 +2,20 @@
 title: "Landing page: qué es y por qué tu negocio en Honduras la necesita"
 description: "Qué es una landing page, en qué se diferencia de un sitio web completo y cuándo conviene usar una para tu negocio en Honduras."
 date: "2026-07-01"
+updated: "2026-07-30"
 keywords:
   - landing page Honduras
   - qué es una landing page
   - página de aterrizaje
+faq:
+  - question: "¿Qué es una landing page?"
+    answer: "Una página web enfocada en un solo objetivo: que quien llega haga una acción concreta, como dejar sus datos, escribir por WhatsApp, agendar una cita o comprar un producto puntual. A diferencia de un sitio completo, elimina distracciones: todo el contenido apunta a esa única meta."
+  - question: "¿En qué se diferencia una landing page de un sitio web completo?"
+    answer: "En el objetivo y en la navegación. La landing page persigue una sola acción y casi no tiene menú; el sitio completo tiene varias secciones y varios objetivos (informar, vender, contactar) y funciona como la presencia general del negocio. Ninguna reemplaza a la otra: muchas empresas usan las dos."
+  - question: "¿Cuándo conviene usar una landing page?"
+    answer: "Cuando lanzás un producto o servicio nuevo y querés medir el interés antes de invertir más, cuando corrés una campaña publicitaria y necesitás convertir esas visitas, cuando ofrecés una promoción con fecha de inicio y fin, o cuando querés capturar contactos para hacerles seguimiento."
+  - question: "¿Qué errores hacen que una landing page no convierta?"
+    answer: "Poner varios botones que llevan a lugares distintos, que la página sea lenta o se vea mal en conexiones móviles, y no dejar claro qué pasa después del clic: si vas a contactar a la persona y cuándo."
 ---
 
 Si vendés un producto, ofrecés un servicio o estás por lanzar una campaña, es probable que hayas escuchado el término "landing page". Acá te explicamos qué es exactamente, en qué se diferencia de un sitio web completo, y cuándo conviene usar una.

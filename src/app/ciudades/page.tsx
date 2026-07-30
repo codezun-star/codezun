@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Globe } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import JsonLd from "@/components/JsonLd";
 import { COUNTRIES } from "@/lib/cities";
+import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Desarrollo de software por país",
@@ -14,6 +16,18 @@ export const metadata: Metadata = {
 export default function PaisesPage() {
   return (
     <section className="bg-white py-16 sm:py-24">
+      <JsonLd
+        schemas={[
+          itemListSchema(
+            "Países atendidos por Codezun",
+            COUNTRIES.map((country) => ({
+              name: country.name,
+              path: `/ciudades/${country.slug}`,
+            }))
+          ),
+          breadcrumbSchema([{ name: "Ciudades", path: "/ciudades" }]),
+        ]}
+      />
       <div className="mx-auto max-w-4xl px-6">
         <FadeIn>
           <h1 className="text-3xl font-bold tracking-tight text-dark sm:text-4xl">

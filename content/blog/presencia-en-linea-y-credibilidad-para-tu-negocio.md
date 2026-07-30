@@ -2,10 +2,20 @@
 title: "Presencia en línea y credibilidad: por qué un sitio web le da confianza a tu negocio"
 description: "Cómo la presencia en línea influye en la confianza que los clientes depositan en un negocio, y qué elementos de un sitio web más ayudan a transmitir credibilidad."
 date: "2026-07-15"
+updated: "2026-07-30"
 keywords:
   - credibilidad negocio en línea
   - confianza sitio web
   - presencia digital Honduras
+faq:
+  - question: "¿Por qué un sitio web le da credibilidad a un negocio?"
+    answer: "Porque antes de comprar o contratar casi todo el mundo busca al negocio en internet para verificar que sea real y serio. Esa búsqueda dura segundos y se resuelve con señales pequeñas: información clara, diseño ordenado, consistencia entre canales y una forma visible de contactar."
+  - question: "¿Qué elementos de un sitio web restan confianza?"
+    answer: "Que cargue lento o no cargue bien, que tenga información desactualizada como precios viejos o servicios que ya no ofrecés, que no haya ninguna forma de verificar que el negocio existe de verdad, y que lo que se dice en redes no coincida con lo que muestra el sitio."
+  - question: "¿Sirve la presencia en línea si el negocio recién empieza?"
+    answer: "Es donde más pesa. Un negocio nuevo todavía no tiene años de trayectoria para respaldarse, y un sitio bien hecho compensa esa falta con una imagen profesional desde el primer día."
+  - question: "¿La credibilidad importa más al vender servicios que productos?"
+    answer: "Sí, porque el cliente está confiando en algo que aún no puede ver ni tocar. Para un abogado, un contador, una agencia o un desarrollador de software, la presencia en línea suele ser la única prueba disponible antes de decidir."
 ---
 
 Antes de comprar o contratar un servicio, casi todos hacemos lo mismo sin darnos cuenta: buscamos al negocio en internet para "verificar" que sea real y serio. Esa búsqueda rápida, que dura segundos, puede definir si alguien te escribe o si sigue buscando otra opción. Este artículo habla de un beneficio de la presencia en línea que a veces se subestima: la credibilidad.

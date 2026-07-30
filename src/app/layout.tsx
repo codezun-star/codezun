@@ -4,7 +4,9 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site-config";
+import JsonLd from "@/components/JsonLd";
+import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { SITE_DESCRIPTION, organizationSchema } from "@/lib/schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,8 +14,7 @@ const inter = Inter({
 });
 
 const TITLE = "Codezun — SaaS, e-commerce y sitios web a medida";
-const DESCRIPTION =
-  "Codezun es una empresa de desarrollo de software con más de 5 años de experiencia creando productos SaaS, tiendas online, landing pages y sitios web completos. Atendemos clientes en todo el mundo.";
+const DESCRIPTION = SITE_DESCRIPTION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -53,17 +54,6 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo/logo.png`,
-  email: CONTACT_EMAIL,
-  description: DESCRIPTION,
-  areaServed: "Worldwide",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -76,10 +66,13 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingWhatsApp />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
+        {/*
+          La organización va en el layout porque es la entidad que firma todo
+          el sitio: cualquier página, incluida una a la que se llegue desde un
+          asistente sin pasar por la portada, tiene que poder decir quién la
+          publica. El resto de esquemas son de cada página.
+        */}
+        <JsonLd schemas={[organizationSchema()]} />
       </body>
     </html>
   );

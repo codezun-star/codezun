@@ -2,10 +2,20 @@
 title: "Cómo la presencia en línea te ayuda a llegar a más clientes en Honduras"
 description: "De qué manera un sitio web y una buena presencia en línea amplían el alcance de un negocio en Honduras, más allá del boca a boca y del vecindario."
 date: "2026-07-17"
+updated: "2026-07-30"
 keywords:
   - llegar a más clientes Honduras
   - alcance de negocio en línea
   - presencia digital para vender más
+faq:
+  - question: "¿Cómo ayuda un sitio web a conseguir clientes nuevos?"
+    answer: "Te vuelve visible para personas que nunca escucharon tu nombre: cuando alguien busca un producto o servicio como el tuyo, tu presencia en línea es lo que te pone entre las opciones. Además saca al negocio del límite geográfico de su local y facilita que tus propios clientes te recomienden compartiendo un enlace."
+  - question: "¿Cuál es el límite del boca a boca?"
+    answer: "Que depende de que quienes ya te conocen sigan recomendándote, y ese círculo crece despacio. Alguien que no vive cerca y nunca oyó hablar de tu negocio no se entera de que existe, salvo que te encuentre buscando en internet."
+  - question: "¿En cuánto tiempo se ven resultados de una presencia en línea?"
+    answer: "No es inmediato. Que más personas te encuentren lleva tiempo, igual que con cualquier otro canal, así que conviene pensarlo como una inversión a mediano plazo y no como un anuncio de un solo día."
+  - question: "¿Qué hace falta para que un sitio web amplíe de verdad el alcance?"
+    answer: "Que sea fácil de encontrar con las palabras que tus clientes realmente buscan, que cargue rápido y funcione bien en el celular, que tenga un mensaje claro sobre qué ofrecés y a quién, y que el contacto sea directo: un formulario, un botón de WhatsApp o un número visible."
 ---
 
 Durante mucho tiempo, el crecimiento de un negocio dependía casi exclusivamente de dos cosas: la ubicación física y el boca a boca. Ambas siguen siendo importantes, pero hoy existe un tercer camino que puede ampliar el alcance de un negocio mucho más rápido: la presencia en línea. En este artículo explicamos, en la práctica, cómo funciona ese alcance ampliado.

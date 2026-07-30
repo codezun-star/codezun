@@ -2,10 +2,18 @@
 title: "Beneficios de tener presencia en línea para tu negocio en Honduras"
 description: "Por qué cada vez más negocios en Honduras están invirtiendo en tener presencia en línea, y qué beneficios concretos trae para las ventas, la credibilidad y el crecimiento."
 date: "2026-07-13"
+updated: "2026-07-30"
 keywords:
   - beneficios de tener presencia en línea
   - presencia digital Honduras
   - por qué mi negocio necesita internet
+faq:
+  - question: "¿Cuáles son los beneficios de tener presencia en línea para un negocio?"
+    answer: "Aparecer cuando alguien busca lo que vendés, ganar credibilidad frente a un cliente que todavía no te conoce, seguir recibiendo consultas fuera del horario del local, dejar de depender de una sola red social, poder medir qué está funcionando y competir de igual a igual con quienes ya están en internet."
+  - question: "¿Tener presencia en línea es lo mismo que tener redes sociales?"
+    answer: "No. Las redes sociales son un canal más: dependen del algoritmo, cuesta organizar en ellas un catálogo completo y no transmiten la misma seriedad que un sitio propio. Lo ideal es que convivan, con las redes para contenido frecuente y el sitio web como base estable y bajo tu control."
+  - question: "¿Por dónde empieza un negocio que no tiene nada en internet?"
+    answer: "Por lo mínimo que ya resuelve algo: una landing page que presente el negocio y sus servicios, o un sitio institucional con quién sos, qué hacés y cómo contactarte. La tienda online o la plataforma a medida vienen después, cuando el negocio de verdad las necesita."
 ---
 
 Hace unos años, tener un sitio web era algo que solo hacían las empresas grandes. Hoy, negocios de todos los tamaños en Honduras (desde una clínica dental hasta un taller mecánico o una tienda de ropa) están descubriendo que tener presencia en línea ya no es un lujo: es una parte normal de cómo un negocio se relaciona con sus clientes. En este artículo repasamos, en concreto, qué beneficios trae.

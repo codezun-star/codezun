@@ -32,9 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
+  // La fecha de la última revisión del artículo, no la de publicación: es la
+  // que le dice al buscador que un artículo que ya rastreó ha cambiado.
   const postEntries = getAllPosts().map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.updated),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

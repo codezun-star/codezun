@@ -3,8 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Prose from "@/components/Prose";
+import Faq from "@/components/Faq";
+import JsonLd from "@/components/JsonLd";
 import { getAllPosts, getPostBySlug, formatPostDate } from "@/lib/blog";
-import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { breadcrumbSchema, organizationRef } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site-config";
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -29,6 +32,7 @@ export async function generateMetadata({
       description: post.description,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updated,
       url: `/blog/${post.slug}`,
     },
   };
@@ -43,6 +47,13 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  /*
+   * `dateModified` no es decorativo: es la señal con la que un buscador —y
+   * cada vez más un asistente— decide si un artículo que ya conoce sigue
+   * vigente. Cae a `datePublished` cuando el artículo no se ha revisado, que
+   * es lo cierto; poner ahí la fecha del build diría que se revisa en cada
+   * despliegue, y esa señal se descarta en cuanto se comprueba que es falsa.
+   */
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -50,26 +61,19 @@ export default async function BlogPostPage({
     description: post.description,
     image: `${SITE_URL}/blog/${post.slug}/opengraph-image`,
     datePublished: post.date,
-    inLanguage: "es-HN",
-    author: { "@type": "Organization", name: SITE_NAME },
-    publisher: { "@type": "Organization", name: SITE_NAME },
+    dateModified: post.updated,
+    inLanguage: "es",
+    keywords: post.keywords.join(", "),
+    author: organizationRef,
+    publisher: organizationRef,
+    isPartOf: { "@type": "Blog", name: "Blog de Codezun", url: `${SITE_URL}/blog` },
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: `${SITE_URL}/blog/${post.slug}`,
-      },
-    ],
-  };
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
 
   return (
     <section className="bg-white py-16 sm:py-24">
@@ -86,20 +90,28 @@ export default async function BlogPostPage({
           {post.title}
         </h1>
         <p className="mt-2 text-sm text-foreground/50">
-          {formatPostDate(post.date)}
+          <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+          {post.updated !== post.date && (
+            <>
+              {" · Actualizado el "}
+              <time dateTime={post.updated}>{formatPostDate(post.updated)}</time>
+            </>
+          )}
         </p>
 
         <Prose className="mt-10" html={post.contentHtml} />
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      {/*
+        El bloque de preguntas va al final del artículo, no al principio: quien
+        llega ya leyó el cuerpo, y quien lo cita (un asistente) lo extrae del
+        esquema, donde el orden dentro de la página no cuenta.
+      */}
+      {post.faq.length > 0 && (
+        <Faq items={post.faq} title="Preguntas frecuentes sobre este tema" />
+      )}
+
+      <JsonLd schemas={[articleJsonLd, breadcrumbJsonLd]} />
     </section>
   );
 }

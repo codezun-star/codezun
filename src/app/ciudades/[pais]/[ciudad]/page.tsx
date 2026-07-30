@@ -4,9 +4,13 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import Services from "@/components/Services";
+import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
+import JsonLd from "@/components/JsonLd";
 import { getAllCityParams, getCity } from "@/lib/cities";
-import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { cityFaq } from "@/lib/faq";
+import { breadcrumbSchema, organizationRef } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site-config";
 
 export async function generateStaticParams() {
   return getAllCityParams();
@@ -62,31 +66,31 @@ export default async function CiudadPage({
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Desarrollo de software",
-    provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    provider: organizationRef,
     areaServed: {
       "@type": "City",
       name: city.name,
       containedInPlace: { "@type": "Country", name: country.name },
     },
+    // Que el servicio se presta a distancia forma parte de la respuesta, no es
+    // una nota al pie: es lo que impide que un asistente deduzca una oficina
+    // en la ciudad a partir del título de la página.
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: `${SITE_URL}/contacto`,
+      availableLanguage: ["Spanish"],
+    },
     url: pageUrl,
-    description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}.`,
+    description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}. Servicio 100% remoto, sin oficina física en la ciudad.`,
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Ciudades", item: `${SITE_URL}/ciudades` },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: country.name,
-        item: `${SITE_URL}/ciudades/${country.slug}`,
-      },
-      { "@type": "ListItem", position: 4, name: city.name, item: pageUrl },
-    ],
-  };
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Ciudades", path: "/ciudades" },
+    { name: country.name, path: `/ciudades/${country.slug}` },
+    { name: city.name, path: `/ciudades/${country.slug}/${city.slug}` },
+  ]);
+
+  const faq = cityFaq(country, city);
 
   return (
     <>
@@ -139,16 +143,13 @@ export default async function CiudadPage({
       </section>
 
       <Services />
+      <Faq
+        items={faq}
+        title={`Preguntas frecuentes sobre desarrollo web en ${city.name}`}
+      />
       <Contact />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd schemas={[serviceJsonLd, breadcrumbJsonLd]} />
     </>
   );
 }

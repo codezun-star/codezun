@@ -122,8 +122,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-sm text-white/60">
-          © {year} Codezun. Todos los derechos reservados.
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
+          <span>© {year} Codezun. Todos los derechos reservados.</span>
+          {/*
+            El enlace a /llms.txt es lo que hace que ese archivo se descubra.
+            Su ruta está convenida, pero un rastreador solo la pide si sabe que
+            existe, y robots.txt no tiene un campo donde anunciarla.
+          */}
+          <a
+            href="/llms.txt"
+            className="transition-colors hover:text-highlight"
+            title="Resumen del sitio en texto plano, para modelos de lenguaje"
+          >
+            llms.txt
+          </a>
         </div>
       </div>
     </footer>

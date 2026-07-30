@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import JsonLd from "@/components/JsonLd";
 import { getAllPosts, formatPostDate } from "@/lib/blog";
+import { breadcrumbSchema, organizationRef } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site-config";
 
 const PAGE_SIZE = 5;
 const BASE_DESCRIPTION =
@@ -41,8 +44,37 @@ export default async function BlogPage({
 
   const posts = allPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
+  /*
+   * El listado se declara como `Blog` con sus artículos dentro. Sirve para que
+   * un rastreador —o un asistente que llega buscando "blog de Codezun"— vea de
+   * una sola lectura qué artículos hay y de qué fecha son, sin tener que
+   * seguir los cinco enlaces. Solo entran los de esta página del listado: el
+   * esquema tiene que describir lo que está en la página, no el archivo entero.
+   */
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Blog de Codezun",
+    description: BASE_DESCRIPTION,
+    url: `${SITE_URL}/blog`,
+    inLanguage: "es",
+    publisher: organizationRef,
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.updated,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      author: organizationRef,
+    })),
+  };
+
   return (
     <section className="bg-white py-16 sm:py-24">
+      <JsonLd
+        schemas={[blogJsonLd, breadcrumbSchema([{ name: "Blog", path: "/blog" }])]}
+      />
       <div className="mx-auto max-w-4xl px-6">
         <FadeIn>
           <h1 className="text-3xl font-bold tracking-tight text-dark sm:text-4xl">

@@ -2,10 +2,20 @@
 title: "Cómo crear una tienda online en Honduras: guía paso a paso"
 description: "Guía práctica para emprendedores y negocios en Honduras que quieren vender por internet: qué definir antes de empezar y cómo elegir la plataforma correcta."
 date: "2026-06-22"
+updated: "2026-07-30"
 keywords:
   - tienda online Honduras
   - crear tienda virtual Honduras
   - ecommerce Honduras
+faq:
+  - question: "¿Qué hay que definir antes de crear una tienda online?"
+    answer: "El catálogo (cuántos productos y con qué variantes), los métodos de cobro que tus clientes usan de verdad, la logística de entrega y quién va a mantener la tienda al día. Esas cuatro decisiones determinan qué tan simple o compleja tiene que ser la plataforma."
+  - question: "¿Conviene una tienda propia o vender por WhatsApp e Instagram?"
+    answer: "Vender por redes funciona para empezar, pero no da un catálogo organizado, obliga a responder uno por uno y cuesta escalar. Una tienda propia da control sobre la experiencia de compra, los datos y la marca, y convive sin problema con las redes como canal adicional."
+  - question: "¿Qué métodos de pago debería aceptar una tienda online en Honduras?"
+    answer: "Los que tus clientes ya usan. En Honduras conviven la transferencia bancaria, el depósito, el pago contra entrega y, cada vez más, el pago con tarjeta a través de una pasarela. La tienda se adapta a esos métodos, no al revés."
+  - question: "¿Por qué importa tanto que la tienda funcione bien en el celular?"
+    answer: "Porque la mayoría de las visitas a una tienda online en Honduras llegan desde el teléfono. Un sitio que se ve bien en computadora pero es incómodo en el celular pierde ventas todos los días: el diseño pensado primero para móvil es la base, no un extra."
 ---
 
 Vender por internet dejó de ser una opción "extra" para muchos negocios en Honduras: hoy es, cada vez más, una forma directa de llegar a clientes que ya buscan productos y servicios desde el celular. Si estás pensando en dar el salto, esta guía te ayuda a ordenar las decisiones antes de empezar.

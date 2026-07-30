@@ -2,10 +2,18 @@
 title: "Tu negocio abierto 24/7: cómo la presencia en línea sigue vendiendo aunque estés cerrado"
 description: "Cómo un sitio web y una buena presencia en línea le permiten a un negocio en Honduras atender consultas y generar ventas fuera del horario habitual."
 date: "2026-07-19"
+updated: "2026-07-30"
 keywords:
   - negocio abierto 24 horas online
   - vender mientras duermo
   - presencia en línea Honduras
+faq:
+  - question: "¿Qué significa que un negocio esté abierto 24/7 en línea?"
+    answer: "No significa que alguien tenga que responder mensajes a las tres de la madrugada, sino que el sitio, el catálogo y la información de contacto están disponibles a cualquier hora: quien te necesite puede ver qué ofrecés, entender cómo trabajás y dejar su consulta o iniciar una compra, para que vos respondas cuando puedas."
+  - question: "¿Qué se puede automatizar sin perder la atención personal?"
+    answer: "Formularios que capturan la consulta para responderla después, botones de WhatsApp que abren la conversación cuando el cliente quiere, catálogos y tiendas donde la compra se completa sola, y páginas de preguntas frecuentes que resuelven las dudas repetidas. Eso libera tiempo para las conversaciones que sí necesitan una persona."
+  - question: "¿Qué se pierde sin disponibilidad fuera del horario del local?"
+    answer: "Cada consulta que llega fuera de hora y no tiene dónde aterrizar. La persona rara vez espera pacientemente a que abras: sigue buscando, y es fácil que encuentre a otro negocio que sí estaba disponible en ese momento."
 ---
 
 Un local físico tiene un horario: abre a cierta hora, cierra a otra, y descansa los días de feriado. Pero las personas no dejan de tener necesidades ni de buscar soluciones fuera de ese horario. Ahí es donde la presencia en línea le da a un negocio algo que un local por sí solo no puede ofrecer: estar disponible las 24 horas, los 7 días de la semana.
