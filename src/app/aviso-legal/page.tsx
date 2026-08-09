@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import LegalLayout from "@/components/LegalLayout";
 import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 
@@ -41,13 +42,21 @@ export default function AvisoLegal() {
 
       <h2>Cookies</h2>
       <p>
-        Este Sitio, en su versión actual, no utiliza cookies de
-        seguimiento ni cookies de terceros con fines analíticos o
-        publicitarios. Únicamente podría utilizarse almacenamiento
-        técnico estrictamente necesario para el funcionamiento básico
-        del Sitio. Si en el futuro se incorporan cookies adicionales
-        (por ejemplo, de analítica), este apartado será actualizado y,
-        de corresponder, se solicitará el consentimiento necesario.
+        Este Sitio utiliza cookies de analítica de Google Analytics 4,
+        que sirven para medir de forma estadística cuántas visitas
+        recibe y qué páginas se leen. No se utilizan cookies
+        publicitarias, de remarketing ni de redes sociales, y ninguna
+        cookie es necesaria para que el Sitio funcione: podés
+        bloquearlas o eliminarlas desde tu navegador sin perder acceso a
+        ningún contenido.
+      </p>
+      <p>
+        El detalle de qué cookies se instalan, qué información recogen y
+        cómo desactivarlas está en la{" "}
+        <Link href="/politica-de-privacidad" className="text-primary underline">
+          política de privacidad
+        </Link>
+        .
       </p>
 
       <h2>Legislación aplicable</h2>

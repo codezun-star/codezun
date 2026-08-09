@@ -14,12 +14,28 @@ export const SITE_URL = "https://codezun.com";
 export const CONTACT_EMAIL = "codezun@gmail.com";
 
 /**
+ * ID de medición de Google Analytics 4 (propiedad "codezun",
+ * flujo https://codezun.com).
+ *
+ * No es un secreto —viaja en el HTML de todas las páginas, cualquiera
+ * puede leerlo en el código fuente— así que vive acá y no en una
+ * variable de entorno: una variable `NEXT_PUBLIC_*` terminaría igual de
+ * pública, pero además obligaría a configurarla en Vercel para que el
+ * sitio midiera algo, y el despliegue se rompería en silencio si se
+ * olvidara.
+ *
+ * Dejalo en cadena vacía para desactivar la analítica sin borrar código
+ * (ver `Analytics.tsx`).
+ */
+export const GA_MEASUREMENT_ID: string = "G-C2DP9BD90V";
+
+/**
  * Fecha de referencia para contenido estático (páginas legales,
  * contacto, ciudades). Se usa tanto en el texto "Última actualización"
  * como en sitemap.xml, para no tener dos fuentes de verdad distintas.
  * Actualizala cuando el contenido de esas páginas cambie de verdad.
  */
-export const SITE_CONTENT_DATE = "2026-07-21";
+export const SITE_CONTENT_DATE = "2026-08-09";
 
 /**
  * WhatsApp / teléfono de contacto.

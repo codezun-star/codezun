@@ -31,7 +31,8 @@ a scope limit (see "Ciudades" below).
 - Framer Motion via `motion/react` (not `framer-motion`) for subtle
   fade-ins (`src/components/FadeIn.tsx`) and small interactions.
 - `gray-matter` + `marked` for the blog (no MDX, no `@next/mdx`).
-- No analytics, no CMS, no backend — everything is static/local data.
+- No CMS, no backend — everything is static/local data. The only
+  third-party runtime script is Google Analytics 4 (see "Analytics").
 
 ## Brand colors
 
@@ -140,6 +141,42 @@ page is independent).
 used by both `LegalLayout` (JSX children) and blog posts (`html` prop
 with the markdown-rendered string). Extend its class string, don't
 duplicate it, if a new tag needs styling.
+
+## Analytics
+
+Google Analytics 4, property "codezun", stream `https://codezun.com`,
+measurement ID `G-C2DP9BD90V` (`GA_MEASUREMENT_ID` in
+`site-config.ts` — it ships in the HTML, it's not a secret, so it is
+*not* an env var: a `NEXT_PUBLIC_*` would be just as public but would
+also break measurement silently if nobody set it in Vercel).
+
+`src/components/Analytics.tsx` is Google's own gtag.js snippet on
+`next/script` — **not** `@next/third-parties`. That package wraps these
+exact two tags and nothing else, is still flagged experimental, pulls in
+a transitive dep, and installs a version ahead of the pinned `next`.
+Don't re-add it.
+
+Three things that are easy to get wrong here:
+
+- **It only renders in production.** `process.env.NODE_ENV` is a
+  compile-time constant, so `next dev` ships zero GA code and localhost
+  traffic never reaches the report. Verifying the tag therefore needs
+  `next build && next start`, not `next dev`.
+- **Client-side navigations are counted by GA4, not by us.** App Router
+  route changes don't reload the page, so they fire no `page_view` on
+  their own; GA4's *Enhanced measurement* catches them by listening to
+  `pushState`. It's on by default in the property. If it's ever turned
+  off, page views collapse to one per session and a client component has
+  to `gtag('event', 'page_view')` on `usePathname()` changes.
+- **`afterInteractive`, not `lazyOnload`.** Idle-time loading drops the
+  short bounced visits, which are exactly the ones worth measuring.
+
+Adding/removing analytics is a legal-copy change, not just a code
+change: `/politica-de-privacidad` and `/aviso-legal` both describe the
+cookies in detail, and `SITE_CONTENT_DATE` has to be bumped with them.
+There is **no cookie-consent banner** — if the site ever needs one
+(EU/UK visitors under GDPR/ePrivacy), the tag has to become
+consent-gated, not just documented.
 
 ## SEO / AEO
 

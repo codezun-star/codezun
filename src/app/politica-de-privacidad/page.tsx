@@ -5,7 +5,7 @@ import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Política de privacidad",
   description:
-    "Cómo Codezun trata la información de contacto que compartís por email o por el formulario del sitio, y qué derechos tenés sobre esos datos.",
+    "Cómo Codezun trata la información de contacto que compartís por email o por el formulario del sitio, qué cookies de analítica usa codezun.com y qué derechos tenés sobre esos datos.",
   alternates: { canonical: "/politica-de-privacidad" },
 };
 
@@ -20,13 +20,18 @@ export default function PoliticaDePrivacidad() {
 
       <h2>Información que recopilamos</h2>
       <p>
-        Actualmente, el Sitio no cuenta con formularios que envíen datos
-        a un servidor propio ni con herramientas de analítica o
-        seguimiento de terceros. Si nos contactás por correo electrónico
-        o completás el formulario de contacto (que abre tu cliente de
+        El Sitio no cuenta con formularios que envíen datos a un
+        servidor propio. Si nos contactás por correo electrónico o
+        completás el formulario de contacto (que abre tu cliente de
         correo), recibimos únicamente la información que decidas
         incluir en ese mensaje: por ejemplo, tu nombre, tu email y el
         contenido de tu consulta.
+      </p>
+      <p>
+        Aparte de eso, el Sitio usa una herramienta de analítica de
+        terceros (Google Analytics 4) para saber cuánta gente lo visita
+        y qué páginas lee. Esa herramienta no nos dice quién sos: lo que
+        vemos son datos agregados y estadísticos.
       </p>
 
       <h2>Uso de la información</h2>
@@ -36,13 +41,60 @@ export default function PoliticaDePrivacidad() {
         avanzar con un proyecto, para gestionar la relación comercial
         correspondiente.
       </p>
-
-      <h2>Cookies</h2>
       <p>
-        El Sitio no utiliza cookies propias de seguimiento ni cookies de
-        terceros con fines publicitarios. Si en el futuro se
-        incorporaran herramientas que requieran cookies (por ejemplo,
-        analítica), esta política será actualizada para reflejarlo.
+        Los datos de analítica se utilizan únicamente para entender qué
+        contenido resulta útil y mejorar el Sitio. No se cruzan con la
+        información de contacto que nos hayas enviado, ni se usan para
+        publicidad, ni se venden o ceden a terceros.
+      </p>
+
+      <h2>Cookies y analítica</h2>
+      <p>
+        El Sitio utiliza Google Analytics 4, un servicio de analítica
+        web de Google. Para distinguir visitas nuevas de visitas
+        recurrentes, Google Analytics instala cookies propias en tu
+        navegador (<code>_ga</code> y <code>_ga_&lt;id&gt;</code>), con
+        una duración predeterminada de hasta dos años.
+      </p>
+      <p>
+        A través de esa herramienta recibimos información técnica y de
+        uso: páginas vistas, tiempo de permanencia, tipo de dispositivo
+        y navegador, desde qué sitio o buscador llegaste y una
+        ubicación aproximada a nivel de ciudad. Google Analytics 4 no
+        registra ni nos entrega tu dirección IP, y nosotros no
+        recibimos ningún dato que permita identificarte personalmente.
+      </p>
+      <p>
+        El tratamiento de esos datos por parte de Google se rige por sus
+        propias condiciones; podés consultarlas en la{" "}
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline"
+        >
+          política de privacidad de Google
+        </a>
+        .
+      </p>
+      <p>
+        Si preferís no ser incluido en estas estadísticas, podés
+        bloquear o eliminar las cookies desde la configuración de tu
+        navegador, navegar en modo privado, o instalar el{" "}
+        <a
+          href="https://tools.google.com/dlpage/gaoptout"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline"
+        >
+          complemento de inhabilitación de Google Analytics
+        </a>
+        . El Sitio funciona igual sin esas cookies: no se usan para
+        ninguna función necesaria.
+      </p>
+      <p>
+        El Sitio no utiliza cookies publicitarias, de remarketing ni de
+        redes sociales.
       </p>
 
       <h2>Conservación y seguridad</h2>

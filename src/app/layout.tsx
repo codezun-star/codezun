@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 import { SITE_DESCRIPTION, organizationSchema } from "@/lib/schema";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
           publica. El resto de esquemas son de cada página.
         */}
         <JsonLd schemas={[organizationSchema()]} />
+        <Analytics />
       </body>
     </html>
   );
