@@ -6,7 +6,7 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
 import { SITE_FAQ } from "@/lib/faq";
-import { webSiteSchema } from "@/lib/schema";
+import { portfolioSchema, webSiteSchema } from "@/lib/schema";
 
 export default function Home() {
   return (
@@ -15,8 +15,11 @@ export default function Home() {
         `WebSite` va solo en la portada: es donde un buscador lo lee para
         decidir con qué nombre rotula el sitio. La organización, que firma
         todas las páginas, viaja en el layout.
+
+        La lista de productos acompaña a la sección visible del portafolio:
+        enlaza cada subdominio propio con la organización que lo publica.
       */}
-      <JsonLd schemas={[webSiteSchema()]} />
+      <JsonLd schemas={[webSiteSchema(), portfolioSchema()]} />
       <Hero />
       <About />
       <Services />

@@ -4,6 +4,7 @@ import { SITE_FAQ } from "@/lib/faq";
 import { SERVICE_CATALOG, SITE_DESCRIPTION } from "@/lib/schema";
 import {
   CONTACT_EMAIL,
+  PORTFOLIO_PROJECTS,
   SITE_NAME,
   SITE_URL,
   WHATSAPP_DISPLAY,
@@ -63,6 +64,17 @@ export function GET(): Response {
       "Servicios",
       SERVICE_CATALOG.map(
         (service) => `- **${service.name}**: ${service.description}`
+      )
+    ),
+    // Los productos propios viven fuera de este dominio (tres en subdominios
+    // de codezun.com), así que no aparecen en el sitemap ni en ninguna de las
+    // secciones de abajo. Sin esta lista, un asistente que lea el archivo
+    // concluye que Codezun solo hace trabajo para terceros.
+    section(
+      "Proyectos propios",
+      PORTFOLIO_PROJECTS.map(
+        (project) =>
+          `- [${project.name}](${project.href}/) — ${project.category}: ${project.description}`
       )
     ),
     section("Páginas principales", [

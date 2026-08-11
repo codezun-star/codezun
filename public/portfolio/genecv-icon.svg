@@ -1,0 +1,56 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GeneCV">
+  <!-- Hoja del currículum, con la esquina doblada -->
+  <path
+    d="M 52 20 H 124 L 158 54 V 160
+       Q 158 176 142 176 H 52
+       Q 36 176 36 160 V 36
+       Q 36 20 52 20 Z"
+    fill="#FFFFFF"
+    stroke="#004E9B"
+    stroke-width="8"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M 124 20 V 54 H 158"
+    fill="#BAE4F0"
+    stroke="#004E9B"
+    stroke-width="8"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+  />
+
+  <!-- Foto de perfil -->
+  <circle cx="64" cy="58" r="11" fill="#0091B9"/>
+  <path d="M 48 92 Q 48 73 64 73 Q 80 73 80 92 Z" fill="#0091B9"/>
+
+  <!-- Nombre y puesto -->
+  <rect x="92" y="58" width="48" height="10" rx="5" fill="#004E9B"/>
+  <rect x="92" y="78" width="34" height="8" rx="4" fill="#BAE4F0"/>
+
+  <!-- Barras de aptitudes: lo que distingue un CV de un documento cualquiera -->
+  <g>
+    <rect x="48" y="112" width="76" height="9" rx="4.5" fill="#BAE4F0"/>
+    <rect x="48" y="112" width="52" height="9" rx="4.5" fill="#0091B9"/>
+  </g>
+  <g>
+    <rect x="48" y="132" width="76" height="9" rx="4.5" fill="#BAE4F0"/>
+    <rect x="48" y="132" width="34" height="9" rx="4.5" fill="#0091B9"/>
+  </g>
+  <rect x="48" y="152" width="48" height="9" rx="4.5" fill="#BAE4F0"/>
+
+  <!-- Sello: la comprobación de compatibilidad con ATS -->
+  <rect
+    x="122" y="132" width="50" height="50" rx="16"
+    fill="#0091B9"
+    stroke="#FFFFFF"
+    stroke-width="7"
+  />
+  <path
+    d="M 134 156 L 143 165 L 160 145"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

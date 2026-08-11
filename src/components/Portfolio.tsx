@@ -20,6 +20,23 @@ function getInitials(name: string) {
  * falta tocar este archivo: con un solo proyecto se muestra una card
  * grande destacada, y con dos o más pasa a mostrarse como grid.
  */
+
+/*
+ * `rel="noopener"` a secas, y no `noopener noreferrer`.
+ *
+ * `noopener` es lo que evita el tabnabbing (la página destino no recibe
+ * `window.opener`), así que la parte de seguridad está cubierta.
+ * `noreferrer` además borra la cabecera `Referer`, y eso sí tiene coste
+ * aquí: estos son productos propios, y sin referente cada visita que sale
+ * de codezun.com entra en la analítica del subdominio como tráfico
+ * directo, sin rastro de dónde vino.
+ *
+ * Lo que no lleva ninguno de estos enlaces es `nofollow`: son enlaces
+ * editoriales a proyectos propios, que es exactamente el caso en el que
+ * un enlace debe transmitir autoridad. Marcarlos como `nofollow` cortaría
+ * la señal que conecta el dominio principal con sus subdominios.
+ */
+const PROJECT_LINK_REL = "noopener";
 export default function Portfolio() {
   const featured = PORTFOLIO_PROJECTS.length === 1;
 
@@ -48,7 +65,7 @@ export default function Portfolio() {
               <a
                 href={project.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel={PROJECT_LINK_REL}
                 className={
                   featured
                     ? "group flex flex-col items-center gap-8 rounded-3xl bg-white p-8 text-center ring-1 ring-black/5 transition-shadow hover:shadow-xl sm:flex-row sm:items-center sm:text-left sm:p-12"
@@ -59,7 +76,7 @@ export default function Portfolio() {
                   className={
                     featured
                       ? "flex h-32 w-32 shrink-0 items-center justify-center rounded-2xl bg-secondary/40"
-                      : "relative flex aspect-video items-center justify-center bg-secondary/40"
+                      : "relative flex h-44 items-center justify-center bg-secondary/40 p-6"
                   }
                 >
                   {!featured && (
@@ -72,10 +89,26 @@ export default function Portfolio() {
                     <img
                       src={project.image}
                       alt={project.name}
+                      /*
+                        En el grid, `object-contain` y no `object-cover`:
+                        las imágenes son marcas cuadradas y `cover` les
+                        recortaba casi la mitad del alto (a Firmiu le comía
+                        el sello, al caballo la cabeza).
+
+                        Y `max-h-full max-w-full` sobre un recuadro de
+                        altura fija (`h-44`), no `aspect-*`: con `aspect-*`
+                        la altura del recuadro sale de su ancho, así que no
+                        es definida, un `max-height: 100%` no resuelve
+                        contra ella y la imagen acababa imponiendo su propia
+                        proporción —el recuadro se estiraba hasta quedar
+                        cuadrado y en móvil ocupaba la pantalla entera—.
+                        Con una altura fija el hueco manda y la marca se
+                        ajusta dentro.
+                      */
                       className={
                         featured
                           ? "h-20 w-20 object-contain"
-                          : "h-full w-full object-cover"
+                          : "max-h-full max-w-full object-contain"
                       }
                     />
                   ) : (

@@ -90,6 +90,10 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   (single source of truth for "last updated" on static pages — update
   it when legal/contact/city content actually changes, and it flows
   into both the visible date and `sitemap.xml`).
+  `PORTFOLIO_PROJECTS` feeds four places at once: the home-page grid,
+  the footer column, the portfolio JSON-LD and `/llms.txt`. Adding a
+  project means one object here plus an icon in
+  `/public/portfolio/`, nothing else.
 - `src/lib/blog.ts` — reads/parses `content/blog/*.md`
   (frontmatter: `title`, `description`, `date`, optional `updated`,
   `keywords`, optional `faq`). Add a post by dropping a new `.md` file
@@ -210,11 +214,31 @@ consent-gated, not just documented.
   `FAQPage` (home, city pages, posts that declare `faq`), `Article`
   with `dateModified` (blog posts), `Blog` (blog listing),
   `BreadcrumbList` (posts + city + country pages), `ItemList`
-  (`/ciudades` and `/ciudades/[pais]`), `Service` (city pages —
+  (`/ciudades`, `/ciudades/[pais]`, and the portfolio on the home
+  page), `Service` (city pages —
   **not** `LocalBusiness`: Codezun is fully remote with no physical
   office per city, and `LocalBusiness` implies a real address, which
   would be dishonest here. Keep using `Service` + `areaServed` for any
   new local page).
+- **Own products and the subdomains they live on.** Three of the four
+  `PORTFOLIO_PROJECTS` are subdomains of codezun.com
+  (`botagedrez.`, `genecv.`, `memecoin.`); Firmiu is its own domain.
+  Two things connect them to the parent brand, and both must include
+  any project added later:
+  - `portfolioSchema()` (home page) emits each one as a
+    `SoftwareApplication` whose `author`/`publisher` is an `@id` ref to
+    `#organizacion`. Without it a crawler sees a subdomain that merely
+    shares a registrable domain, and tends to label it with the
+    parent's name instead of its own.
+  - The links themselves pass authority: `rel="noopener"` and
+    **never** `nofollow`. `noopener` alone covers the tabnabbing risk;
+    `noreferrer` is deliberately omitted so each product's own
+    analytics still sees codezun.com as the referrer. The same links
+    are repeated in the footer, so they're sitewide, not just on the
+    home page.
+  Each product's own site declares a `WebSite` node with its own
+  `name` on its home page — that's the other half of the same fix, and
+  it lives in those repos, not here.
 - **AEO (answer engines).** Three things carry it, and all three must
   stay in sync with the pages:
   - `FAQPage` — the schema answer engines extract a direct answer

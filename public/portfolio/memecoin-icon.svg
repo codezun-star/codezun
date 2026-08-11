@@ -1,0 +1,59 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Memecoin Plaza">
+  <!-- Moneda -->
+  <circle cx="100" cy="98" r="74" fill="#FF6500"/>
+  <circle cx="100" cy="98" r="64" fill="#FFD500"/>
+
+  <!-- Shiba -->
+  <path
+    d="M 58 50 L 78 72
+       C 88 66, 112 66, 122 72
+       L 142 50 L 138 84
+       C 148 102, 144 124, 126 134
+       C 116 142, 110 148, 100 148
+       C 90 148, 84 142, 74 134
+       C 56 124, 52 102, 62 84 Z"
+    fill="#004E9B"
+  />
+  <path d="M 65 60 L 76 76 L 68 79 Z" fill="#BAE4F0"/>
+  <path d="M 135 60 L 124 76 L 132 79 Z" fill="#BAE4F0"/>
+
+  <!-- Cejas: la marca del shiba -->
+  <ellipse cx="77" cy="79" rx="7" ry="5" fill="#BAE4F0"/>
+  <ellipse cx="123" cy="79" rx="7" ry="5" fill="#BAE4F0"/>
+
+  <!-- Ojos -->
+  <ellipse cx="81" cy="95" rx="7" ry="8" fill="#FFFFFF"/>
+  <ellipse cx="119" cy="95" rx="7" ry="8" fill="#FFFFFF"/>
+  <circle cx="82" cy="96" r="3.8" fill="#004E9B"/>
+  <circle cx="120" cy="96" r="3.8" fill="#004E9B"/>
+
+  <!-- Hocico -->
+  <ellipse cx="100" cy="124" rx="30" ry="21" fill="#BAE4F0"/>
+  <ellipse cx="100" cy="111" rx="9" ry="7" fill="#004E9B"/>
+  <path
+    d="M 100 118 V 124 M 86 128 Q 100 140 114 128"
+    fill="none"
+    stroke="#004E9B"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  />
+
+  <!-- Sello: el precio en tiempo real -->
+  <circle cx="158" cy="154" r="27" fill="#0091B9" stroke="#FFFFFF" stroke-width="7"/>
+  <path
+    d="M 145 162 L 154 152 L 160 158 L 170 146"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M 162 146 H 171 V 155"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

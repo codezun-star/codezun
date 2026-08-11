@@ -23,6 +23,7 @@
  */
 import {
   CONTACT_EMAIL,
+  PORTFOLIO_PROJECTS,
   SITE_NAME,
   SITE_URL,
   WHATSAPP_DISPLAY,
@@ -187,6 +188,51 @@ export function faqSchema(
       "@type": "Question",
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+/**
+ * Los productos propios, como entidades enlazadas a la organización.
+ *
+ * Tres de los cuatro viven en subdominios de codezun.com, y ese es justo el
+ * caso en el que un buscador tiende a equivocarse: sin nada que los relacione,
+ * `botagedrez.codezun.com` y `codezun.com` son dos sitios que comparten
+ * dominio registrable y poco más, o peor, el subdominio aparece rotulado con
+ * el nombre del padre. Declarar cada producto con su `url`, su nombre propio y
+ * un `publisher`/`author` que apunta por `@id` al mismo nodo de organización
+ * dice explícitamente lo que el enlace del portafolio solo insinúa: los hizo
+ * Codezun, y Codezun es esta empresa.
+ *
+ * `SoftwareApplication` y no `Product` porque son aplicaciones web, y esa es
+ * la clase que admite `applicationCategory` y `operatingSystem`. Nada de
+ * `offers` ni `aggregateRating`: no hay precios publicados ni valoraciones
+ * reales que declarar, e inventarlas es exactamente lo que penalizan las
+ * guías de datos estructurados.
+ *
+ * Va en la portada, que es donde está la sección visible que lo respalda.
+ */
+export function portfolioSchema(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Proyectos propios de ${SITE_NAME}`,
+    numberOfItems: PORTFOLIO_PROJECTS.length,
+    itemListElement: PORTFOLIO_PROJECTS.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        "@id": `${project.href}/#producto`,
+        name: project.name,
+        url: `${project.href}/`,
+        description: project.description,
+        applicationCategory: project.applicationCategory,
+        operatingSystem: "Web",
+        image: project.image ? `${SITE_URL}${project.image}` : undefined,
+        author: organizationRef,
+        publisher: organizationRef,
+      },
     })),
   };
 }

@@ -51,34 +51,43 @@ export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIC
 /**
  * Proyectos del portafolio.
  *
- * Por ahora mostramos solo Firmiu como proyecto propio destacado (es
- * el más consolidado). Para sumar otro proyecto más adelante, agregá
- * un objeto más a este array con la misma forma:
- * - name: nombre del proyecto/producto
+ * Para sumar un proyecto, agregá un objeto más a este array:
+ * - name: nombre del proyecto/producto, tal como se llama a sí mismo
  * - description: descripción corta (1-2 líneas)
  * - href: link al proyecto
  * - category: etiqueta corta para la card (ej. "SaaS", "E-commerce",
  *             "Landing page", "Sitio web")
+ * - applicationCategory: tipo de aplicación según schema.org
+ *   (GameApplication, BusinessApplication, FinanceApplication...).
+ *   Alimenta los datos estructurados, no la interfaz.
  * - image: ruta a una imagen/logo en /public (ej: "/portfolio/firmiu-icon.svg").
  *          Acepta PNG, JPG o SVG. Si se deja null se muestra un bloque
  *          con las iniciales como placeholder visual.
  *
- * Ícono de Firmiu (/public/portfolio/firmiu-icon.svg): no se pudo
- * descargar el ícono real del sitio (este entorno no tiene salida de
- * red hacia dominios externos arbitrarios, incluido firmiu.com), así
- * que se diseñó un ícono propio (documento + firma + sello de
- * verificado) con los colores de marca. Si preferís usar el ícono real
- * del sitio, descargalo desde las devtools de tu navegador (pestaña
- * Network) y reemplazá ese mismo archivo.
+ * Los cuatro son productos propios de Codezun, no trabajos de cliente:
+ * es lo que dice el título de la sección, y de ahí que los enlaces
+ * pasen autoridad en lugar de marcarse como `nofollow` (ver
+ * Portfolio.tsx y `portfolioSchema()` en lib/schema.ts).
  *
- * Si en el futuro se agregan más proyectos, el grid vuelve a acomodarse
- * solo (ver Portfolio.tsx).
+ * Íconos (/public/portfolio/*.svg): son marcas dibujadas a mano con la
+ * paleta de Codezun, no los logotipos reales de cada producto. Este
+ * entorno no tiene salida de red hacia dominios externos —ni siquiera
+ * hacia los subdominios propios— así que no se pudieron descargar los
+ * originales, y además cuatro marcas ajenas juntas en un grid no leen
+ * como una familia. Cada una cita el logo real de su producto: el
+ * caballo con circuitos de botAgedrez, el documento con foto y sello
+ * ATS de GeneCV, el shiba sobre la moneda de Memecoin Plaza. Si
+ * preferís los logos reales, están en el repositorio de cada proyecto
+ * y basta con reemplazar el archivo y apuntar `image` ahí.
+ *
+ * El grid se acomoda solo según cuántos haya (ver Portfolio.tsx).
  */
 export type PortfolioProject = {
   name: string;
   description: string;
   href: string;
   category: string;
+  applicationCategory: string;
   image: string | null;
 };
 
@@ -89,6 +98,34 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       "Plataforma SaaS de firma digital para empresas. Nuestro proyecto propio más consolidado.",
     href: "https://firmiu.com",
     category: "SaaS",
+    applicationCategory: "BusinessApplication",
     image: "/portfolio/firmiu-icon.svg",
+  },
+  {
+    name: "botAgedrez",
+    description:
+      "Ajedrez online contra la máquina, con motor e inteligencia artificial propios: cuatro niveles de dificultad, sistema ELO y logros.",
+    href: "https://botagedrez.codezun.com",
+    category: "Juego web",
+    applicationCategory: "GameApplication",
+    image: "/portfolio/botagedrez-icon.svg",
+  },
+  {
+    name: "GeneCV",
+    description:
+      "Generador de currículums gratuito, con plantillas compatibles con ATS, formatos para Europa, Latinoamérica y el mundo anglosajón, y exportación a PDF.",
+    href: "https://genecv.codezun.com",
+    category: "Herramienta web",
+    applicationCategory: "BusinessApplication",
+    image: "/portfolio/genecv-icon.svg",
+  },
+  {
+    name: "Memecoin Plaza",
+    description:
+      "Precios de meme coins en tiempo real y foro de la comunidad: veinte monedas, gráficos históricos, cuentas y comentarios.",
+    href: "https://memecoin.codezun.com",
+    category: "Comunidad",
+    applicationCategory: "FinanceApplication",
+    image: "/portfolio/memecoin-icon.svg",
   },
 ];

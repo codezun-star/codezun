@@ -4,7 +4,12 @@ import Logo from "./Logo";
 import WhatsAppIcon from "./WhatsAppIcon";
 import { getAllPosts } from "@/lib/blog";
 import { COUNTRIES } from "@/lib/cities";
-import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
+import {
+  CONTACT_EMAIL,
+  PORTFOLIO_PROJECTS,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_LINK,
+} from "@/lib/site-config";
 
 const LEGAL_LINKS = [
   { label: "Términos y condiciones", href: "/terminos-y-condiciones" },
@@ -33,6 +38,35 @@ export default function Footer() {
             <p className="mt-3 max-w-xs text-sm text-white/70">
               SaaS, e-commerce y sitios web a medida.
             </p>
+
+            {/*
+              Los productos propios, enlazados desde el pie y por tanto
+              desde todas las páginas del sitio. Es lo que convierte un
+              enlace suelto en la portada en una señal constante: el
+              portafolio los menciona una vez, esto los respalda en cada
+              artículo y en cada página de ciudad.
+
+              Van sin `nofollow` y sin `noreferrer` por lo mismo que en
+              Portfolio.tsx: son proyectos propios y el enlace debe
+              transmitir autoridad y dejar rastro del origen.
+            */}
+            <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-white/60">
+              Proyectos
+            </h3>
+            <ul className="mt-4 space-y-2">
+              {PORTFOLIO_PROJECTS.map((project) => (
+                <li key={project.href}>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-sm text-white/80 transition-colors hover:text-highlight"
+                  >
+                    {project.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
