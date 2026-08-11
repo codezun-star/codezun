@@ -19,6 +19,13 @@ function getInitials(name: string) {
  * más ahí con name, description, href, category e image. No hace
  * falta tocar este archivo: con un solo proyecto se muestra una card
  * grande destacada, y con dos o más pasa a mostrarse como grid.
+ *
+ * El número de columnas está elegido para que no quede una card sola
+ * en la última fila, que es lo que peor se ve. Con los diez proyectos
+ * actuales las divisiones exactas son 1, 2 y 5, así que el grid va de
+ * una a dos y de dos a cinco columnas: 10, 5 y 2 filas llenas. A tres
+ * o cuatro columnas la última fila quedaría con 1 y 2 cards sueltas.
+ * Si cambia el número de proyectos, esto es lo que hay que revisar.
  */
 
 /*
@@ -57,7 +64,7 @@ export default function Portfolio() {
           className={
             featured
               ? "mx-auto mt-14 max-w-3xl"
-              : "mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              : "mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
           }
         >
           {PORTFOLIO_PROJECTS.map((project, index) => (

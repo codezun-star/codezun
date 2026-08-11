@@ -64,7 +64,7 @@ export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIC
  *          Acepta PNG, JPG o SVG. Si se deja null se muestra un bloque
  *          con las iniciales como placeholder visual.
  *
- * Los cuatro son productos propios de Codezun, no trabajos de cliente:
+ * Todos son proyectos propios de Codezun, no trabajos de cliente:
  * es lo que dice el título de la sección, y de ahí que los enlaces
  * pasen autoridad en lugar de marcarse como `nofollow` (ver
  * Portfolio.tsx y `portfolioSchema()` en lib/schema.ts).
@@ -73,12 +73,19 @@ export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIC
  * paleta de Codezun, no los logotipos reales de cada producto. Este
  * entorno no tiene salida de red hacia dominios externos —ni siquiera
  * hacia los subdominios propios— así que no se pudieron descargar los
- * originales, y además cuatro marcas ajenas juntas en un grid no leen
- * como una familia. Cada una cita el logo real de su producto: el
- * caballo con circuitos de botAgedrez, el documento con foto y sello
- * ATS de GeneCV, el shiba sobre la moneda de Memecoin Plaza. Si
- * preferís los logos reales, están en el repositorio de cada proyecto
- * y basta con reemplazar el archivo y apuntar `image` ahí.
+ * originales, y además diez marcas ajenas juntas en un grid no leen
+ * como una familia. Cada icono cita el producto que representa, y en
+ * dos casos se apartó del logo real a propósito para que la rejilla
+ * siga siendo legible:
+ * - Petnote tiene por logo una cara de perro, igual que Memecoin
+ *   Plaza. Dos perros en la misma rejilla no se distinguen, así que
+ *   Petnote es una chapa de collar con huella, que dice lo mismo.
+ * - Calzix, CalcFit e Inversax son los tres sitios de calculadoras.
+ *   Si los tres llevaran una calculadora serían el mismo icono, así
+ *   que solo Calzix la usa: CalcFit es una mancuerna con un pulso
+ *   (salud) e Inversax unas barras con una flecha (inversión).
+ * Si preferís los logos reales, están en el repositorio de cada
+ * proyecto y basta con reemplazar el archivo y apuntar `image` ahí.
  *
  * El grid se acomoda solo según cuántos haya (ver Portfolio.tsx).
  */
@@ -120,6 +127,15 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     image: "/portfolio/genecv-icon.svg",
   },
   {
+    name: "Petnote",
+    description:
+      "Historial de salud de mascotas en un solo sitio: vacunas, peso, documentos y un modo emergencia con código QR que muestra los datos críticos a quien la encuentre.",
+    href: "https://petnote.codezun.com",
+    category: "SaaS",
+    applicationCategory: "HealthApplication",
+    image: "/portfolio/petnote-icon.svg",
+  },
+  {
     name: "Memecoin Plaza",
     description:
       "Precios de meme coins en tiempo real y foro de la comunidad: veinte monedas, gráficos históricos, cuentas y comentarios.",
@@ -127,5 +143,50 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "Comunidad",
     applicationCategory: "FinanceApplication",
     image: "/portfolio/memecoin-icon.svg",
+  },
+  {
+    name: "Calzix",
+    description:
+      "Más de 270 calculadoras online gratuitas, de matemáticas y finanzas a obra, energía solar y consumo del hogar. Todo se calcula en el navegador.",
+    href: "https://calzix.com",
+    category: "Calculadoras",
+    applicationCategory: "UtilitiesApplication",
+    image: "/portfolio/calzix-icon.svg",
+  },
+  {
+    name: "ToolsFoto",
+    description:
+      "Más de 240 herramientas para imagen, PDF, vídeo, audio y desarrollo. Los archivos se procesan en el navegador y nunca salen del dispositivo.",
+    href: "https://toolsfoto.com",
+    category: "Herramientas",
+    applicationCategory: "MultimediaApplication",
+    image: "/portfolio/toolsfoto-icon.svg",
+  },
+  {
+    name: "CalcFit",
+    description:
+      "Dieciocho calculadoras de salud y composición corporal con las fórmulas citadas: IMC, calorías diarias, grasa corporal, macros y 1RM.",
+    href: "https://calcfit.com",
+    category: "Salud",
+    applicationCategory: "HealthApplication",
+    image: "/portfolio/calcfit-icon.svg",
+  },
+  {
+    name: "Inversax",
+    description:
+      "Comparador de brókers para inversores de habla hispana, con más de cien calculadoras financieras y guías por país.",
+    href: "https://inversax.com",
+    category: "Finanzas",
+    applicationCategory: "FinanceApplication",
+    image: "/portfolio/inversax-icon.svg",
+  },
+  {
+    name: "Grupo Z&H",
+    description:
+      "Sitio de una firma de servicios contables en Honduras: servicios, blog y páginas de SEO local por ciudad, generado estático.",
+    href: "https://grupozh.net",
+    category: "Sitio web",
+    applicationCategory: "BusinessApplication",
+    image: "/portfolio/grupozh-icon.svg",
   },
 ];

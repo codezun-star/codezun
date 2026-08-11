@@ -1,0 +1,42 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Petnote">
+  <!-- Collar -->
+  <path
+    d="M 24 46 Q 90 22 156 46"
+    fill="none"
+    stroke="#0091B9"
+    stroke-width="22"
+    stroke-linecap="round"
+  />
+
+  <!-- Anilla de la chapa -->
+  <circle cx="90" cy="54" r="11" fill="none" stroke="#FFD500" stroke-width="6"/>
+
+  <!-- Chapa identificativa -->
+  <circle cx="90" cy="112" r="46" fill="#004E9B"/>
+
+  <!-- Huella -->
+  <g fill="#FFFFFF">
+    <ellipse cx="90" cy="126" rx="19" ry="15"/>
+    <ellipse cx="64" cy="114" rx="7.5" ry="9.5"/>
+    <ellipse cx="79" cy="100" rx="8" ry="10"/>
+    <ellipse cx="101" cy="100" rx="8" ry="10"/>
+    <ellipse cx="116" cy="114" rx="7.5" ry="9.5"/>
+  </g>
+
+  <!--
+    Sello sanitario. Aquí iba el QR del modo emergencia, que es la
+    función que distingue al producto, pero una retícula de módulos a
+    este tamaño se lee como un dominó, no como un código. La cruz dice
+    "historial médico" de un vistazo, que es la categoría.
+  -->
+  <rect
+    x="126" y="128" width="54" height="54" rx="15"
+    fill="#0091B9"
+    stroke="#FFFFFF"
+    stroke-width="7"
+  />
+  <g fill="#FFFFFF">
+    <rect x="141" y="150" width="24" height="10" rx="4"/>
+    <rect x="148" y="143" width="10" height="24" rx="4"/>
+  </g>
+</svg>

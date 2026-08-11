@@ -1,0 +1,37 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Z&amp;H">
+  <!-- Ábaco -->
+  <rect
+    x="28" y="34" width="144" height="132" rx="16"
+    fill="#FFFFFF"
+    stroke="#004E9B"
+    stroke-width="8"
+  />
+
+  <!-- Varillas -->
+  <g stroke="#0091B9" stroke-width="5" stroke-linecap="round">
+    <path d="M 40 68 H 160"/>
+    <path d="M 40 100 H 160"/>
+    <path d="M 40 132 H 160"/>
+  </g>
+
+  <!-- Cuentas -->
+  <g>
+    <circle cx="54" cy="68" r="11" fill="#004E9B"/>
+    <circle cx="78" cy="68" r="11" fill="#004E9B"/>
+    <circle cx="102" cy="68" r="11" fill="#BAE4F0"/>
+    <circle cx="126" cy="68" r="11" fill="#BAE4F0"/>
+    <circle cx="150" cy="68" r="11" fill="#BAE4F0"/>
+
+    <circle cx="54" cy="100" r="11" fill="#004E9B"/>
+    <circle cx="78" cy="100" r="11" fill="#004E9B"/>
+    <circle cx="102" cy="100" r="11" fill="#004E9B"/>
+    <circle cx="126" cy="100" r="11" fill="#BAE4F0"/>
+    <circle cx="150" cy="100" r="11" fill="#BAE4F0"/>
+
+    <circle cx="54" cy="132" r="11" fill="#FF6500"/>
+    <circle cx="78" cy="132" r="11" fill="#004E9B"/>
+    <circle cx="102" cy="132" r="11" fill="#BAE4F0"/>
+    <circle cx="126" cy="132" r="11" fill="#BAE4F0"/>
+    <circle cx="150" cy="132" r="11" fill="#BAE4F0"/>
+  </g>
+</svg>
