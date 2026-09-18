@@ -135,11 +135,26 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
 /terminos-y-condiciones
 /politica-de-privacidad
 /aviso-legal
+not-found.tsx                            branded 404 (renders inside the root
+                                         layout; Next still answers 404)
+manifest.ts                              web app manifest (/manifest.webmanifest)
 ```
 
 `Services` and `Contact` are shared components reused as-is on city
 pages (same `id="servicios"`/`id="contacto"` anchors — harmless, each
 page is independent).
+
+`Breadcrumbs.tsx` renders the visible trail **and** emits its
+`BreadcrumbList` from the same array, the way `Faq.tsx` does — pass it
+`steps` without the "Inicio" entry, it adds that itself. Don't call
+`breadcrumbSchema()` directly from a page any more; marking up a trail
+the visitor can't see is what the structured-data guidelines forbid.
+
+`RelatedPosts.tsx` + `getRelatedPosts()` (in `lib/blog.ts`) close the
+post→post internal linking gap; scoring is shared-`keywords` count,
+ties broken by date. Articles already end with their own tailored
+contact CTA inside the markdown, so **don't add a generic CTA block**
+to the post template — it just repeats the ask in worse words.
 
 `Prose.tsx` is the shared typography wrapper for long-form content —
 used by both `LegalLayout` (JSX children) and blog posts (`html` prop
@@ -195,11 +210,19 @@ consent-gated, not just documented.
   escapes `<`, which raw `JSON.stringify` in a `<script>` does not.
 - `WebSite` is emitted **only on the home page** (that's where Search
   reads the site name from); `Organization` rides in the layout.
-- **Every page needs its own `title` (no hardcoded "— Codezun" suffix
-  — the template adds it), `description`, and `alternates.canonical`.**
-  Forgetting `canonical` on a new top-level page means it silently
-  inherits the homepage's canonical (a real bug fixed once already:
-  `/blog` and `/ciudades` both did this).
+- **All page metadata goes through `pageMetadata()` in
+  `src/lib/metadata.ts`** — give it `title` (no hardcoded "— Codezun"
+  suffix, the template adds it), `description` and `path`, and it
+  builds the canonical plus a matching OpenGraph and Twitter block.
+  Setting only `title`/`description` is **not** enough, because Next
+  merges metadata *shallowly*: a page that omits `openGraph`/`twitter`
+  inherits the layout's whole block — the homepage's title, description
+  and `og:url` — and a page that declares `openGraph` replaces it and
+  silently loses `siteName`, `locale` and `og:image`. Both halves of
+  that were live on the site (every page shared the homepage's Twitter
+  card; six shared its `og:url`; city pages had no `og:image` at all).
+  Forgetting `canonical` is the older version of the same bug (`/blog`
+  and `/ciudades` both did this once).
 - `src/app/sitemap.ts` / `robots.ts` are code-generated
   (`MetadataRoute.Sitemap` / `.Robots`), not static files. New routes
   must be added here manually (blog posts and cities are already
@@ -263,7 +286,9 @@ consent-gated, not just documented.
 - `dateModified` / `lastModified` must always come from real content
   dates (`post.updated`, `SITE_CONTENT_DATE`), never `new Date()` on
   a static page: a freshness signal that lies gets discounted
-  site-wide once a crawler checks it twice.
+  site-wide once a crawler checks it twice. `sitemap.ts` used to break
+  its own rule for `/` and `/blog` — those now use `SITE_CONTENT_DATE`
+  and the newest `post.updated` respectively.
 - Blog listing pagination is a dynamic route (`ƒ` in the build output,
   due to `searchParams`) with per-page `title`/`canonical` via
   `generateMetadata` — don't revert it to a static `metadata` export.
@@ -300,6 +325,13 @@ consent-gated, not just documented.
   assuming it's an opacity/color issue: give the content sibling an
   explicit `z-10`+`relative` and the decorative element `z-0`, don't
   rely on negative z-index against a parent that has `bg-*`.
+- **React preloads every `<img>` it renders on the server**, from the
+  document head, unless the tag says `loading="lazy"`. The portfolio's
+  ten icons were doing exactly that on the home page: ten image
+  requests racing the hero photo, which is the LCP element, for a
+  section two screens down. Same trap on `next/image`'s `priority` —
+  `Logo.tsx` takes it as a prop now (true in the `Navbar`, false in the
+  `Footer`) instead of hardcoding it for both.
 - Playwright full-page screenshots (`fullPage: true`) taken while
   `FadeIn`'s `whileInView` animations are in play can show blank gaps
   where content hasn't faded in yet — this is a screenshot-timing

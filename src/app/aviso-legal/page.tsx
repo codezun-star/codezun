@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalLayout from "@/components/LegalLayout";
+import { pageMetadata } from "@/lib/metadata";
 import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Aviso legal",
   description:
     "Identificación del titular del sitio, condiciones de uso del contenido y política de cookies de codezun.com.",
-  alternates: { canonical: "/aviso-legal" },
-};
+  path: "/aviso-legal",
+});
 
 export default function AvisoLegal() {
   return (

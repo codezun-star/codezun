@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
+import { pageMetadata } from "@/lib/metadata";
 import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Términos y condiciones",
   description:
     "Términos y condiciones de uso del sitio web de Codezun: uso permitido, propiedad intelectual y alcance de nuestros servicios de desarrollo de software.",
-  alternates: { canonical: "/terminos-y-condiciones" },
-};
+  path: "/terminos-y-condiciones",
+});
 
 export default function TerminosYCondiciones() {
   return (

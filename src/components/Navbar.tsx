@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-secondary/60 bg-white/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-        <Logo />
+        <Logo priority />
 
         <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (

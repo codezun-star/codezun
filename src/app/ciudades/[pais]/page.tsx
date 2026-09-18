@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { COUNTRIES, getCountry } from "@/lib/cities";
-import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
+import { itemListSchema } from "@/lib/schema";
 
 export async function generateStaticParams() {
   return COUNTRIES.map((country) => ({ pais: country.slug }));
@@ -20,11 +22,11 @@ export async function generateMetadata({
   const country = getCountry(pais);
   if (!country) return {};
 
-  return {
+  return pageMetadata({
     title: `Desarrollo de software en ${country.name}`,
     description: `Codezun desarrolla sitios web, tiendas online, landing pages y plataformas SaaS para negocios en ${country.name}.`,
-    alternates: { canonical: `/ciudades/${country.slug}` },
-  };
+    path: `/ciudades/${country.slug}`,
+  });
 }
 
 export default async function PaisPage({
@@ -37,7 +39,7 @@ export default async function PaisPage({
   if (!country) notFound();
 
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-white pb-16 pt-10 sm:pb-24 sm:pt-14">
       <JsonLd
         schemas={[
           itemListSchema(
@@ -47,20 +49,15 @@ export default async function PaisPage({
               path: `/ciudades/${country.slug}/${city.slug}`,
             }))
           ),
-          breadcrumbSchema([
-            { name: "Ciudades", path: "/ciudades" },
-            { name: country.name, path: `/ciudades/${country.slug}` },
-          ]),
         ]}
       />
       <div className="mx-auto max-w-4xl px-6">
-        <Link
-          href="/ciudades"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80"
-        >
-          <ArrowLeft size={16} />
-          Ver todos los países
-        </Link>
+        <Breadcrumbs
+          steps={[
+            { name: "Ciudades", path: "/ciudades" },
+            { name: country.name, path: `/ciudades/${country.slug}` },
+          ]}
+        />
 
         <FadeIn>
           <h1 className="mt-6 text-3xl font-bold tracking-tight text-dark sm:text-4xl">

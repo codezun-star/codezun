@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
+import { pageMetadata } from "@/lib/metadata";
 import { CONTACT_EMAIL, SITE_CONTENT_DATE } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Política de privacidad",
   description:
     "Cómo Codezun trata la información de contacto que compartís por email o por el formulario del sitio, qué cookies de analítica usa codezun.com y qué derechos tenés sobre esos datos.",
-  alternates: { canonical: "/politica-de-privacidad" },
-};
+  path: "/politica-de-privacidad",
+});
 
 export default function PoliticaDePrivacidad() {
   return (

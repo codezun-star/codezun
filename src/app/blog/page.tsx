@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { getAllPosts, formatPostDate } from "@/lib/blog";
-import { breadcrumbSchema, organizationRef } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
+import { organizationRef } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site-config";
 
 const PAGE_SIZE = 5;
@@ -25,11 +27,14 @@ export async function generateMetadata({
   const totalPages = Math.max(1, Math.ceil(getAllPosts().length / PAGE_SIZE));
   const page = resolvePage(pageParam, totalPages);
 
-  return {
+  return pageMetadata({
     title: page > 1 ? `Blog — Página ${page}` : "Blog",
     description: BASE_DESCRIPTION,
-    alternates: { canonical: page > 1 ? `/blog?page=${page}` : "/blog" },
-  };
+    // Canónica propia por página del listado: cada una tiene contenido
+    // distinto, así que apuntar todas a `/blog` escondería del índice los
+    // artículos que no entran en la primera.
+    path: page > 1 ? `/blog?page=${page}` : "/blog",
+  });
 }
 
 export default async function BlogPage({
@@ -71,13 +76,13 @@ export default async function BlogPage({
   };
 
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <JsonLd
-        schemas={[blogJsonLd, breadcrumbSchema([{ name: "Blog", path: "/blog" }])]}
-      />
+    <section className="bg-white pb-16 pt-10 sm:pb-24 sm:pt-14">
+      <JsonLd schemas={[blogJsonLd]} />
       <div className="mx-auto max-w-4xl px-6">
+        <Breadcrumbs steps={[{ name: "Blog", path: "/blog" }]} />
+
         <FadeIn>
-          <h1 className="text-3xl font-bold tracking-tight text-dark sm:text-4xl">
+          <h1 className="mt-6 text-3xl font-bold tracking-tight text-dark sm:text-4xl">
             Blog
           </h1>
           <p className="mt-4 text-lg text-foreground/70">

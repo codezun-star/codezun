@@ -2,10 +2,17 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { OG_IMAGE_CONTENT_TYPE, OG_IMAGE_SIZE } from "@/lib/metadata";
 
-export const alt = "Codezun Blog";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+/*
+ * `alt` es una constante para las veinte rutas que genera este archivo, así que
+ * no puede decir de qué va cada artículo. El `alt` real —el título del
+ * artículo— lo declara `generateMetadata()` de la página, que sí conoce el
+ * slug; este queda como respaldo.
+ */
+export const alt = "Blog de Codezun";
+export const size = OG_IMAGE_SIZE;
+export const contentType = OG_IMAGE_CONTENT_TYPE;
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));

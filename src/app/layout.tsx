@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -17,6 +17,16 @@ const inter = Inter({
 const TITLE = "Codezun — SaaS, e-commerce y sitios web a medida";
 const DESCRIPTION = SITE_DESCRIPTION;
 
+/**
+ * Los metadatos del layout son, a la vez, los de la portada: `page.tsx` no
+ * exporta ninguno, así que estos valores son los suyos.
+ *
+ * Eso tiene una consecuencia que es la razón de que exista `lib/metadata.ts`:
+ * `openGraph` y `twitter` se heredan enteros, de modo que una página que no
+ * declare los suyos se anuncia en redes como la portada. Cualquier página nueva
+ * tiene que construirlos con `pageMetadata()` —no basta con poner `title` y
+ * `description`—, que además le pone la canónica.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -55,6 +65,15 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Color de la barra del navegador en móvil. Es el azul oscuro de la marca, el
+ * mismo del pie y de la sección de contacto, para que el navegador no rompa el
+ * borde superior de la página con su gris por defecto.
+ */
+export const viewport: Viewport = {
+  themeColor: "#004E9B",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -63,8 +82,21 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        {/*
+          Salto al contenido. Invisible hasta que se le da el foco con el
+          tabulador: sin él, navegar con teclado obliga a recorrer los seis
+          enlaces del menú en cada página antes de llegar al texto.
+        */}
+        <a
+          href="#contenido"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-dark focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
+        >
+          Saltar al contenido
+        </a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="contenido" className="flex-1">
+          {children}
+        </main>
         <Footer />
         <FloatingWhatsApp />
         {/*

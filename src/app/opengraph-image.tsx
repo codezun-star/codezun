@@ -1,10 +1,15 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import {
+  OG_IMAGE_CONTENT_TYPE,
+  OG_IMAGE_SIZE,
+  SITE_OG_IMAGE_ALT,
+} from "@/lib/metadata";
 
-export const alt = "Codezun — SaaS, e-commerce y sitios web a medida";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const alt = SITE_OG_IMAGE_ALT;
+export const size = OG_IMAGE_SIZE;
+export const contentType = OG_IMAGE_CONTENT_TYPE;
 
 export default async function Image() {
   const logoData = await readFile(

@@ -3,19 +3,21 @@ import Link from "next/link";
 import { ArrowRight, Globe } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { COUNTRIES } from "@/lib/cities";
-import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
+import { itemListSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Desarrollo de software por país",
   description:
     "Codezun desarrolla sitios web, tiendas online, landing pages y plataformas SaaS para negocios en distintos países. Empezamos por Honduras, y seguimos sumando países.",
-  alternates: { canonical: "/ciudades" },
-};
+  path: "/ciudades",
+});
 
 export default function PaisesPage() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-white pb-16 pt-10 sm:pb-24 sm:pt-14">
       <JsonLd
         schemas={[
           itemListSchema(
@@ -25,12 +27,13 @@ export default function PaisesPage() {
               path: `/ciudades/${country.slug}`,
             }))
           ),
-          breadcrumbSchema([{ name: "Ciudades", path: "/ciudades" }]),
         ]}
       />
       <div className="mx-auto max-w-4xl px-6">
+        <Breadcrumbs steps={[{ name: "Ciudades", path: "/ciudades" }]} />
+
         <FadeIn>
-          <h1 className="text-3xl font-bold tracking-tight text-dark sm:text-4xl">
+          <h1 className="mt-6 text-3xl font-bold tracking-tight text-dark sm:text-4xl">
             Desarrollo de software por país
           </h1>
           <p className="mt-4 text-lg text-foreground/70">

@@ -125,3 +125,44 @@ export function getPostBySlug(slug: string): BlogPost | null {
     faq: parseFaq(data.faq),
   };
 }
+
+/**
+ * Artículos relacionados con uno dado.
+ *
+ * El blog tenía un hueco de enlazado interno: cada artículo enlazaba a `/blog`
+ * y a nada más, así que los veinte artículos colgaban todos del listado y
+ * ninguno pasaba señal a otro. Esto los enlaza entre sí por el tema del que
+ * hablan, que es lo que además hace que el enlace le sirva a quien lo lee.
+ *
+ * El criterio es cuántas `keywords` comparten. No es un modelo de similitud:
+ * las palabras clave están escritas a mano artículo por artículo, así que
+ * compartir tres es señal de que hablan de lo mismo. Empatados, gana el más
+ * reciente —`getAllPosts()` ya los devuelve ordenados por fecha— y si no hay
+ * ninguno con palabras en común se completa con los últimos publicados, para
+ * que el bloque nunca salga a medias.
+ */
+export function getRelatedPosts(slug: string, limit = 3): BlogPostMeta[] {
+  const all = getAllPosts();
+  const current = all.find((post) => post.slug === slug);
+  if (!current) return all.slice(0, limit);
+
+  const currentKeywords = new Set(
+    current.keywords.map((keyword) => keyword.toLowerCase())
+  );
+
+  const scored = all
+    .filter((post) => post.slug !== slug)
+    .map((post) => ({
+      post,
+      shared: post.keywords.filter((keyword) =>
+        currentKeywords.has(keyword.toLowerCase())
+      ).length,
+    }));
+
+  // `sort` es estable en JavaScript, así que los que empatan en palabras
+  // compartidas conservan el orden por fecha con el que llegaron.
+  return scored
+    .sort((a, b) => b.shared - a.shared)
+    .slice(0, limit)
+    .map((entry) => entry.post);
+}

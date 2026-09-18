@@ -97,6 +97,15 @@ export default function Portfolio() {
                       src={project.image}
                       alt={project.name}
                       /*
+                        `loading="lazy"` no es solo ahorro: sin él React
+                        precarga las diez marcas desde la cabecera del HTML,
+                        y esas diez descargas compiten con la foto del hero
+                        —que es el elemento que mide el LCP— por una sección
+                        que está dos pantallas más abajo.
+                      */
+                      loading="lazy"
+                      decoding="async"
+                      /*
                         En el grid, `object-contain` y no `object-cover`:
                         las imágenes son marcas cuadradas y `cover` les
                         recortaba casi la mitad del alto (a Firmiu le comía

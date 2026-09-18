@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import Services from "@/components/Services";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { getAllCityParams, getCity } from "@/lib/cities";
 import { cityFaq } from "@/lib/faq";
-import { breadcrumbSchema, organizationRef } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
+import { organizationRef } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site-config";
 
 export async function generateStaticParams() {
@@ -26,19 +28,11 @@ export async function generateMetadata({
   if (!found) return {};
   const { country, city } = found;
 
-  const title = `Desarrollo de software en ${city.name}, ${country.name}`;
-  const description = `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}. Trabajamos de forma 100% remota.`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `/ciudades/${country.slug}/${city.slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `/ciudades/${country.slug}/${city.slug}`,
-    },
-  };
+  return pageMetadata({
+    title: `Desarrollo de software en ${city.name}, ${country.name}`,
+    description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}. Trabajamos de forma 100% remota.`,
+    path: `/ciudades/${country.slug}/${city.slug}`,
+  });
 }
 
 export default async function CiudadPage({
@@ -84,25 +78,19 @@ export default async function CiudadPage({
     description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}. Servicio 100% remoto, sin oficina física en la ciudad.`,
   };
 
-  const breadcrumbJsonLd = breadcrumbSchema([
-    { name: "Ciudades", path: "/ciudades" },
-    { name: country.name, path: `/ciudades/${country.slug}` },
-    { name: city.name, path: `/ciudades/${country.slug}/${city.slug}` },
-  ]);
-
   const faq = cityFaq(country, city);
 
   return (
     <>
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white pb-12 pt-10 sm:pb-16 sm:pt-14">
         <div className="mx-auto max-w-3xl px-6">
-          <Link
-            href={`/ciudades/${country.slug}`}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80"
-          >
-            <ArrowLeft size={16} />
-            Ver todas las ciudades en {country.name}
-          </Link>
+          <Breadcrumbs
+            steps={[
+              { name: "Ciudades", path: "/ciudades" },
+              { name: country.name, path: `/ciudades/${country.slug}` },
+              { name: city.name, path: `/ciudades/${country.slug}/${city.slug}` },
+            ]}
+          />
 
           <FadeIn>
             <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-dark">
@@ -149,7 +137,7 @@ export default async function CiudadPage({
       />
       <Contact />
 
-      <JsonLd schemas={[serviceJsonLd, breadcrumbJsonLd]} />
+      <JsonLd schemas={[serviceJsonLd]} />
     </>
   );
 }
