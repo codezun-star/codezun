@@ -26,8 +26,9 @@ export default function Pricing() {
             Precios de referencia
           </h2>
           <p className="mt-4 text-lg text-foreground/70">
-            Montos de partida para que tenga una idea antes de escribirnos. El
-            precio final depende del alcance y se confirma en la propuesta.
+            No son precios fijos: son montos de partida. El precio final
+            depende de lo que su proyecto necesite y se confirma en la
+            propuesta, antes de empezar.
           </p>
         </FadeIn>
 
@@ -47,7 +48,7 @@ export default function Pricing() {
                       scope="col"
                       className="px-4 py-3 text-right font-semibold sm:px-6"
                     >
-                      Precio
+                      Desde
                     </th>
                   </tr>
                 </thead>
@@ -70,6 +71,11 @@ export default function Pricing() {
                 </tbody>
               </table>
             </div>
+            <p className="mt-4 text-center text-sm text-foreground/60">
+              El monto final depende de las funcionalidades, la cantidad de
+              páginas o sucursales, las integraciones y el diseño que su
+              proyecto requiera.
+            </p>
           </FadeIn>
         )}
 
@@ -84,6 +90,9 @@ export default function Pricing() {
                   Mantenimiento mensual
                 </h3>
                 <p className="text-lg font-semibold text-dark">
+                  <span className="text-sm font-normal text-foreground/60">
+                    desde{" "}
+                  </span>
                   {formatLempiras(MAINTENANCE_MONTHLY)}
                   <span className="text-sm font-normal text-foreground/60">
                     {" "}
@@ -93,7 +102,9 @@ export default function Pricing() {
               </div>
               <p className="mt-2 text-sm text-foreground/70">
                 Para que su sitio o sistema siga funcionando después de la
-                entrega, sin preocuparse por la parte técnica. Incluye:
+                entrega, sin preocuparse por la parte técnica. El monto
+                depende del sitio o sistema que se mantenga: su tamaño, su
+                uso y los cambios que necesite. Incluye:
               </p>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {MAINTENANCE_INCLUDES.map((item) => (

@@ -44,7 +44,7 @@ function pricingAnswer(): string {
     (row) => `${row.project.toLowerCase()} desde ${formatLempiras(row.from)}`
   ).join(", ");
 
-  return `Como referencia: ${ranges}. Son montos de partida, publicados en la sección "Precios de referencia". ${factors} Por eso cada proyecto recibe un presupuesto propio antes de empezar.`;
+  return `Como referencia: ${ranges}. No son precios fijos sino montos de partida, publicados en la sección "Precios de referencia". ${factors} Por eso cada proyecto recibe un presupuesto propio antes de empezar.`;
 }
 
 /** Preguntas generales sobre la empresa. Van en la portada. */
@@ -81,7 +81,7 @@ export const SITE_FAQ: FaqItem[] = [
   {
     question: "¿Codezun da mantenimiento después de entregar el proyecto?",
     answer:
-      "Sí. Ofrecemos un mantenimiento mensual que incluye alojamiento y base de datos, respaldos automáticos, monitoreo, hasta 5 horas al mes de cambios pequeños y soporte por WhatsApp con respuesta en 24 horas hábiles.",
+      "Sí. Ofrecemos un mantenimiento mensual que incluye alojamiento y base de datos, respaldos automáticos, monitoreo, hasta 5 horas al mes de cambios pequeños y soporte por WhatsApp con respuesta en 24 horas hábiles. El monto depende del sitio o sistema que se mantenga.",
   },
   {
     question: "¿Codezun tiene productos propios?",

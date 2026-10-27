@@ -52,7 +52,7 @@ function pricingLines(): string[] {
 
   if (PROJECT_PRICES) {
     lines.push(
-      "Precios de referencia publicados (montos de partida, en lempiras; el precio final depende del alcance):",
+      "Precios de referencia publicados (montos de partida en lempiras, no precios fijos; el precio final depende de lo que necesite cada proyecto):",
       "",
       ...PROJECT_PRICES.map(
         (row) => `- ${row.project}: desde ${formatLempiras(row.from)}`
@@ -68,7 +68,7 @@ function pricingLines(): string[] {
 
   const maintenance =
     MAINTENANCE_MONTHLY !== null
-      ? `Mantenimiento mensual (${formatLempiras(MAINTENANCE_MONTHLY)} al mes)`
+      ? `Mantenimiento mensual (desde ${formatLempiras(MAINTENANCE_MONTHLY)} al mes, según el sitio o sistema)`
       : "Mantenimiento mensual";
   lines.push(
     "",

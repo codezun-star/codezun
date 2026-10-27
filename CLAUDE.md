@@ -109,10 +109,12 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   client gives permission. Never publish a case or testimonial without
   the client's permission, and never write a result or a quote for them.
 - `src/lib/precios.ts` — reference prices in lempiras, as constants
-  at the top of the file (`null` hides the section). Since 2026-10-27
-  they're set, at the user's request, slightly below published
-  Honduran agency prices — the sources and the reasoning per amount are
-  in the file's header comment. The pricing table shows
+  at the top of the file (`null` hides the section). They're "desde"
+  floors set by the user's criteria (2026-10-27): **not too low** — a
+  real full loyalty system is quoted well above the "Sistema a medida"
+  floor — and always presented as starting points, never fixed prices.
+  Maintenance is "desde" too: it depends on the system being
+  maintained. Market references are in the file's header comment. The pricing table shows
   only when **all four** project amounts are set; the maintenance block
   only when its monthly amount is set. The same constants drive the
   "¿Cuánto cuesta…?" FAQ answer and the pricing lines in `/llms.txt`

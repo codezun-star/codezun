@@ -14,38 +14,30 @@
  * final. Escribirlos como número entero, sin separadores (25000, no
  * "25,000").
  *
- * De dónde salen (pedido del dueño, 2026-10-27: "un poco más bajo que el
- * mercado para capturar clientes"). Precios publicados por agencias
- * hondureñas en octubre de 2026; dólares a ~L 26.8:
- * - Landing page: ninguna agencia publica una tarifa propia; el sitio
- *   básico más barato encontrado es L 8,500 (Todo Web Media, hasta 5
- *   páginas). Una landing es una sola página, así que va por debajo.
- * - Sitio completo: L 15,000 (Todo Web Media "Profesional", hasta 10
- *   páginas con blog), desde L 12,400 (Ingenio), L 20,000-55,000
- *   (Naranja y Media, diseño a medida). ~10 % bajo el de L 15,000.
- * - Tienda online: desde L 12,000 (Todo Web Media), $660 ≈ L 17,700
- *   (Webs.hn Pyme Pro, plataforma), $2,900 ≈ L 77,700 (Codebrand),
- *   L 80,000+ (Naranja y Media). Se deja por encima del sitio completo
- *   para que la tabla sea coherente y por debajo de casi todo el mercado.
- * - Sistema a medida: no hay tarifas de agencias pequeñas para sistemas.
- *   Lo más cercano es el sitio "empresarial" con integraciones de Naranja
- *   y Media (desde L 55,000); ~10 % por debajo. Codebrand cotiza
- *   aplicaciones a medida desde $10,000. Es el monto menos respaldado.
- * - Mantenimiento: desde L 1,200/mes (Todo Web Media, sin hosting, que
- *   cobran aparte) y $95 ≈ L 2,550/mes (Codebrand). El nuestro incluye
- *   alojamiento, base de datos y 5 horas de cambios, así que se compara
- *   con el de Codebrand y va ~14 % por debajo.
+ * Criterio (dueño, 2026-10-27): montos "desde" que no queden por debajo
+ * de lo que de verdad se cobra. Un sistema de fidelización completo para
+ * varias sucursales se cotiza por encima del piso de "Sistema a medida";
+ * el piso es para sistemas más pequeños. Ninguno es un precio fijo: el
+ * sitio lo dice junto a la tabla y en el mantenimiento, que depende del
+ * sistema que se mantenga.
+ *
+ * Referencia de mercado (agencias hondureñas, octubre de 2026; dólares a
+ * ~L 26.8): sitio básico desde L 8,500 (Todo Web Media); sitio con diseño
+ * a medida L 20,000-55,000 (Naranja y Media); tiendas desde L 12,000 en
+ * plantilla hasta L 77,700-80,000+ a medida (Codebrand, Naranja y Media);
+ * aplicaciones a medida desde $10,000 (Codebrand); mantenimiento desde
+ * L 1,200/mes sin hosting (Todo Web Media) o ~L 2,550/mes (Codebrand).
  *
  * Revisar estos montos si el mercado cambia o si no cubren el trabajo
  * real: un "desde" que luego no se respeta resta más confianza que no
  * publicar precios.
  */
 
-const PRICE_LANDING_PAGE: number | null = 5900;
-const PRICE_WEBSITE: number | null = 13500;
-const PRICE_ONLINE_STORE: number | null = 14900;
-const PRICE_CUSTOM_SYSTEM: number | null = 49500;
-const PRICE_MAINTENANCE_MONTHLY: number | null = 2200;
+const PRICE_LANDING_PAGE: number | null = 8000;
+const PRICE_WEBSITE: number | null = 20000;
+const PRICE_ONLINE_STORE: number | null = 40000;
+const PRICE_CUSTOM_SYSTEM: number | null = 80000;
+const PRICE_MAINTENANCE_MONTHLY: number | null = 2500;
 
 export type PriceRow = {
   project: string;
@@ -95,7 +87,10 @@ export const MAINTENANCE_INCLUDES = [
   "Soporte por WhatsApp con respuesta en 24 horas hábiles",
 ] as const;
 
-/** Monto mensual del mantenimiento, o `null` si no está definido (la sección se oculta). */
+/**
+ * Monto mensual mínimo del mantenimiento ("desde"), o `null` si no está
+ * definido (la sección se oculta). El monto real depende del sitio o sistema.
+ */
 export const MAINTENANCE_MONTHLY: number | null = PRICE_MAINTENANCE_MONTHLY;
 
 /** "L 25,000" — formato de Honduras, sin decimales. */
