@@ -101,7 +101,16 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   `PORTFOLIO_PROJECTS` feeds four places at once: the home-page grid,
   the footer column, the portfolio JSON-LD and `/llms.txt`. Adding a
   project means one object here plus an icon in
-  `/public/portfolio/`, nothing else.
+  `/public/portfolio/`, nothing else. Each has `featured` + `benefit`
+  (user's call, 2026-10-27): only the 4 featured ones (Grupo Z&H,
+  Petnote, Firmiu, GeneCV) show in the home grid — titled "Lo que ya
+  construimos", each with a "Para su negocio: …" line tying it to what
+  a client buys — and in the footer. The rest (ToolsFoto, Calzix,
+  CalcFit, Inversax, botAgedrez, Memecoin Plaza) don't relate to what a
+  client looks for, so they sit in a collapsed `<details>` ("Otros
+  proyectos propios") under the grid: links still in the HTML for SEO,
+  still in the JSON-LD and `/llms.txt`, but not shown up front. The
+  array order is the on-screen order.
 - `src/lib/casos.ts` — `CLIENT_CASES` and `TESTIMONIALS`, each entry
   with a `published` flag. `ClientCases.tsx` / `Testimonials.tsx` render
   only published entries and **disappear entirely when there are none**.

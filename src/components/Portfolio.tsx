@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { PORTFOLIO_PROJECTS } from "@/lib/site-config";
 
@@ -16,20 +16,19 @@ function getInitials(name: string) {
  * Cómo agregar un proyecto nuevo:
  * Toda la data de esta sección vive en src/lib/site-config.ts, en el
  * array PORTFOLIO_PROJECTS. Para sumar un proyecto, agregá un objeto
- * más ahí con name, description, href, category e image. No hace
- * falta tocar este archivo: con un solo proyecto se muestra una card
- * grande destacada, y con dos o más pasa a mostrarse como grid.
+ * más ahí. Con `featured: true` (y su línea `benefit`) sale en la
+ * rejilla; con `false`, en la lista plegada de "Otros proyectos".
  *
- * El número de columnas está elegido para que no quede una card sola
- * en la última fila, que es lo que peor se ve. Con los diez proyectos
- * actuales las divisiones exactas son 1, 2 y 5, así que el grid va de
- * una a dos y de dos a cinco columnas: 10, 5 y 2 filas llenas. A tres
- * o cuatro columnas la última fila quedaría con 1 y 2 cards sueltas.
- * Si cambia el número de proyectos, esto es lo que hay que revisar.
+ * La rejilla está pensada para cuatro destacados: una fila en
+ * escritorio, dos de dos en tableta. Si cambia el número de destacados,
+ * revisar las columnas para que no quede una tarjeta sola en la última
+ * fila. En el teléfono es un carrusel que se pasa con el dedo
+ * (`carrusel-movil`, en globals.css).
  *
- * En el teléfono la rejilla es un carrusel que se pasa con el dedo
- * (`carrusel-movil`, en globals.css): diez tarjetas apiladas eran varias
- * pantallas de scroll antes de llegar al resto de la portada.
+ * La sección no presenta los proyectos por lo que son sino por lo que un
+ * cliente puede ver de su propio proyecto en ellos ("Para su negocio: …").
+ * Un dueño de restaurante que ve un generador de currículums no conecta
+ * nada; si ve "documentos PDF que se generan solos", sí.
  */
 
 /*
@@ -45,56 +44,42 @@ function getInitials(name: string) {
  * Lo que no lleva ninguno de estos enlaces es `nofollow`: son enlaces
  * editoriales a proyectos propios, que es exactamente el caso en el que
  * un enlace debe transmitir autoridad. Marcarlos como `nofollow` cortaría
- * la señal que conecta el dominio principal con sus subdominios.
+ * la señal que conecta el dominio principal con sus subdominios. Eso
+ * vale también para los secundarios de la lista plegada: `<details>`
+ * deja los enlaces en el HTML aunque esté cerrado.
  */
 const PROJECT_LINK_REL = "noopener";
-export default function Portfolio() {
-  const featured = PORTFOLIO_PROJECTS.length === 1;
 
+const featuredProjects = PORTFOLIO_PROJECTS.filter((project) => project.featured);
+const otherProjects = PORTFOLIO_PROJECTS.filter((project) => !project.featured);
+
+export default function Portfolio() {
   return (
     <section id="proyectos" className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-dark sm:text-4xl">
-            Nuestros proyectos
+            Lo que ya construimos
           </h2>
           <p className="mt-4 text-lg text-foreground/70">
-            Además de trabajar con clientes, desarrollamos nuestros
-            propios productos.
+            Productos propios, en línea y funcionando. Cada uno usa algo que
+            también podemos hacer para su negocio.
           </p>
         </FadeIn>
 
-        <div
-          className={
-            featured
-              ? "mx-auto mt-14 max-w-3xl"
-              : "carrusel-movil mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
-          }
-        >
-          {PORTFOLIO_PROJECTS.map((project, index) => (
-            <FadeIn key={project.name} delay={(index % 4) * 0.1}>
+        <div className="carrusel-movil mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {featuredProjects.map((project, index) => (
+            <FadeIn key={project.name} delay={index * 0.1}>
               <a
                 href={project.href}
                 target="_blank"
                 rel={PROJECT_LINK_REL}
-                className={
-                  featured
-                    ? "group flex flex-col items-center gap-8 rounded-3xl bg-white p-8 text-center ring-1 ring-black/5 transition-shadow hover:shadow-xl sm:flex-row sm:items-center sm:text-left sm:p-12"
-                    : "group flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-black/5 transition-shadow hover:shadow-lg"
-                }
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-black/5 transition-shadow hover:shadow-lg"
               >
-                <div
-                  className={
-                    featured
-                      ? "flex h-32 w-32 shrink-0 items-center justify-center rounded-2xl bg-secondary/40"
-                      : "relative flex h-44 items-center justify-center bg-secondary/40 p-6"
-                  }
-                >
-                  {!featured && (
-                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-dark">
-                      {project.category}
-                    </span>
-                  )}
+                <div className="relative flex h-40 items-center justify-center bg-secondary/40 p-6">
+                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-dark">
+                    {project.category}
+                  </span>
                   {project.image ? (
                     // eslint-disable-next-line @next/next/no-img-element -- soporta SVG local sin configuración extra del optimizador de next/image
                     <img
@@ -102,82 +87,96 @@ export default function Portfolio() {
                       alt={project.name}
                       /*
                         `loading="lazy"` no es solo ahorro: sin él React
-                        precarga las diez marcas desde la cabecera del HTML,
-                        y esas diez descargas compiten con la foto del hero
-                        —que es el elemento que mide el LCP— por una sección
-                        que está dos pantallas más abajo.
+                        precarga las marcas desde la cabecera del HTML, y
+                        esas descargas compiten con la foto del hero —que es
+                        el elemento que mide el LCP— por una sección que
+                        está dos pantallas más abajo.
                       */
                       loading="lazy"
                       decoding="async"
                       /*
-                        En el grid, `object-contain` y no `object-cover`:
-                        las imágenes son marcas cuadradas y `cover` les
-                        recortaba casi la mitad del alto (a Firmiu le comía
-                        el sello, al caballo la cabeza).
-
-                        Y `max-h-full max-w-full` sobre un recuadro de
-                        altura fija (`h-44`), no `aspect-*`: con `aspect-*`
-                        la altura del recuadro sale de su ancho, así que no
-                        es definida, un `max-height: 100%` no resuelve
-                        contra ella y la imagen acababa imponiendo su propia
-                        proporción —el recuadro se estiraba hasta quedar
-                        cuadrado y en móvil ocupaba la pantalla entera—.
-                        Con una altura fija el hueco manda y la marca se
-                        ajusta dentro.
+                        `object-contain` y no `object-cover`: las imágenes
+                        son marcas cuadradas y `cover` les recortaba casi la
+                        mitad del alto. Y `max-h-full max-w-full` sobre un
+                        recuadro de altura fija, no `aspect-*`: con
+                        `aspect-*` la marca imponía su propia proporción y
+                        en móvil ocupaba la pantalla entera.
                       */
-                      className={
-                        featured
-                          ? "h-20 w-20 object-contain"
-                          : "max-h-full max-w-full object-contain"
-                      }
+                      className="max-h-full max-w-full object-contain"
                     />
                   ) : (
-                    <span
-                      className={
-                        featured
-                          ? "text-5xl font-bold text-primary/50"
-                          : "text-3xl font-bold text-primary/50"
-                      }
-                    >
+                    <span className="text-3xl font-bold text-primary/50">
                       {getInitials(project.name)}
                     </span>
                   )}
                 </div>
-                <div className={featured ? "flex-1" : "flex flex-1 flex-col p-5"}>
-                  {featured && (
-                    <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-medium text-dark">
-                      {project.category}
-                    </span>
-                  )}
-                  <div className="mt-2 flex items-center justify-center gap-2 sm:justify-start">
-                    <h3
-                      className={
-                        featured
-                          ? "text-2xl font-bold text-dark"
-                          : "font-semibold text-dark"
-                      }
-                    >
-                      {project.name}
-                    </h3>
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold text-dark">{project.name}</h3>
                     <ArrowUpRight
-                      size={featured ? 22 : 18}
-                      className="shrink-0 text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      size={18}
+                      className="shrink-0 text-primary transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      aria-hidden="true"
                     />
                   </div>
-                  <p
-                    className={
-                      featured
-                        ? "mt-3 text-base leading-relaxed text-foreground/70"
-                        : "mt-2 text-sm leading-relaxed text-foreground/70"
-                    }
-                  >
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/70">
                     {project.description}
                   </p>
+                  {project.benefit && (
+                    <p className="mt-4 rounded-xl bg-secondary/30 p-3 text-sm leading-relaxed text-dark">
+                      <span className="font-semibold">Para su negocio:</span>{" "}
+                      {project.benefit}
+                    </p>
+                  )}
                 </div>
               </a>
             </FadeIn>
           ))}
         </div>
+
+        {otherProjects.length > 0 && (
+          <FadeIn className="mx-auto mt-10 max-w-3xl">
+            <details className="group rounded-2xl bg-secondary/15 ring-1 ring-black/5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-dark [&::-webkit-details-marker]:hidden">
+                Otros proyectos propios ({otherProjects.length})
+                <ChevronDown
+                  size={18}
+                  className="shrink-0 text-primary transition-transform duration-200 group-open:rotate-180"
+                  aria-hidden="true"
+                />
+              </summary>
+              <ul className="divide-y divide-black/5 border-t border-black/5">
+                {otherProjects.map((project) => (
+                  <li key={project.name}>
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel={PROJECT_LINK_REL}
+                      className="group/link flex items-start gap-3 px-5 py-3 transition-colors hover:bg-secondary/25"
+                    >
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-center gap-1.5 text-sm font-semibold text-dark">
+                          {project.name}
+                          <ArrowUpRight
+                            size={14}
+                            className="shrink-0 text-primary"
+                            aria-hidden="true"
+                          />
+                        </span>
+                        <span className="mt-0.5 block text-sm text-foreground/60">
+                          {project.description}
+                        </span>
+                      </span>
+                      <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-xs font-medium text-dark ring-1 ring-black/5">
+                        {project.category}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </FadeIn>
+        )}
       </div>
     </section>
   );

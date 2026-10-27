@@ -49,12 +49,16 @@ export default function Footer() {
               Van sin `nofollow` y sin `noreferrer` por lo mismo que en
               Portfolio.tsx: son proyectos propios y el enlace debe
               transmitir autoridad y dejar rastro del origen.
+
+              Solo los destacados (`featured`): los secundarios no se le
+              muestran directo al cliente y quedan en la lista plegada de
+              la portada, en los datos estructurados y en /llms.txt.
             */}
             <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-white/60">
               Proyectos
             </h3>
             <ul className="mt-4 space-y-2">
-              {PORTFOLIO_PROJECTS.map((project) => (
+              {PORTFOLIO_PROJECTS.filter((project) => project.featured).map((project) => (
                 <li key={project.href}>
                   <a
                     href={project.href}

@@ -109,6 +109,14 @@ export const TEAM_MEMBER = {
  * Si preferís los logos reales, están en el repositorio de cada
  * proyecto y basta con reemplazar el archivo y apuntar `image` ahí.
  *
+ * El orden de este array es el orden en pantalla. Primero los
+ * destacados (`featured`), elegidos por lo que un cliente puede ver de su
+ * propio proyecto en ellos: un sitio para negocio con SEO local, códigos
+ * QR, una plataforma para empresas, documentos PDF automáticos. Los que no
+ * se relacionan con lo que busca un cliente (un juego de ajedrez, un foro
+ * de meme coins, calculadoras) quedan como secundarios. Criterio del
+ * dueño, 2026-10-27.
+ *
  * El grid se acomoda solo según cuántos haya (ver Portfolio.tsx).
  */
 export type PortfolioProject = {
@@ -118,35 +126,33 @@ export type PortfolioProject = {
   category: string;
   applicationCategory: string;
   image: string | null;
+  /**
+   * Destacado: sale en la rejilla de la portada y en el pie de página. Los
+   * demás quedan en una lista plegada ("Otros proyectos propios") al final
+   * de la sección: siguen enlazados —y en los datos estructurados y en
+   * /llms.txt— pero no compiten por la atención de un cliente.
+   */
+  featured: boolean;
+  /**
+   * Solo destacados: qué demuestra el proyecto que le sirve a un cliente,
+   * en una línea ("Para su negocio: …"). Capacidad, no promesa de
+   * resultados.
+   */
+  benefit: string | null;
 };
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
-    name: "Firmiu",
+    name: "Grupo Z&H",
     description:
-      "Plataforma SaaS de firma digital para empresas. Nuestro proyecto propio más consolidado.",
-    href: "https://firmiu.com",
-    category: "SaaS",
+      "Sitio de una firma de servicios contables en Honduras: servicios, blog y páginas de SEO local por ciudad, generado estático.",
+    href: "https://grupozh.net",
+    category: "Sitio web",
     applicationCategory: "BusinessApplication",
-    image: "/portfolio/firmiu-icon.svg",
-  },
-  {
-    name: "botAgedrez",
-    description:
-      "Ajedrez online contra la máquina, con motor e inteligencia artificial propios: cuatro niveles de dificultad, sistema ELO y logros.",
-    href: "https://botagedrez.codezun.com",
-    category: "Juego web",
-    applicationCategory: "GameApplication",
-    image: "/portfolio/botagedrez-icon.svg",
-  },
-  {
-    name: "GeneCV",
-    description:
-      "Generador de currículums gratuito, con plantillas compatibles con ATS, formatos para Europa, Latinoamérica y el mundo anglosajón, y exportación a PDF.",
-    href: "https://genecv.codezun.com",
-    category: "Herramienta web",
-    applicationCategory: "BusinessApplication",
-    image: "/portfolio/genecv-icon.svg",
+    image: "/portfolio/grupozh-icon.svg",
+    featured: true,
+    benefit:
+      "Un sitio con páginas por ciudad, pensado para que sus clientes lo encuentren en Google en cada lugar donde usted atiende.",
   },
   {
     name: "Petnote",
@@ -156,24 +162,33 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "SaaS",
     applicationCategory: "HealthApplication",
     image: "/portfolio/petnote-icon.svg",
+    featured: true,
+    benefit:
+      "Códigos QR que cualquiera abre desde su teléfono, sin instalar nada: la misma base de un sistema de fidelización.",
   },
   {
-    name: "Memecoin Plaza",
+    name: "Firmiu",
     description:
-      "Precios de meme coins en tiempo real y foro de la comunidad: veinte monedas, gráficos históricos, cuentas y comentarios.",
-    href: "https://memecoin.codezun.com",
-    category: "Comunidad",
-    applicationCategory: "FinanceApplication",
-    image: "/portfolio/memecoin-icon.svg",
+      "Plataforma SaaS de firma digital para empresas. Nuestro proyecto propio más consolidado.",
+    href: "https://firmiu.com",
+    category: "SaaS",
+    applicationCategory: "BusinessApplication",
+    image: "/portfolio/firmiu-icon.svg",
+    featured: true,
+    benefit:
+      "Una plataforma para empresas, con cuentas de usuario y manejo de documentos, como la que puede necesitar su operación.",
   },
   {
-    name: "Calzix",
+    name: "GeneCV",
     description:
-      "Más de 270 calculadoras online gratuitas, de matemáticas y finanzas a obra, energía solar y consumo del hogar. Todo se calcula en el navegador.",
-    href: "https://calzix.com",
-    category: "Calculadoras",
-    applicationCategory: "UtilitiesApplication",
-    image: "/portfolio/calzix-icon.svg",
+      "Generador de currículums gratuito, con plantillas compatibles con ATS, formatos para Europa, Latinoamérica y el mundo anglosajón, y exportación a PDF.",
+    href: "https://genecv.codezun.com",
+    category: "Herramienta web",
+    applicationCategory: "BusinessApplication",
+    image: "/portfolio/genecv-icon.svg",
+    featured: true,
+    benefit:
+      "Documentos PDF que se generan solos a partir de un formulario: cotizaciones, reportes o constancias para su negocio.",
   },
   {
     name: "ToolsFoto",
@@ -183,6 +198,19 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "Herramientas",
     applicationCategory: "MultimediaApplication",
     image: "/portfolio/toolsfoto-icon.svg",
+    featured: false,
+    benefit: null,
+  },
+  {
+    name: "Calzix",
+    description:
+      "Más de 270 calculadoras online gratuitas, de matemáticas y finanzas a obra, energía solar y consumo del hogar. Todo se calcula en el navegador.",
+    href: "https://calzix.com",
+    category: "Calculadoras",
+    applicationCategory: "UtilitiesApplication",
+    image: "/portfolio/calzix-icon.svg",
+    featured: false,
+    benefit: null,
   },
   {
     name: "CalcFit",
@@ -192,6 +220,8 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "Salud",
     applicationCategory: "HealthApplication",
     image: "/portfolio/calcfit-icon.svg",
+    featured: false,
+    benefit: null,
   },
   {
     name: "Inversax",
@@ -201,14 +231,29 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "Finanzas",
     applicationCategory: "FinanceApplication",
     image: "/portfolio/inversax-icon.svg",
+    featured: false,
+    benefit: null,
   },
   {
-    name: "Grupo Z&H",
+    name: "botAgedrez",
     description:
-      "Sitio de una firma de servicios contables en Honduras: servicios, blog y páginas de SEO local por ciudad, generado estático.",
-    href: "https://grupozh.net",
-    category: "Sitio web",
-    applicationCategory: "BusinessApplication",
-    image: "/portfolio/grupozh-icon.svg",
+      "Ajedrez online contra la máquina, con motor e inteligencia artificial propios: cuatro niveles de dificultad, sistema ELO y logros.",
+    href: "https://botagedrez.codezun.com",
+    category: "Juego web",
+    applicationCategory: "GameApplication",
+    image: "/portfolio/botagedrez-icon.svg",
+    featured: false,
+    benefit: null,
+  },
+  {
+    name: "Memecoin Plaza",
+    description:
+      "Precios de meme coins en tiempo real y foro de la comunidad: veinte monedas, gráficos históricos, cuentas y comentarios.",
+    href: "https://memecoin.codezun.com",
+    category: "Comunidad",
+    applicationCategory: "FinanceApplication",
+    image: "/portfolio/memecoin-icon.svg",
+    featured: false,
+    benefit: null,
   },
 ];
