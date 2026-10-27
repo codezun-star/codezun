@@ -15,7 +15,13 @@ export default function FadeIn({ children, delay = 0, className }: FadeInProps) 
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      /*
+        El margen negativo es solo vertical: en los carruseles del teléfono
+        (`carrusel-movil`) la tarjeta siguiente asoma unos pocos píxeles por
+        el costado, y con margen horizontal seguía invisible justo cuando
+        tiene que invitar a deslizar.
+      */
+      viewport={{ once: true, margin: "-80px 0px" }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={className}
     >

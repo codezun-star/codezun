@@ -19,8 +19,8 @@ import { WHATSAPP_LINK } from "@/lib/site-config";
  * /llms.txt). Mientras está escondido sale también del orden de
  * tabulación.
  *
- * En móvil es más pequeño y va más pegado al borde, y respeta la zona
- * segura de los teléfonos con barra de gestos (`env(safe-area-inset-*)`).
+ * Solo en escritorio: en el teléfono lo reemplaza el botón central de la
+ * barra de pestañas (`TabBar.tsx`).
  */
 export default function FloatingWhatsApp() {
   const [hidden, setHidden] = useState(false);
@@ -60,7 +60,7 @@ export default function FloatingWhatsApp() {
       transition={{ duration: 0.3, delay: hidden ? 0 : 0.6 }}
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.95 }}
-      className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25 sm:bottom-6 sm:right-6 sm:h-14 sm:w-14 ${
+      className={`fixed bottom-6 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25 md:flex ${
         hidden ? "pointer-events-none" : ""
       }`}
     >

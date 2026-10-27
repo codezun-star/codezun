@@ -26,6 +26,10 @@ function getInitials(name: string) {
  * una a dos y de dos a cinco columnas: 10, 5 y 2 filas llenas. A tres
  * o cuatro columnas la última fila quedaría con 1 y 2 cards sueltas.
  * Si cambia el número de proyectos, esto es lo que hay que revisar.
+ *
+ * En el teléfono la rejilla es un carrusel que se pasa con el dedo
+ * (`carrusel-movil`, en globals.css): diez tarjetas apiladas eran varias
+ * pantallas de scroll antes de llegar al resto de la portada.
  */
 
 /*
@@ -64,7 +68,7 @@ export default function Portfolio() {
           className={
             featured
               ? "mx-auto mt-14 max-w-3xl"
-              : "mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
+              : "carrusel-movil mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
           }
         >
           {PORTFOLIO_PROJECTS.map((project, index) => (

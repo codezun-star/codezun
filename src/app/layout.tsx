@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import TabBar from "@/components/TabBar";
+import ServiceWorker from "@/components/ServiceWorker";
 import JsonLd from "@/components/JsonLd";
 import Analytics from "@/components/Analytics";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
@@ -56,15 +58,27 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Instalada en iPhone desde "Agregar a inicio": se abre a pantalla
+  // completa con este nombre, como una app (el manifiesto cubre Android).
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "default",
+  },
 };
 
 /**
- * Color de la barra del navegador en móvil. Es el azul oscuro de la marca, el
- * mismo del pie y de la sección de contacto, para que el navegador no rompa el
- * borde superior de la página con su gris por defecto.
+ * Barra del navegador y del sistema en móvil.
+ *
+ * `themeColor` blanco, el mismo del encabezado: en el teléfono el encabezado
+ * hace de barra superior de app, y la barra de estado se funde con él.
+ * `viewportFit: "cover"` deja que la página llegue hasta los bordes del
+ * iPhone (notch y barra de inicio); el encabezado y la barra de pestañas
+ * respetan esas zonas con `env(safe-area-inset-*)` (ver globals.css).
  */
 export const viewport: Viewport = {
-  themeColor: "#004E9B",
+  themeColor: "#ffffff",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -92,6 +106,8 @@ export default function RootLayout({
         </main>
         <Footer />
         <FloatingWhatsApp />
+        <TabBar />
+        <ServiceWorker />
         {/*
           La organización va en el layout porque es la entidad que firma todo
           el sitio: cualquier página, incluida una a la que se llegue desde un

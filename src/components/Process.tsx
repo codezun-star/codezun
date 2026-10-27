@@ -42,7 +42,7 @@ export default function Process() {
           </p>
         </FadeIn>
 
-        <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="carrusel-movil mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, index) => (
             <li key={step.title}>
               <FadeIn

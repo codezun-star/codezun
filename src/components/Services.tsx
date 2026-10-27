@@ -44,7 +44,7 @@ export default function Services() {
           </p>
         </FadeIn>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="carrusel-movil mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICE_CATALOG.map((service, index) => {
             const Icon = ICONS[service.name] ?? Layers;
             const href = service.href;

@@ -35,3 +35,305 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+/* ---------------------------------------------------------------------------
+   Experiencia tipo app nativa en el teléfono (mismo patrón que grupozh.net)
+
+   Barra de pestañas abajo (TabBar.tsx), encabezado como barra superior
+   (Navbar.tsx), menú "Más" en hoja inferior, áreas seguras del iPhone
+   (notch y barra de inicio, gracias a `viewport-fit=cover` en el layout),
+   carruseles deslizables y transiciones de página. Todo por debajo de `md`
+   (48rem), igual que las clases `md:hidden` de los componentes.
+--------------------------------------------------------------------------- */
+:root {
+  --alto-header: 3.5rem;
+  --alto-pestanas: 4rem;
+}
+
+html {
+  /* Los anclas (/#servicios…) quedan a la vista bajo el encabezado fijo */
+  scroll-padding-top: 6.5rem;
+}
+
+/* Toques como en una app: sin el destello gris de WebKit ni el retraso del
+   doble toque para zoom (el zoom con dos dedos sigue funcionando). */
+a,
+button,
+summary,
+label,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Encabezado: se extiende bajo el notch cuando se abre como app */
+.app-header {
+  padding-top: env(safe-area-inset-top);
+}
+.app-header > nav {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+@layer components {
+  .boton-icono {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-dark transition-colors duration-150 active:bg-secondary/60;
+  }
+}
+
+@media (width < 48rem) {
+  html {
+    scroll-padding-top: calc(var(--alto-header) + env(safe-area-inset-top) + 0.5rem);
+    scroll-padding-bottom: calc(var(--alto-pestanas) + env(safe-area-inset-bottom));
+  }
+  body {
+    padding-bottom: calc(var(--alto-pestanas) + env(safe-area-inset-bottom));
+  }
+  /* iOS hace zoom al enfocar un campo con letra de menos de 16px */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+  /* Controles de la interfaz: sin selección de texto ni menú al mantener
+     pulsado, como los botones de una app */
+  .app-header,
+  .tabbar,
+  .hoja-agarre {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  /* Con el teclado abierto la barra estorba: se oculta mientras se escribe */
+  html:has(input:focus, textarea:focus, select:focus) .tabbar {
+    display: none;
+  }
+  html:has(input:focus, textarea:focus, select:focus) body {
+    padding-bottom: 0;
+  }
+}
+
+/* --- Barra de pestañas ---------------------------------------------------- */
+.tabbar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 45;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  background: rgb(255 255 255 / 0.94);
+  border-top: 1px solid rgb(186 228 240 / 0.8);
+  -webkit-backdrop-filter: saturate(1.8) blur(18px);
+  backdrop-filter: saturate(1.8) blur(18px);
+  box-shadow: 0 -6px 24px -12px rgb(0 78 155 / 0.18);
+}
+
+@layer components {
+  .tab {
+    @apply relative flex h-full w-full flex-col items-center justify-center gap-0.5 text-foreground/60;
+  }
+  .tab-icono {
+    @apply flex h-8 w-14 items-center justify-center rounded-full transition-all duration-200 ease-out;
+  }
+  .tab-texto {
+    @apply text-[11px] leading-none font-medium tracking-tight;
+  }
+  .tab:active .tab-icono {
+    transform: scale(0.9);
+  }
+  .tab[aria-current="page"],
+  .tab[data-activa] {
+    @apply text-dark;
+  }
+  .tab[aria-current="page"] .tab-icono,
+  .tab[data-activa] .tab-icono {
+    @apply bg-secondary/70;
+  }
+  .tab[aria-current="page"] .tab-texto,
+  .tab[data-activa] .tab-texto {
+    @apply font-semibold;
+  }
+
+  /* Botón central de WhatsApp, elevado sobre la barra */
+  .tab-wa .tab-wa-boton {
+    @apply -mt-6 mb-0.5 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-150 ease-out;
+    box-shadow: 0 0 0 4px #ffffff, 0 8px 18px -4px rgb(37 211 102 / 0.55);
+  }
+  .tab-wa:active .tab-wa-boton {
+    transform: scale(0.92);
+  }
+  .tab-wa .tab-texto {
+    @apply text-[#128C4A];
+  }
+}
+
+/* --- Hoja inferior (menú "Más") ------------------------------------------ */
+.hoja {
+  margin: auto 0 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 88dvh;
+  background: transparent;
+  overflow: visible;
+}
+.hoja::backdrop {
+  background: rgb(0 30 60 / 0.42);
+  animation: fondo-aparece 0.25s ease-out both;
+}
+.hoja.cerrando::backdrop {
+  animation: fondo-desaparece 0.22s ease-in both;
+}
+.hoja-panel {
+  display: flex;
+  flex-direction: column;
+  max-height: 88dvh;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: #ffffff;
+  box-shadow: 0 -12px 40px -12px rgb(0 30 60 / 0.3);
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: hoja-sube 0.34s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+  will-change: transform;
+}
+.hoja.cerrando .hoja-panel {
+  animation: hoja-baja 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+}
+.hoja-agarre {
+  display: flex;
+  justify-content: center;
+  padding: 0.625rem 0 0.875rem;
+  cursor: grab;
+  touch-action: none;
+}
+.hoja-agarre span {
+  width: 2.5rem;
+  height: 0.3125rem;
+  border-radius: 9999px;
+  background: #cfdde3;
+}
+.hoja-contenido {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 1rem 1.25rem;
+}
+html:has(.hoja[open]) {
+  overflow: hidden;
+}
+
+@layer components {
+  /* Listas estilo ajustes de iOS / Material */
+  .lista-app {
+    @apply overflow-hidden rounded-2xl border border-secondary/60 bg-secondary/15;
+  }
+  .lista-app > li + li {
+    @apply border-t border-secondary/60;
+  }
+  .lista-app a {
+    @apply flex items-center gap-3 px-4 py-3 text-[15px] transition-colors duration-150 active:bg-secondary/40;
+  }
+  .lista-app a[aria-current="page"] {
+    @apply bg-secondary/40;
+  }
+  .lista-app-icono {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-primary shadow-[0_1px_2px_rgb(0_78_155/0.1)];
+  }
+  .lista-app-titulo {
+    @apply mt-5 mb-2 px-2 text-xs font-semibold tracking-wider text-foreground/60 uppercase;
+  }
+}
+
+@keyframes hoja-sube {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+/* Sin `from`: parte de donde el dedo dejó la hoja */
+@keyframes hoja-baja {
+  to { transform: translateY(100%); }
+}
+@keyframes fondo-aparece {
+  from { opacity: 0; }
+}
+@keyframes fondo-desaparece {
+  to { opacity: 0; }
+}
+
+/* --- Carruseles deslizables (solo móvil) ---------------------------------
+   Grupos de tarjetas que en escritorio son rejilla y en el teléfono se pasan
+   con el dedo, con la siguiente asomando para invitar a deslizar. Va fuera de
+   las capas de Tailwind a propósito, para ganarle a `grid` en el teléfono. */
+@media (width < 48rem) {
+  .carrusel-movil {
+    display: flex;
+    gap: 0.875rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-inline: -1.5rem;
+    padding: 0.25rem 1.5rem 0.75rem;
+    scroll-padding-inline: 1.5rem;
+    scrollbar-width: none;
+  }
+  .carrusel-movil::-webkit-scrollbar {
+    display: none;
+  }
+  .carrusel-movil > * {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+}
+
+/* --- Transiciones de página (View Transitions, ver app/template.tsx) -------
+   El contenido entra con un fundido corto; el encabezado y la barra de
+   pestañas no se animan, como en una app. */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(.pagina) {
+  animation: 0.14s ease-out both pagina-sale;
+}
+::view-transition-new(.pagina) {
+  animation: 0.24s cubic-bezier(0.2, 0.8, 0.2, 1) both pagina-entra;
+}
+::view-transition-group(cabecera),
+::view-transition-group(pestanas) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(cabecera),
+::view-transition-old(pestanas) {
+  display: none;
+}
+::view-transition-new(cabecera),
+::view-transition-new(pestanas) {
+  animation: none;
+}
+@keyframes pagina-sale {
+  to { opacity: 0; }
+}
+@keyframes pagina-entra {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(.pagina),
+  ::view-transition-new(.pagina) {
+    animation: none;
+  }
+  .hoja-panel,
+  .hoja::backdrop {
+    animation: none;
+  }
+}
+
+/* Abierta como app instalada: sin rebote del scroll en los bordes */
+@media (display-mode: standalone) {
+  html,
+  body {
+    overscroll-behavior-y: none;
+  }
+}

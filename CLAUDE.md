@@ -168,7 +168,45 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
 not-found.tsx                            branded 404 (renders inside the root
                                          layout; Next still answers 404)
 manifest.ts                              web app manifest (/manifest.webmanifest)
+/offline                                 shown by public/sw.js when there's no
+                                         connection (noindex, not in sitemap)
+template.tsx                             wraps every page in React's
+                                         <ViewTransition> (page fade, see below)
 ```
+
+## Mobile = native-app feel (same pattern as grupozh.net)
+
+Below `md` (48rem) the site behaves like an installed app. Desktop is
+unchanged. The pieces:
+
+- `TabBar.tsx` — fixed bottom tab bar: Inicio, Sistemas
+  (`/sistemas-para-restaurantes`), **WhatsApp** (raised center button),
+  Blog, Más. "Más" opens a bottom sheet (`<dialog>`, drag-to-close)
+  with the remaining sections, WhatsApp / call / email and an "Instalar
+  la app" button (`beforeinstallprompt`, iOS gets "Compartir → Agregar a
+  inicio" instructions). The "Precios" entry only appears when
+  `PROJECT_PRICES` is set.
+- `Navbar.tsx` on mobile is an app top bar: logo on the home page,
+  otherwise a back chevron + section title (`MOBILE_TITLES`), a call
+  button, and a share button on blog posts (`navigator.share`). "Atrás"
+  uses `router.back()` when there were in-site navigations, else goes to
+  the parent route (`parentPath()`). The old hamburger menu is gone.
+- `FloatingWhatsApp.tsx` is **desktop-only** now (the tab bar's center
+  button replaces it on phones).
+- `carrusel-movil` (globals.css) turns a card grid into a horizontal
+  snap carousel on phones: Services, Process, Portfolio and the
+  restaurant page's features. `FadeIn`'s viewport margin is vertical
+  only so the peeking next card is visible.
+- PWA: `manifest.ts` is `display: standalone` with icons in
+  `public/icons/` (regenerate from `src/app/icon.png` if the logo
+  changes; maskable ones keep the mark inside the safe zone),
+  `public/sw.js` (network-first HTML with offline copies, cache-first
+  `/_next/static`, RSC requests and other origins untouched; bump
+  `VERSION` to flush) registered by `ServiceWorker.tsx` in production
+  only. Layout sets `appleWebApp`, `viewportFit: "cover"` and a white
+  `themeColor`; header/tab bar/sheet pad with `env(safe-area-inset-*)`.
+- The tab bar hides while an input is focused (keyboard open) and
+  inputs are 16px on mobile so iOS doesn't zoom.
 
 `Services` and `Contact` are shared components reused as-is on city
 pages (same `id="servicios"`/`id="contacto"` anchors — harmless, each
@@ -183,7 +221,8 @@ the user confirming them.
 **WhatsApp first.** The header's "Hablemos" opens WhatsApp (the form is
 still under "Contacto"); the hero has a secondary WhatsApp button; every
 WhatsApp link carries `target="_blank" rel="noopener noreferrer"` and an
-`aria-label`. Use `whatsappLink(message)` from site-config for a custom
+`aria-label`. On phones the main WhatsApp entry point is the tab bar's
+center button (see "Mobile = native-app feel"). Use `whatsappLink(message)` from site-config for a custom
 prefilled message. The contact form (`Contact.tsx`) also sends through
 WhatsApp: there's no backend/DB, so on submit it opens wa.me with the
 name, optional email and message prefilled — the visitor just taps

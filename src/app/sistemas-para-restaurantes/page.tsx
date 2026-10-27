@@ -206,7 +206,7 @@ export default function SistemasParaRestaurantesPage() {
             </h2>
           </FadeIn>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="carrusel-movil mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
             {FEATURES.map((feature, index) => (
               <FadeIn
                 key={feature.title}
