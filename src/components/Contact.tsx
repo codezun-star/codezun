@@ -4,15 +4,30 @@ import { useState } from "react";
 import { Mail } from "lucide-react";
 import FadeIn from "./FadeIn";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
+import {
+  CONTACT_EMAIL,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_LINK,
+  whatsappLink,
+} from "@/lib/site-config";
 
 /**
- * Formulario de contacto simple.
+ * Formulario de contacto que envía por WhatsApp.
  *
- * Por ahora NO envía nada a un backend: al enviar, arma un mailto:
- * con los datos cargados y abre el cliente de correo del usuario.
- * Cuando se conecte un backend/servicio de envío (ej. Resend, un
- * endpoint propio, etc.), reemplazar handleSubmit por la llamada real.
+ * El sitio no tiene backend ni base de datos, así que el formulario no
+ * guarda nada: al enviarlo arma un enlace de wa.me con el nombre, el
+ * correo y el mensaje ya escritos, y abre WhatsApp (la app en el teléfono,
+ * WhatsApp Web en la computadora). La persona solo tiene que tocar
+ * "Enviar" y el mensaje llega al número de la empresa.
+ *
+ * Se abre en una pestaña nueva para que el visitante no pierda la página.
+ * Si el navegador bloquea la pestaña, se navega en la misma.
+ *
+ * El correo es opcional: la respuesta va a llegar por WhatsApp, y pedir un
+ * dato que no hace falta es un motivo más para no enviar el formulario.
+ *
+ * Cuando haya un backend (Resend, un endpoint propio…), reemplazar
+ * handleSubmit por la llamada real.
  */
 export default function Contact() {
   const [name, setName] = useState("");
@@ -22,12 +37,23 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Contacto desde codezun.com — ${name}`);
-    const body = encodeURIComponent(
-      `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`
-    );
+    const lines = [
+      "Hola, les escribo desde el formulario de codezun.com.",
+      "",
+      `Nombre: ${name.trim()}`,
+      ...(email.trim() ? [`Email: ${email.trim()}`] : []),
+      "",
+      "Mensaje:",
+      message.trim(),
+    ];
+    const url = whatsappLink(lines.join("\n"));
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    const tab = window.open(url, "_blank");
+    if (tab) {
+      tab.opener = null;
+    } else {
+      window.location.href = url;
+    }
   }
 
   return (
@@ -94,12 +120,14 @@ export default function Contact() {
                   htmlFor="email"
                   className="text-sm font-medium text-dark"
                 >
-                  Email
+                  Email{" "}
+                  <span className="font-normal text-foreground/50">
+                    (opcional)
+                  </span>
                 </label>
                 <input
                   id="email"
                   type="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="mt-1.5 w-full rounded-lg border border-black/10 px-4 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
@@ -127,10 +155,15 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="mt-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
               >
-                Enviar mensaje
+                <WhatsAppIcon size={18} />
+                Enviar por WhatsApp
               </button>
+              <p className="text-center text-xs text-foreground/60">
+                Se abrirá WhatsApp con su mensaje ya escrito: solo tiene que
+                tocar Enviar.
+              </p>
             </form>
           </FadeIn>
         </div>

@@ -125,7 +125,7 @@ export function GET(): Response {
     section("Páginas principales", [
       `- [Inicio](${SITE_URL}/): qué hace Codezun, servicios, cómo trabaja, portafolio y preguntas frecuentes.`,
       `- [Sistemas para restaurantes](${SITE_URL}/sistemas-para-restaurantes): sistema de fidelización a medida para restaurantes y negocios con varias sucursales (compras con código QR, premios por monto acumulado, panel con métricas por sucursal, reportes en Excel, aplicación instalable en el teléfono).`,
-      `- [Contacto](${SITE_URL}/contacto): formas de contactar a la empresa (WhatsApp, correo y formulario).`,
+      `- [Contacto](${SITE_URL}/contacto): formas de contactar a la empresa (WhatsApp, correo y un formulario que envía el mensaje por WhatsApp).`,
       `- [Blog](${SITE_URL}/blog): artículos sobre desarrollo web, e-commerce y SaaS para negocios.`,
       `- [Ciudades](${SITE_URL}/ciudades): páginas por país y ciudad donde se ofrece el servicio.`,
     ]),

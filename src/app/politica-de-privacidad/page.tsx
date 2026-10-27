@@ -23,8 +23,9 @@ export default function PoliticaDePrivacidad() {
       <p>
         El Sitio no cuenta con formularios que envíen datos a un
         servidor propio. Si nos contacta por WhatsApp o por correo
-        electrónico, o completa el formulario de contacto (que abre su
-        cliente de correo), recibimos únicamente la información que
+        electrónico, o completa el formulario de contacto (que abre
+        WhatsApp con su mensaje ya escrito y no guarda nada en el
+        Sitio), recibimos únicamente la información que
         decida incluir en ese mensaje: por ejemplo, su nombre, su email
         y el contenido de su consulta.
       </p>

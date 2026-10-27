@@ -184,7 +184,10 @@ the user confirming them.
 still under "Contacto"); the hero has a secondary WhatsApp button; every
 WhatsApp link carries `target="_blank" rel="noopener noreferrer"` and an
 `aria-label`. Use `whatsappLink(message)` from site-config for a custom
-prefilled message. `FloatingWhatsApp.tsx` hides itself while the footer
+prefilled message. The contact form (`Contact.tsx`) also sends through
+WhatsApp: there's no backend/DB, so on submit it opens wa.me with the
+name, optional email and message prefilled — the visitor just taps
+"Enviar". Nothing is stored on the site (the privacy policy says so). `FloatingWhatsApp.tsx` hides itself while the footer
 or any element marked `data-whatsapp-cta` is on screen (it would be a
 duplicate and, on mobile, it covered the button next to it) — mark new
 in-page WhatsApp CTAs with that attribute.
