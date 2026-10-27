@@ -1,5 +1,5 @@
 ---
-title: "ToolsFoto: más de 240 herramientas que no suben tus archivos a ningún servidor"
+title: "ToolsFoto: más de 240 herramientas que no suben sus archivos a ningún servidor"
 description: "Qué es ToolsFoto, nuestra plataforma de herramientas para imagen, PDF, vídeo, audio y desarrollo, con todo el procesamiento ocurriendo dentro del navegador."
 date: "2026-08-11"
 keywords:
@@ -13,19 +13,19 @@ faq:
   - question: "¿Es seguro subir un documento con datos personales a una web para convertirlo?"
     answer: "En la mayoría de convertidores online el archivo se sube de verdad a un servidor ajeno, donde se procesa y se guarda un tiempo. Para un contrato, una nómina o un documento de identidad eso supone entregar el archivo a un tercero. Las herramientas que procesan en el propio navegador evitan el problema porque el archivo nunca sale del dispositivo."
   - question: "¿Se puede convertir un vídeo sin subirlo a internet?"
-    answer: "Sí. Existe una versión de FFmpeg compilada a WebAssembly que se ejecuta dentro del navegador, así que la conversión ocurre en tu propia máquina. Es algo más lenta que en un servidor potente, porque usa el procesador de tu equipo, pero el archivo no viaja a ninguna parte."
+    answer: "Sí. Existe una versión de FFmpeg compilada a WebAssembly que se ejecuta dentro del navegador, así que la conversión ocurre en su propia máquina. Es algo más lenta que en un servidor potente, porque usa el procesador de su equipo, pero el archivo no viaja a ninguna parte."
   - question: "¿Cómo sé si una herramienta online sube mis archivos o no?"
-    answer: "Un indicio fiable es la velocidad con archivos grandes: si un vídeo de 500 MB queda listo casi al instante y tu conexión de subida es lenta, no se subió. La comprobación segura es abrir las herramientas de desarrollo del navegador, en la pestaña de red, y mirar si hay una petición saliente con el peso del archivo."
+    answer: "Un indicio fiable es la velocidad con archivos grandes: si un vídeo de 500 MB queda listo casi al instante y su conexión de subida es lenta, no se subió. La comprobación segura es abrir las herramientas de desarrollo del navegador, en la pestaña de red, y mirar si hay una petición saliente con el peso del archivo."
 ---
 
-Necesitás comprimir una imagen, unir dos PDF o pasar un audio a MP3. Buscás en
-internet, entrás en la primera web que aparece y arrastrás el archivo. Y en ese
-momento, sin pensarlo demasiado, acabás de mandar ese archivo a un servidor de
-alguien que no conocés.
+Usted necesita comprimir una imagen, unir dos PDF o pasar un audio a MP3. Busca en
+internet, entra en la primera web que aparece y arrastra el archivo. Y en ese
+momento, sin pensarlo demasiado, acaba de mandar ese archivo a un servidor de
+alguien que no conoce.
 
 Casi siempre no pasa nada. Pero si ese PDF era un contrato, una nómina o el
-escaneo de un documento de identidad, acabás de entregárselo a un tercero cuyas
-políticas de retención no leíste.
+escaneo de un documento de identidad, acaba de entregárselo a un tercero cuyas
+políticas de retención no leyó.
 
 [ToolsFoto](https://toolsfoto.com) es nuestro proyecto propio construido sobre la
 premisa contraria: **el archivo no se sube**.
@@ -59,29 +59,29 @@ El vídeo y el audio son otra historia, y aquí está la pieza interesante:
 **FFmpeg compilado a WebAssembly**. FFmpeg es la herramienta con la que
 prácticamente todo el mundo procesa vídeo, normalmente en un servidor. Al
 compilarla a WebAssembly —un formato que el navegador ejecuta a velocidad cercana
-a la nativa— pasa a correr dentro de la pestaña, usando el procesador de tu
+a la nativa— pasa a correr dentro de la pestaña, usando el procesador de su
 propio equipo.
 
 La contrapartida honesta es la velocidad. Un servidor dedicado convierte más
-rápido que tu portátil, y la primera vez hay que descargar el motor, que no es
-pequeño. A cambio, el archivo no sale de tu máquina, no hay cola de espera, no
+rápido que su portátil, y la primera vez hay que descargar el motor, que no es
+pequeño. A cambio, el archivo no sale de su máquina, no hay cola de espera, no
 hay límite de tamaño impuesto por el ancho de banda de nadie y no hay una copia
-de tu vídeo en un disco ajeno.
+de su vídeo en un disco ajeno.
 
 Nos pareció el intercambio correcto para el tipo de archivos con los que la gente
 trabaja.
 
-## Cómo comprobarlo vos mismo
+## Cómo comprobarlo usted mismo
 
 Una afirmación de privacidad que hay que creerse por fe no vale mucho, así que
 esta se puede verificar en treinta segundos y sin conocimientos técnicos:
 
-1. Abrí las herramientas de desarrollo del navegador (F12 en la mayoría).
-2. Entrá en la pestaña **Red**.
-3. Cargá un archivo grande en cualquier herramienta y procesalo.
+1. Abra las herramientas de desarrollo del navegador (F12 en la mayoría).
+2. Entre en la pestaña **Red**.
+3. Cargue un archivo grande en cualquier herramienta y procéselo.
 
-Si el archivo se estuviera subiendo, verías una petición saliente pesando lo
-mismo que el archivo, y tardaría lo que tarde tu conexión de subida. No la vas a
+Si el archivo se estuviera subiendo, vería una petición saliente pesando lo
+mismo que el archivo, y tardaría lo que tarde su conexión de subida. No la va a
 ver. Es la misma comprobación que recomendamos hacer en cualquier otra web que
 prometa lo mismo.
 
@@ -111,8 +111,8 @@ sitio se degrade a medida que crece.
 
 ## Sin cuentas y sin límites artificiales
 
-No hay registro, ni base de datos, ni autenticación. No hay un plan gratis que te
-deje procesar tres archivos al día para venderte el de pago. Esas limitaciones
+No hay registro, ni base de datos, ni autenticación. No hay un plan gratis que le
+deje procesar tres archivos al día para venderle el de pago. Esas limitaciones
 existen porque procesar en servidor cuesta dinero por archivo; cuando el trabajo
 lo hace el equipo del usuario, ese coste no existe y la limitación no tendría más
 motivo que forzar la conversión.
@@ -130,10 +130,10 @@ coherente, que cada página tenga sus datos estructurados, que el sitio siga
 cargando rápido cuando crece. Es el tipo de disciplina que después se nota en
 proyectos ajenos.
 
-## Usalo
+## Úselo
 
-[toolsfoto.com](https://toolsfoto.com) está abierto y es gratis. Si trabajás con
-documentos que preferirías no mandar a un servidor desconocido, empezá por ahí.
+[toolsfoto.com](https://toolsfoto.com) está abierto y es gratis. Si trabaja con
+documentos que preferiría no mandar a un servidor desconocido, empiece por ahí.
 
-Y si tu negocio necesita una herramienta a medida que procese archivos sin
+Y si su negocio necesita una herramienta a medida que procese archivos sin
 custodiar datos de terceros, [hablemos](/contacto).

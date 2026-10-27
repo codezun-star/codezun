@@ -121,12 +121,12 @@ administración que hackear ni base de datos que filtrar.
 El contacto va por WhatsApp, que es como la gente en Honduras realmente escribe a
 un negocio, en lugar de un formulario que manda un correo que nadie lee.
 
-## Lo mismo, para tu negocio
+## Lo mismo, para su negocio
 
 Nada de lo que describimos aquí es exclusivo de una firma contable. Servicios
 nombrados como los busca el cliente, páginas locales honestas, artículos que
 responden dudas concretas y un sitio rápido que se pueda citar: eso funciona para
 casi cualquier negocio de servicios.
 
-Podés ver el resultado en [grupozh.net](https://grupozh.net). Y si querés algo
-así para el tuyo, [hablemos](/contacto).
+Puede ver el resultado en [grupozh.net](https://grupozh.net). Y si quiere algo
+así para el suyo, [hablemos](/contacto).

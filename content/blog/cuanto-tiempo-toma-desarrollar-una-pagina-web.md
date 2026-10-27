@@ -17,7 +17,7 @@ faq:
     answer: "Sí: teniendo el contenido listo antes de empezar, designando una sola persona que apruebe decisiones, dejando por escrito el alcance desde el inicio y lanzando en etapas. Salir con lo esencial funcionando y agregar el resto después casi siempre es mejor que esperar meses a la versión completa."
 ---
 
-"¿Y en cuánto tiempo lo tenés listo?" es, junto con el precio, la primera pregunta de casi cualquier negocio que va a encargar un sitio web. La respuesta honesta es que depende del alcance, pero eso no significa que no se pueda estimar. En este artículo te explicamos de qué depende el plazo y por qué algunos proyectos se atrasan.
+"¿Y en cuánto tiempo lo tiene listo?" es, junto con el precio, la primera pregunta de casi cualquier negocio que va a encargar un sitio web. La respuesta honesta es que depende del alcance, pero eso no significa que no se pueda estimar. En este artículo le explicamos de qué depende el plazo y por qué algunos proyectos se atrasan.
 
 ## La respuesta corta: depende del alcance
 
@@ -39,7 +39,7 @@ No es lo mismo una página de aterrizaje para una campaña que una tienda online
 - **Tienda online**: catálogo, carrito, métodos de pago, cálculo de envíos. Bastante más, porque cada decisión de negocio se traduce en configuración.
 - **Plataforma o software a medida**: se mide en meses, y normalmente se entrega por versiones en lugar de todo de una sola vez.
 
-Estos rangos son orientativos, no una cotización: el plazo real sale de definir el alcance concreto de tu proyecto.
+Estos rangos son orientativos, no una cotización: el plazo real sale de definir el alcance concreto de su proyecto.
 
 ## Lo que más atrasa un proyecto
 
@@ -50,15 +50,15 @@ Estos rangos son orientativos, no una cotización: el plazo real sale de definir
 
 ## Cómo acortar el tiempo sin sacrificar calidad
 
-- Tené el contenido listo (o al menos definido) antes de que empiece el desarrollo.
-- Designá una sola persona responsable de aprobar.
-- Dejá el alcance por escrito desde el inicio: qué incluye y qué no.
-- Considerá lanzar por etapas. Salir con lo esencial funcionando y agregar el resto después suele ser mejor negocio que esperar meses a la versión completa.
+- Tenga el contenido listo (o al menos definido) antes de que empiece el desarrollo.
+- Designe una sola persona responsable de aprobar.
+- Deje el alcance por escrito desde el inicio: qué incluye y qué no.
+- Considere lanzar por etapas. Salir con lo esencial funcionando y agregar el resto después suele ser mejor negocio que esperar meses a la versión completa.
 
-Si todavía estás decidiendo qué tipo de sitio necesitás, te puede servir leer [qué es una landing page y cuándo conviene](/blog/que-es-una-landing-page-y-por-que-la-necesitas) antes de definir el alcance.
+Si todavía está decidiendo qué tipo de sitio necesita, le puede servir leer [qué es una landing page y cuándo conviene](/blog/que-es-una-landing-page-y-por-que-la-necesitas) antes de definir el alcance.
 
-## ¿Querés un plazo real para tu proyecto?
+## ¿Quiere un plazo real para su proyecto?
 
-En Codezun definimos el alcance antes de dar una fecha, y te decimos con claridad qué depende de nosotros y qué depende de vos. Sin promesas de tiempos que después no se cumplen.
+En Codezun definimos el alcance antes de dar una fecha, y le decimos con claridad qué depende de nosotros y qué depende de usted. Sin promesas de tiempos que después no se cumplen.
 
-[Contanos qué necesitás](/contacto) y te damos una estimación concreta para tu caso.
+[Cuéntenos qué necesita](/contacto) y le damos una estimación concreta para su caso.

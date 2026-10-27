@@ -37,7 +37,7 @@ símbolo.
 
 Lo que la distingue de una tabla estática es que **los precios se refrescan
 solos cada veinte segundos**, sin recargar la página y sin perder el sitio donde
-estabas leyendo. Suena menor y no lo es: en un activo que se mueve un quince por
+estaba leyendo. Suena menor y no lo es: en un activo que se mueve un quince por
 ciento en una tarde, un precio de hace diez minutos no es información, es ruido.
 
 Hay además una cinta de operaciones en tiempo real —compras y ventas
@@ -68,7 +68,7 @@ Cada moneda tiene su hilo de comentarios. Se puede escribir, responder a alguien
 árbol ilegible—, dar "me gusta" y borrar lo propio.
 
 Los "me gusta" usan actualización optimista: el corazón se marca en el instante
-en que hacés clic, sin esperar a que el servidor confirme. Si algo falla, se
+en que hace clic, sin esperar a que el servidor confirme. Si algo falla, se
 revierte. Es un detalle de implementación con un efecto grande en cómo se siente
 la aplicación, porque la alternativa —esperar medio segundo a que el servidor
 responda antes de pintar nada— hace que una web parezca lenta aunque no lo sea.
@@ -110,7 +110,7 @@ externos que hay que consultar y cachear con cabeza, actualización en vivo sin
 romper la experiencia, cuentas de usuario, contenido generado por la comunidad
 con sus permisos, y un blog que tiene que posicionar.
 
-Podés verlo funcionando en
-[memecoin.codezun.com](https://memecoin.codezun.com). Y si necesitás algo
+Puede verlo funcionando en
+[memecoin.codezun.com](https://memecoin.codezun.com). Y si necesita algo
 parecido —datos en vivo, cuentas, comunidad— eso es lo que hacemos:
-[contanos](/contacto).
+[cuéntenos](/contacto).

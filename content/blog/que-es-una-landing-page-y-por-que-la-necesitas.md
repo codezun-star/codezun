@@ -1,6 +1,6 @@
 ---
-title: "Landing page: qué es y por qué tu negocio en Honduras la necesita"
-description: "Qué es una landing page, en qué se diferencia de un sitio web completo y cuándo conviene usar una para tu negocio en Honduras."
+title: "Landing page: qué es y por qué su negocio en Honduras la necesita"
+description: "Qué es una landing page, en qué se diferencia de un sitio web completo y cuándo conviene usar una para su negocio en Honduras."
 date: "2026-07-01"
 updated: "2026-07-30"
 keywords:
@@ -13,12 +13,12 @@ faq:
   - question: "¿En qué se diferencia una landing page de un sitio web completo?"
     answer: "En el objetivo y en la navegación. La landing page persigue una sola acción y casi no tiene menú; el sitio completo tiene varias secciones y varios objetivos (informar, vender, contactar) y funciona como la presencia general del negocio. Ninguna reemplaza a la otra: muchas empresas usan las dos."
   - question: "¿Cuándo conviene usar una landing page?"
-    answer: "Cuando lanzás un producto o servicio nuevo y querés medir el interés antes de invertir más, cuando corrés una campaña publicitaria y necesitás convertir esas visitas, cuando ofrecés una promoción con fecha de inicio y fin, o cuando querés capturar contactos para hacerles seguimiento."
+    answer: "Cuando lanza un producto o servicio nuevo y quiere medir el interés antes de invertir más, cuando corre una campaña publicitaria y necesita convertir esas visitas, cuando ofrece una promoción con fecha de inicio y fin, o cuando quiere capturar contactos para hacerles seguimiento."
   - question: "¿Qué errores hacen que una landing page no convierta?"
-    answer: "Poner varios botones que llevan a lugares distintos, que la página sea lenta o se vea mal en conexiones móviles, y no dejar claro qué pasa después del clic: si vas a contactar a la persona y cuándo."
+    answer: "Poner varios botones que llevan a lugares distintos, que la página sea lenta o se vea mal en conexiones móviles, y no dejar claro qué pasa después del clic: si va a contactar a la persona y cuándo."
 ---
 
-Si vendés un producto, ofrecés un servicio o estás por lanzar una campaña, es probable que hayas escuchado el término "landing page". Acá te explicamos qué es exactamente, en qué se diferencia de un sitio web completo, y cuándo conviene usar una.
+Si vende un producto, ofrece un servicio o está por lanzar una campaña, es probable que haya escuchado el término "landing page". Aquí le explicamos qué es exactamente, en qué se diferencia de un sitio web completo, y cuándo conviene usar una.
 
 ## ¿Qué es una landing page?
 
@@ -38,26 +38,26 @@ Ninguna reemplaza a la otra: muchas empresas usan ambas, cada una para su propó
 
 ## ¿Cuándo conviene usar una landing page?
 
-- **Lanzás un producto o servicio nuevo** y querés medir el interés antes de invertir más.
-- **Corrés una campaña publicitaria** (redes sociales, Google Ads) y necesitás una página que convierta esas visitas en contactos o ventas.
-- **Ofrecés una promoción puntual** con fecha de inicio y fin.
-- **Querés capturar leads** (contactos interesados) para después hacerles seguimiento.
+- **Lanza un producto o servicio nuevo** y quiere medir el interés antes de invertir más.
+- **Corre una campaña publicitaria** (redes sociales, Google Ads) y necesita una página que convierta esas visitas en contactos o ventas.
+- **Ofrece una promoción puntual** con fecha de inicio y fin.
+- **Quiere capturar leads** (contactos interesados) para después hacerles seguimiento.
 
 ## Elementos de una buena landing page
 
-1. **Un titular claro**: en pocos segundos, la persona debe entender qué le estás ofreciendo.
-2. **Un solo llamado a la acción (CTA)**: un botón, un formulario, un link de WhatsApp. Evitá ofrecer demasiadas opciones.
+1. **Un titular claro**: en pocos segundos, la persona debe entender qué le está ofreciendo.
+2. **Un solo llamado a la acción (CTA)**: un botón, un formulario, un link de WhatsApp. Evite ofrecer demasiadas opciones.
 3. **Información suficiente, sin exceso**: los beneficios claros, sin párrafos innecesarios.
-4. **Diseño rápido y mobile-first**: si la página tarda en cargar o se ve mal en el celular, perdés a la persona antes de que actúe.
+4. **Diseño rápido y mobile-first**: si la página tarda en cargar o se ve mal en el celular, pierde a la persona antes de que actúe.
 
 ## Errores comunes
 
 - Poner múltiples botones que llevan a distintos lugares (esto reduce las conversiones, no las aumenta).
 - Sitios lentos o que no cargan bien en conexiones móviles.
-- No dejar claro qué pasa después de que la persona hace clic (¿la vas a contactar? ¿cuándo?).
+- No dejar claro qué pasa después de que la persona hace clic (¿la va a contactar? ¿cuándo?).
 
-## ¿Necesitás una landing page para tu negocio?
+## ¿Necesita una landing page para su negocio?
 
 En Codezun diseñamos landing pages rápidas, enfocadas en conversión, para negocios en Honduras que quieren lanzar una campaña o un producto sin perder tiempo.
 
-[Contanos qué estás lanzando](/contacto) y armamos la página que necesitás.
+[Cuéntenos qué está lanzando](/contacto) y armamos la página que necesita.

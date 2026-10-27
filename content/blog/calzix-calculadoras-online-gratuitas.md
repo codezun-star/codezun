@@ -1,5 +1,5 @@
 ---
-title: "Calzix: más de 270 calculadoras online que funcionan sin enviar tus datos"
+title: "Calzix: más de 270 calculadoras online que funcionan sin enviar sus datos"
 description: "Qué es Calzix, nuestra plataforma de calculadoras online gratuitas: de hipotecas y nóminas a energía solar, obra y física, todas resolviéndose en el navegador."
 date: "2026-08-11"
 keywords:
@@ -11,21 +11,21 @@ faq:
   - question: "¿Qué es Calzix?"
     answer: "Calzix es una plataforma web de calculadoras online gratuitas, en calzix.com, con más de 270 herramientas repartidas en casi cincuenta categorías: finanzas, hogar, energía, obra, salud, estudios, ciencia y viajes, entre otras. No requiere registro."
   - question: "¿Es seguro meter datos personales o financieros en una calculadora online?"
-    answer: "Depende de dónde se haga el cálculo. Si la web envía los datos a un servidor para calcular, esos datos salen de tu dispositivo. En Calzix el cálculo entero ocurre en el navegador con JavaScript, así que las cifras que escribís no viajan a ningún sitio ni quedan guardadas en ninguna base de datos."
+    answer: "Depende de dónde se haga el cálculo. Si la web envía los datos a un servidor para calcular, esos datos salen de su dispositivo. En Calzix el cálculo entero ocurre en el navegador con JavaScript, así que las cifras que escribe no viajan a ningún sitio ni quedan guardadas en ninguna base de datos."
   - question: "¿Por qué una web de calculadoras carga tan rápido?"
     answer: "Porque las páginas se generan una sola vez al publicar el sitio y se sirven ya construidas, en lugar de armarse en un servidor cada vez que alguien entra. A eso se le llama generación estática, y significa que el visitante recibe el HTML terminado casi de inmediato."
   - question: "¿Cuánto se ahorra al cambiar las bombillas de casa por LED?"
-    answer: "Depende de cuántas bombillas sean, de la potencia de las viejas y las nuevas, de las horas que estén encendidas cada día y del precio del kilovatio hora en tu tarifa. Una bombilla incandescente de 60 W sustituida por un LED equivalente consume alrededor de un 85 % menos, pero la cifra concreta de ahorro anual solo sale al meter tus propios números."
+    answer: "Depende de cuántas bombillas sean, de la potencia de las viejas y las nuevas, de las horas que estén encendidas cada día y del precio del kilovatio hora en su tarifa. Una bombilla incandescente de 60 W sustituida por un LED equivalente consume alrededor de un 85 % menos, pero la cifra concreta de ahorro anual solo sale al meter sus propios números."
 ---
 
-Buscás "calculadora de hipoteca", entrás en el primer resultado y te encontrás
-con tres bloques de publicidad, un formulario que pide tu correo antes de darte
-el número y la sospecha razonable de que los datos que acabás de escribir —tu
-sueldo, lo que querés pedir prestado— se acaban de guardar en algún sitio.
+Usted busca "calculadora de hipoteca", entra en el primer resultado y se encuentra
+con tres bloques de publicidad, un formulario que pide su correo antes de darle
+el número y la sospecha razonable de que los datos que acaba de escribir —su
+sueldo, lo que quiere pedir prestado— se acaban de guardar en algún sitio.
 
 [Calzix](https://calzix.com) es nuestra respuesta a eso: una plataforma con más
 de doscientas setenta calculadoras online, gratis, sin registro, y donde ninguna
-cifra que escribís sale de tu navegador.
+cifra que escribe sale de su navegador.
 
 ## Qué significa "se calcula en el navegador"
 
@@ -34,7 +34,7 @@ consecuencias que se notan.
 
 Una web puede hacer un cálculo de dos maneras. La habitual es mandar los datos al
 servidor, que calcula y devuelve el resultado; ese servidor puede guardarlos,
-analizarlos o cruzarlos con lo que ya sabe de vos. La otra es que el cálculo lo
+analizarlos o cruzarlos con lo que ya sabe de usted. La otra es que el cálculo lo
 haga el propio navegador con el código que ya se descargó. Calzix hace lo
 segundo, siempre.
 
@@ -92,17 +92,17 @@ Hay una trampa habitual en este tipo de sitios, y es más sutil que la
 publicidad: la calculadora que da un resultado apoyándose en supuestos que no
 enseña.
 
-Una calculadora de ahorro solar necesita saber cuánto cuesta tu kilovatio hora,
-cuántas horas de sol útil recibe tu ubicación y qué rendimiento tienen los
+Una calculadora de ahorro solar necesita saber cuánto cuesta su kilovatio hora,
+cuántas horas de sol útil recibe su ubicación y qué rendimiento tienen los
 paneles. Una de amortización de hipoteca necesita el tipo de interés y el plazo.
 Si esos valores están fijados dentro del código y no se ven, el resultado es una
 cifra con decimales que aparenta precisión y en realidad describe la situación de
 otra persona.
 
 En Calzix, cuando un cálculo depende de un supuesto, ese supuesto es un campo
-editable. El valor por defecto está ahí para que puedas empezar sin buscar nada,
-no para que te lo creas. Es la diferencia entre una herramienta que te ayuda a
-pensar y una que te da un número para que lo repitas.
+editable. El valor por defecto está ahí para que pueda empezar sin buscar nada,
+no para que se lo crea. Es la diferencia entre una herramienta que le ayuda a
+pensar y una que le da un número para que lo repita.
 
 ## Estático, y por eso rápido
 
@@ -125,14 +125,14 @@ versión de pago, ni "desbloquear informe completo".
 
 Y algo que nos importa: donde una calculadora depende de un supuesto —el precio
 del kilovatio hora, un tipo de interés, un rendimiento— ese supuesto es un campo
-que podés cambiar, no un número escondido en el código. Un resultado que sale de
-una suposición que no ves no es un resultado, es una adivinanza con decimales.
+que puede cambiar, no un número escondido en el código. Un resultado que sale de
+una suposición que no ve no es un resultado, es una adivinanza con decimales.
 
-## Miralo
+## Mírelo
 
-[calzix.com](https://calzix.com) está abierto. Si te sirve alguna, la dirección
+[calzix.com](https://calzix.com) está abierto. Si le sirve alguna, la dirección
 de esa calculadora concreta se puede guardar y compartir directamente.
 
-Y si tu negocio necesita una herramienta de cálculo propia —un presupuestador, un
+Y si su negocio necesita una herramienta de cálculo propia —un presupuestador, un
 simulador, una cotizadora— eso es exactamente el tipo de proyecto que hacemos en
-Codezun: [contanos qué necesitás](/contacto).
+Codezun: [cuéntenos qué necesita](/contacto).

@@ -13,13 +13,13 @@ faq:
   - question: "¿Qué mide el IMC y qué no mide?"
     answer: "El índice de masa corporal relaciona peso y estatura, y sirve como indicador poblacional rápido. Lo que no distingue es de qué está hecho ese peso: una persona muy musculada puede salir con sobrepeso según el IMC sin tener exceso de grasa. Por eso conviene leerlo junto a otras medidas, como el porcentaje de grasa corporal."
   - question: "¿Cuántas calorías necesito al día?"
-    answer: "Depende de tu metabolismo basal —el gasto en reposo, que se estima a partir de peso, estatura, edad y sexo— multiplicado por un factor de actividad física. La fórmula más usada hoy es la de Mifflin-St Jeor. El resultado es una estimación de partida, no una cifra exacta: hay que ajustarla observando cómo responde tu peso a lo largo de varias semanas."
+    answer: "Depende de su metabolismo basal —el gasto en reposo, que se estima a partir de peso, estatura, edad y sexo— multiplicado por un factor de actividad física. La fórmula más usada hoy es la de Mifflin-St Jeor. El resultado es una estimación de partida, no una cifra exacta: hay que ajustarla observando cómo responde su peso a lo largo de varias semanas."
   - question: "¿Qué es el 1RM y para qué sirve calcularlo?"
-    answer: "El 1RM es la carga máxima que podés levantar una sola vez en un ejercicio. Se usa para programar el entrenamiento, porque las rutinas de fuerza suelen expresarse como porcentajes de esa marca. Se puede estimar sin intentar el levantamiento máximo, a partir del peso movido y las repeticiones logradas, con fórmulas como Brzycki, Epley o Lander."
+    answer: "El 1RM es la carga máxima que puede levantar una sola vez en un ejercicio. Se usa para programar el entrenamiento, porque las rutinas de fuerza suelen expresarse como porcentajes de esa marca. Se puede estimar sin intentar el levantamiento máximo, a partir del peso movido y las repeticiones logradas, con fórmulas como Brzycki, Epley o Lander."
 ---
 
-Buscá "calculadora de grasa corporal" y vas a encontrar decenas de páginas que te
-dan un número. Lo que casi ninguna te dice es de dónde salió ese número: qué
+Busque "calculadora de grasa corporal" y va a encontrar decenas de páginas que le
+dan un número. Lo que casi ninguna le dice es de dónde salió ese número: qué
 fórmula aplicó, con qué datos y con qué margen de error.
 
 Ese es el hueco que llena [CalcFit](https://calcfit.com), uno de nuestros
@@ -64,8 +64,8 @@ resultado.
 
 El peso ideal es el ejemplo más claro. Devine, Robinson y Miller dan cifras
 distintas para la misma persona, porque son fórmulas creadas en contextos
-distintos y con poblaciones distintas. Una web que te da "tu peso ideal" a secas
-te está escondiendo que eligió una de ellas por vos. CalcFit muestra las cinco y
+distintos y con poblaciones distintas. Una web que le da "su peso ideal" a secas
+le está escondiendo que eligió una de ellas por usted. CalcFit muestra las cinco y
 así queda claro lo que realmente son: estimaciones que coinciden en un rango, no
 una verdad.
 
@@ -87,18 +87,18 @@ La primera es tomar la cifra como un veredicto. "Necesito 2 340 calorías" o "mi
 porcentaje de grasa es 18,4 %" suenan a medición precisa, y no lo son. El método
 de la Marina estima la grasa corporal a partir de circunferencias con un margen
 de error de varios puntos porcentuales; la fórmula de Mifflin-St Jeor estima el
-metabolismo basal de una persona promedio con tus características, no el tuyo.
+metabolismo basal de una persona promedio con sus características, no el suyo.
 Dos personas del mismo peso, estatura, edad y sexo pueden tener gastos reales
 distintos.
 
 La segunda forma, que es la útil, es tomar el número como **punto de partida y
-como serie**. El valor de calcular tus calorías diarias no está en el resultado
+como serie**. El valor de calcular sus calorías diarias no está en el resultado
 de hoy: está en usarlo como base durante tres o cuatro semanas, observar qué hace
-el peso y corregir. Si la estimación se quedó corta, lo vas a ver en la báscula
+el peso y corregir. Si la estimación se quedó corta, lo va a ver en la báscula
 mucho antes que en ninguna fórmula.
 
 Lo mismo con la composición corporal. Que el porcentaje de grasa tenga un margen
-de error de tres puntos importa poco si lo medís siempre igual, con el mismo
+de error de tres puntos importa poco si lo mide siempre igual, con el mismo
 método y la misma cinta métrica: el error se repite y la tendencia entre una
 medición y otra sigue siendo real. Un número absoluto discutible puede dar una
 tendencia perfectamente fiable.
@@ -110,7 +110,7 @@ tipo de lectura.
 ## Sin registro, sin cookies de rastreo, sin servidor
 
 Igual que en el resto de nuestros proyectos de este tipo, el cálculo ocurre
-íntegramente en tu navegador. Tu peso, tu estatura, tu edad y tus medidas no
+íntegramente en su navegador. Su peso, su estatura, su edad y sus medidas no
 viajan a ningún servidor porque no hay servidor al que viajar: el sitio es
 estático.
 
@@ -131,11 +131,11 @@ Migramos el proyecto desde Next.js precisamente por esto: para un sitio que es
 sobre todo contenido con un formulario interactivo en medio, mandar el código de
 una aplicación entera al navegador es pagar un precio sin recibir nada a cambio.
 
-## Probalo
+## Pruébelo
 
-[calcfit.com](https://calcfit.com) está abierto. Empezá por
+[calcfit.com](https://calcfit.com) está abierto. Empiece por
 la calculadora de IMC o la de calorías diarias, que son las que más se usan, y
-fijate en que cada una te dice de dónde sale el número.
+fíjese en que cada una le dice de dónde sale el número.
 
-Y si tu proyecto necesita cálculo serio con resultados que la gente pueda
-auditar, eso es lo que hacemos: [escribinos](/contacto).
+Y si su proyecto necesita cálculo serio con resultados que la gente pueda
+auditar, eso es lo que hacemos: [escríbanos](/contacto).

@@ -1,5 +1,5 @@
 ---
-title: "Presencia en línea y credibilidad: por qué un sitio web le da confianza a tu negocio"
+title: "Presencia en línea y credibilidad: por qué un sitio web le da confianza a su negocio"
 description: "Cómo la presencia en línea influye en la confianza que los clientes depositan en un negocio, y qué elementos de un sitio web más ayudan a transmitir credibilidad."
 date: "2026-07-15"
 updated: "2026-07-30"
@@ -11,62 +11,62 @@ faq:
   - question: "¿Por qué un sitio web le da credibilidad a un negocio?"
     answer: "Porque antes de comprar o contratar casi todo el mundo busca al negocio en internet para verificar que sea real y serio. Esa búsqueda dura segundos y se resuelve con señales pequeñas: información clara, diseño ordenado, consistencia entre canales y una forma visible de contactar."
   - question: "¿Qué elementos de un sitio web restan confianza?"
-    answer: "Que cargue lento o no cargue bien, que tenga información desactualizada como precios viejos o servicios que ya no ofrecés, que no haya ninguna forma de verificar que el negocio existe de verdad, y que lo que se dice en redes no coincida con lo que muestra el sitio."
+    answer: "Que cargue lento o no cargue bien, que tenga información desactualizada como precios viejos o servicios que ya no ofrece, que no haya ninguna forma de verificar que el negocio existe de verdad, y que lo que se dice en redes no coincida con lo que muestra el sitio."
   - question: "¿Sirve la presencia en línea si el negocio recién empieza?"
     answer: "Es donde más pesa. Un negocio nuevo todavía no tiene años de trayectoria para respaldarse, y un sitio bien hecho compensa esa falta con una imagen profesional desde el primer día."
   - question: "¿La credibilidad importa más al vender servicios que productos?"
     answer: "Sí, porque el cliente está confiando en algo que aún no puede ver ni tocar. Para un abogado, un contador, una agencia o un desarrollador de software, la presencia en línea suele ser la única prueba disponible antes de decidir."
 ---
 
-Antes de comprar o contratar un servicio, casi todos hacemos lo mismo sin darnos cuenta: buscamos al negocio en internet para "verificar" que sea real y serio. Esa búsqueda rápida, que dura segundos, puede definir si alguien te escribe o si sigue buscando otra opción. Este artículo habla de un beneficio de la presencia en línea que a veces se subestima: la credibilidad.
+Antes de comprar o contratar un servicio, casi todos hacemos lo mismo sin darnos cuenta: buscamos al negocio en internet para "verificar" que sea real y serio. Esa búsqueda rápida, que dura segundos, puede definir si alguien le escribe o si sigue buscando otra opción. Este artículo habla de un beneficio de la presencia en línea que a veces se subestima: la credibilidad.
 
 ## La confianza se construye con señales pequeñas
 
-Nadie confía en un negocio solo porque lo dice de sí mismo. La confianza se arma con señales indirectas: ¿tiene un sitio web? ¿la información es clara? ¿se ve profesional o parece improvisado? ¿hay una forma clara de contactarlos? Cada una de estas señales suma o resta puntos en la decisión de un cliente potencial, incluso antes de que hablen con vos directamente.
+Nadie confía en un negocio solo porque lo dice de sí mismo. La confianza se arma con señales indirectas: ¿tiene un sitio web? ¿la información es clara? ¿se ve profesional o parece improvisado? ¿hay una forma clara de contactarlos? Cada una de estas señales suma o resta puntos en la decisión de un cliente potencial, incluso antes de que hablen con usted directamente.
 
 ## ¿Qué transmite (y qué no transmite) confianza?
 
 ### Transmite confianza:
 
-- **Información clara y completa**: qué hacés, para quién, y cómo te pueden contactar.
+- **Información clara y completa**: qué hace, para quién, y cómo le pueden contactar.
 - **Diseño cuidado**: no hace falta ser espectacular, pero sí verse ordenado y profesional.
-- **Consistencia**: que tu sitio, tus redes y tu forma de comunicarte cuenten la misma historia.
+- **Consistencia**: que su sitio, sus redes y su forma de comunicarse cuenten la misma historia.
 - **Facilidad de contacto**: un formulario, un botón de WhatsApp, un email visible.
-- **Contenido propio**: por ejemplo, un blog con artículos útiles (como este) demuestra que sabés de lo que hablás.
+- **Contenido propio**: por ejemplo, un blog con artículos útiles (como este) demuestra que sabe de lo que habla.
 
 ### Resta confianza:
 
 - Un sitio que no carga bien o tarda mucho.
-- Información desactualizada (precios viejos, servicios que ya no ofrecés).
+- Información desactualizada (precios viejos, servicios que ya no ofrece).
 - No tener ninguna forma de verificar que el negocio es real.
-- Inconsistencias entre lo que decís en redes y lo que muestra tu sitio.
+- Inconsistencias entre lo que dice en redes y lo que muestra su sitio.
 
 ## Por qué esto importa más de lo que parece
 
-Un cliente que no confía, no compra, no importa cuán bueno sea tu producto o servicio. La credibilidad no reemplaza a la calidad, pero sí es la puerta de entrada: si no generás confianza en los primeros segundos, muchas veces ni siquiera llegás a mostrar por qué tu producto es bueno.
+Un cliente que no confía, no compra, no importa cuán bueno sea su producto o servicio. La credibilidad no reemplaza a la calidad, pero sí es la puerta de entrada: si no genera confianza en los primeros segundos, muchas veces ni siquiera llega a mostrar por qué su producto es bueno.
 
 Esto es todavía más importante para negocios que venden servicios (no productos físicos), porque el cliente está confiando en algo que todavía no puede tocar ni ver con sus propios ojos. Un abogado, un contador, una agencia, un desarrollador de software: en todos estos casos, la presencia en línea es, muchas veces, la única "prueba" que el cliente tiene antes de decidir confiar.
 
 ## El caso de los negocios que recién empiezan
 
-Si tu negocio es nuevo, todavía no tenés años de trayectoria para respaldarte. Ahí, la presencia en línea cumple un rol todavía más importante: compensa la falta de años en el mercado con una imagen profesional desde el día uno. Un sitio bien hecho puede hacer que un negocio de un año se vea tan serio como uno de diez.
+Si su negocio es nuevo, todavía no tiene años de trayectoria para respaldarle. Ahí, la presencia en línea cumple un rol todavía más importante: compensa la falta de años en el mercado con una imagen profesional desde el día uno. Un sitio bien hecho puede hacer que un negocio de un año se vea tan serio como uno de diez.
 
 ## Errores comunes que dañan la credibilidad
 
-1. **Usar solo una cuenta de redes sociales sin actividad reciente.** Si la última publicación es de hace meses, transmite lo contrario de lo que buscás.
+1. **Usar solo una cuenta de redes sociales sin actividad reciente.** Si la última publicación es de hace meses, transmite lo contrario de lo que busca.
 2. **No responder rápido.** La confianza también se pierde después del primer contacto, si las respuestas tardan demasiado.
 3. **Prometer más de lo que se puede cumplir.** La credibilidad se construye con honestidad, no con exageraciones.
-4. **No tener ninguna presencia verificable.** Si a alguien le cuesta encontrar información básica sobre tu negocio, va a dudar antes de contactarte.
+4. **No tener ninguna presencia verificable.** Si a alguien le cuesta encontrar información básica sobre su negocio, va a dudar antes de contactarle.
 
-## Cómo mejorar la credibilidad de tu presencia en línea
+## Cómo mejorar la credibilidad de su presencia en línea
 
-- Asegurate de que la información de contacto esté siempre visible y actualizada.
-- Mantené un diseño simple, claro y profesional (no hace falta que sea complejo).
-- Sé honesto sobre lo que ofrecés: la confianza se rompe rápido si hay una diferencia entre lo prometido y lo entregado.
-- Si tenés la posibilidad, mostrá ejemplos reales de tu trabajo o de tus productos.
+- Asegúrese de que la información de contacto esté siempre visible y actualizada.
+- Mantenga un diseño simple, claro y profesional (no hace falta que sea complejo).
+- Sea honesto sobre lo que ofrece: la confianza se rompe rápido si hay una diferencia entre lo prometido y lo entregado.
+- Si tiene la posibilidad, muestre ejemplos reales de su trabajo o de sus productos.
 
-## ¿Tu presencia en línea transmite la confianza que tu negocio merece?
+## ¿Su presencia en línea transmite la confianza que su negocio merece?
 
 En Codezun ayudamos a negocios en Honduras a construir una presencia en línea que realmente genere confianza: sitios web claros, profesionales y pensados para que el cliente sienta que está tratando con un negocio serio.
 
-[Conversemos sobre tu proyecto](/contacto) y veamos cómo mejorar la imagen digital de tu negocio.
+[Conversemos sobre su proyecto](/contacto) y veamos cómo mejorar la imagen digital de su negocio.

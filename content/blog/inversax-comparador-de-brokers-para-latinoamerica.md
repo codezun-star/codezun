@@ -11,17 +11,17 @@ faq:
   - question: "¿Qué es Inversax?"
     answer: "Inversax es un sitio de comparación de brókers financieros para inversores de habla hispana, en inversax.com. Compara disponibilidad por país, regulación, depósito mínimo y métodos de pago locales, e incluye más de cien calculadoras financieras y guías por país."
   - question: "¿En qué hay que fijarse al elegir un bróker desde Latinoamérica?"
-    answer: "En cuatro cosas antes que en las comisiones: que acepte residentes de tu país, qué organismo lo regula, cuál es el depósito mínimo real y con qué métodos podés ingresar y retirar dinero desde tu país. Un bróker con comisiones excelentes es inútil si no admite transferencias locales y solo se puede fondear por vías que en tu país no están disponibles."
+    answer: "En cuatro cosas antes que en las comisiones: que acepte residentes de su país, qué organismo lo regula, cuál es el depósito mínimo real y con qué métodos puede ingresar y retirar dinero desde su país. Un bróker con comisiones excelentes es inútil si no admite transferencias locales y solo se puede fondear por vías que en su país no están disponibles."
   - question: "¿Qué significa que un bróker esté regulado y por qué importa?"
-    answer: "Significa que un organismo supervisor le exige requisitos de capital, separación entre el dinero de los clientes y el de la empresa, y mecanismos de reclamación. Importa porque determina qué pasa si la empresa quiebra o se niega a devolverte el dinero: con una regulación seria hay un procedimiento, y sin ella, en la práctica, no hay a quién reclamar."
+    answer: "Significa que un organismo supervisor le exige requisitos de capital, separación entre el dinero de los clientes y el de la empresa, y mecanismos de reclamación. Importa porque determina qué pasa si la empresa quiebra o se niega a devolverle el dinero: con una regulación seria hay un procedimiento, y sin ella, en la práctica, no hay a quién reclamar."
   - question: "¿Qué es una cuenta demo y conviene usarla?"
     answer: "Es una cuenta con dinero ficticio que replica la plataforma real, y sirve para dos cosas: aprender a operar sin arriesgar y comprobar cómo se comporta la plataforma de un bróker antes de depositar. Conviene usarla, teniendo en cuenta que en demo no se sienten la presión psicológica ni algunos costes reales de ejecución."
 ---
 
 Buscar "mejor bróker" desde Latinoamérica tiene un problema que casi nadie
 aborda: la mayoría de las comparativas que aparecen están escritas pensando en un
-inversor de Estados Unidos o de España. Te recomiendan plataformas que no aceptan
-residentes de tu país, o que solo se fondean por métodos que desde ahí no
+inversor de Estados Unidos o de España. Le recomiendan plataformas que no aceptan
+residentes de su país, o que solo se fondean por métodos que desde ahí no
 existen.
 
 [Inversax](https://inversax.com) es nuestro proyecto propio para resolver eso:
@@ -65,7 +65,7 @@ También pros y contras, escritos como contras de verdad. Una comparativa donde
 todos los brókers son excelentes no compara nada.
 
 De todo eso, lo que más gente pasa por alto son dos cosas. La **comisión por
-inactividad**, que descuenta de tu cuenta si dejás de operar unos meses y es la
+inactividad**, que descuenta de su cuenta si deja de operar unos meses y es la
 sorpresa más común. Y la **regulación**, que suena a letra pequeña hasta el día
 en que hace falta: es lo que determina si existe un procedimiento de reclamación
 o si, en la práctica, no hay a quién acudir.
@@ -126,10 +126,10 @@ propaga solo a la ficha, a la comparativa y a todas las páginas de país donde 
 bróker aparece. Sin una fuente única de datos, un sitio así acaba contradiciéndose
 a sí mismo en cuestión de meses.
 
-## Miralo
+## Mírelo
 
-[inversax.com](https://inversax.com) está en línea. Si estás mirando por dónde
-empezar, entrá directo por la página de tu país.
+[inversax.com](https://inversax.com) está en línea. Si está mirando por dónde
+empezar, entre directo por la página de su país.
 
-Y si tenés un proyecto que necesita comparar, calcular y posicionar a esta
-escala, en Codezun hacemos exactamente eso: [contanos](/contacto).
+Y si tiene un proyecto que necesita comparar, calcular y posicionar a esta
+escala, en Codezun hacemos exactamente eso: [cuéntenos](/contacto).

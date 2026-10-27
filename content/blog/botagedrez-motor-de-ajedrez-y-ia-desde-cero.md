@@ -20,8 +20,8 @@ faq:
 
 En Codezun no solo desarrollamos para clientes: también construimos productos
 propios. Uno de ellos es [botAgedrez](https://botagedrez.codezun.com), un juego
-de ajedrez que corre en el navegador, es gratis y no pide registro. Abrís la
-página y jugás.
+de ajedrez que corre en el navegador, es gratis y no pide registro: se abre la
+página y se juega.
 
 Podríamos habernos apoyado en alguna de las librerías de ajedrez que ya existen
 para JavaScript, y habríamos terminado en una tarde. Decidimos lo contrario:
@@ -51,7 +51,7 @@ simularla y comprobar después si el rey quedó expuesto.
 
 El motor de botAgedrez implementa todo eso, y además lee y escribe los dos
 formatos estándar del ajedrez: **FEN** para describir una posición concreta y
-**PGN** para guardar una partida entera. Eso significa que podés exportar una
+**PGN** para guardar una partida entera. Eso significa que puede exportar una
 partida y abrirla en cualquier otro programa de ajedrez.
 
 ## Cómo comprobamos que el motor no se equivoca
@@ -64,7 +64,7 @@ Para esto el mundo del ajedrez tiene una prueba estándar llamada **perft**.
 Consiste en contar cuántas partidas distintas existen desde una posición hasta
 cierta profundidad. Los números son conocidos y están publicados: desde la
 posición inicial, a cuatro movimientos de profundidad hay exactamente 197 281
-posiciones. Si tu motor cuenta otra cosa, tiene un fallo, y la diferencia te dice
+posiciones. Si su motor cuenta otra cosa, tiene un fallo, y la diferencia le dice
 más o menos dónde buscarlo.
 
 Verificamos el motor con perft y con las posiciones difíciles que la comunidad
@@ -126,14 +126,14 @@ El resto es acabado: arrastrar las piezas o moverlas con clic, resaltado de las
 jugadas legales y del rey en jaque, sonidos generados en el propio navegador,
 modo claro y oscuro, y todo funcionando en móvil.
 
-## Qué tiene que ver esto con tu proyecto
+## Qué tiene que ver esto con su proyecto
 
 Un juego de ajedrez y una tienda online no se parecen en nada por fuera, pero el
 trabajo de fondo es el mismo: reglas de negocio que hay que implementar
 completas, casos raros que nadie menciona hasta que fallan, y una interfaz que
 tiene que seguir respondiendo mientras algo pesado ocurre por detrás.
 
-Podés probar el resultado en
+Puede probar el resultado en
 [botagedrez.codezun.com](https://botagedrez.codezun.com), gratis y sin
-registrarte. Y si tenés un proyecto con lógica de verdad detrás,
+registrarse. Y si tiene un proyecto con lógica de verdad detrás,
 [hablemos](/contacto).

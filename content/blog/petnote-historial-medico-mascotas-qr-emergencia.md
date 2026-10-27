@@ -1,5 +1,5 @@
 ---
-title: "Petnote: el historial médico de tu mascota y un QR para emergencias"
+title: "Petnote: el historial médico de su mascota y un QR para emergencias"
 description: "Qué es Petnote, nuestra plataforma para llevar el historial de salud de una mascota: vacunas, peso, documentos y una página de emergencia que se abre con un código QR."
 date: "2026-08-11"
 keywords:
@@ -18,7 +18,7 @@ faq:
     answer: "Porque muchos problemas de salud aparecen antes como una tendencia que como un síntoma. Una pérdida sostenida de peso a lo largo de meses es difícil de notar al ver al animal todos los días, pero salta a la vista en una gráfica, y llegar a la consulta con esa serie de datos le da al veterinario información que no puede reconstruir de memoria."
 ---
 
-Si tenés perro o gato, es probable que su información de salud esté repartida
+Si tiene perro o gato, es probable que su información de salud esté repartida
 entre un carnet de vacunas de papel que no aparece cuando hace falta, unas
 cuantas fotos de recetas en la galería del teléfono y la memoria del veterinario.
 Funciona hasta el día en que no funciona.
@@ -39,17 +39,17 @@ Cada mascota tiene una ficha con varias secciones separadas:
 - **Documentos**: análisis, radiografías, certificados, facturas del veterinario.
 
 Lo del peso merece una nota aparte, porque es la sección que más se subestima.
-Al animal lo ves todos los días, así que un cambio gradual es casi invisible;
+Al animal lo ve todos los días, así que un cambio gradual es casi invisible;
 sobre una gráfica de doce meses, en cambio, una pendiente descendente salta a la
 vista. Llegar a la consulta con esa serie de datos le da al veterinario algo que
-no puede reconstruir preguntándote.
+no puede reconstruir preguntándose.
 
 ## El modo emergencia
 
 Esta es la parte de la que estamos más contentos, y la razón por la que existe el
 proyecto.
 
-Un perro se escapa. Lo encuentra alguien que no te conoce, a tres barrios de
+Un perro se escapa. Lo encuentra alguien que no le conoce, a tres barrios de
 distancia. Esa persona quiere ayudar, pero no sabe cómo se llama el animal, si es
 alérgico a algo, si toma alguna medicación que no puede saltarse ni a quién
 avisar.
@@ -65,7 +65,7 @@ es Petnote. Es una página web y se abre.
 
 ## Cómo evitamos que ese QR sea un problema de privacidad
 
-Publicar datos de tu mascota en una página abierta suena a mala idea, y lo sería
+Publicar datos de su mascota en una página abierta suena a mala idea, y lo sería
 si estuviera mal hecho. Es el punto donde más cuidado pusimos, así que vale la
 pena explicar cómo funciona por dentro.
 
@@ -82,7 +82,7 @@ poder mostrarlas sin sesión, pero solo el dueño puede escribir en su carpeta. 
 documentos, en cambio, son completamente privados y se sirven mediante enlaces
 firmados que caducan a los sesenta segundos.
 
-Y si perdés la placa impresa, podés desactivar el modo emergencia o regenerar el
+Y si pierde la placa impresa, puede desactivar el modo emergencia o regenerar el
 identificador: el QR viejo deja de funcionar.
 
 ## Recordatorios
@@ -111,11 +111,11 @@ editando una petición.
 Son decisiones que no se ven desde fuera y que cuestan tiempo, y son exactamente
 las que separan un producto que aguanta de una demo bonita.
 
-## Probalo
+## Pruébelo
 
 [petnote.codezun.com](https://petnote.codezun.com) está en línea. El modo
 emergencia y el QR son gratis, porque una función que puede ayudar a que un
 animal perdido vuelva a casa no tiene mucho sentido detrás de un muro de pago.
 
-Si tenés una idea de producto y querés que se construya con este nivel de
-cuidado en los datos, [escribinos](/contacto).
+Si tiene una idea de producto y quiere que se construya con este nivel de
+cuidado en los datos, [escríbanos](/contacto).
