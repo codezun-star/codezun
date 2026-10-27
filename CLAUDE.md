@@ -195,8 +195,25 @@ unchanged. The pieces:
   button replaces it on phones).
 - `carrusel-movil` (globals.css) turns a card grid into a horizontal
   snap carousel on phones: Services, Process, Portfolio and the
-  restaurant page's features. `FadeIn`'s viewport margin is vertical
-  only so the peeking next card is visible.
+  restaurant page's features. It **must keep `overflow-y: hidden`**:
+  with only `overflow-x: auto` the browser makes the vertical axis
+  scrollable too, FadeIn's 24px offset overflowed it, and a vertical
+  swipe on the cards latched onto the carousel — the page wouldn't
+  scroll down (tested with real touch events: 0px before, 285px after).
+- **Nothing may ship invisible in the server HTML.** `FadeIn` renders
+  content visible and, after hydration, hides only blocks that are off
+  screen (below or sideways in a carousel) and fades them in on arrival;
+  its viewport margin is vertical only so a carousel's peeking card
+  shows. The Hero's entrance is a CSS animation (`.entrada`), not
+  Framer Motion, and `Hero.tsx` is a server component. Before, with
+  `initial={{ opacity: 0 }}`, a slow phone showed the hero photo alone
+  for seconds and then the text popped in, and fast scrollers saw blank
+  sections.
+- Hero photo is `public/hero/team.jpg` (~190 KB; the 2 MB PNG it
+  replaced made it load slowly and pop in), statically imported so Next
+  generates a `placeholder="blur"`. Don't pass `quality` to `next/image`
+  without adding it to `images.qualities` in next.config (Next 16 only
+  allows 75 by default).
 - PWA: `manifest.ts` is `display: standalone` with icons in
   `public/icons/` (regenerate from `src/app/icon.png` if the logo
   changes; maskable ones keep the mark inside the safe zone),

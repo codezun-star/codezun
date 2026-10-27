@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import WhatsAppIcon from "./WhatsAppIcon";
 import { WHATSAPP_LINK } from "@/lib/site-config";
+import teamPhoto from "../../public/hero/team.jpg";
 
 /**
  * Tagline del hero. Opciones de copy propuestas (elegí la que prefieras
@@ -17,21 +15,36 @@ import { WHATSAPP_LINK } from "@/lib/site-config";
  */
 const TAGLINE = "Desarrollamos software que impulsa negocios.";
 
+/*
+ * La entrada del texto es una animación CSS (`.entrada`, en globals.css),
+ * no de Framer Motion. Con Motion el texto se servía con `opacity: 0` y solo
+ * aparecía cuando el JavaScript terminaba de cargar: con señal lenta se veía
+ * la foto sola durante segundos y después el título de golpe. La animación
+ * CSS arranca en cuanto llega el HTML, y por eso este componente ya no es de
+ * cliente.
+ */
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white">
       {/*
-        Foto de fondo del equipo (/public/hero/team.png) con un velo
+        Foto de fondo del equipo (/public/hero/team.jpg) con un velo
         blanco semitransparente encima para que el texto siga siendo
         legible. Para reemplazarla, subí un archivo nuevo a esa misma
-        ruta (o cambiá el src de abajo si usás otro nombre).
+        ruta (o cambiá el import de arriba si usás otro nombre).
+
+        Es JPEG y no PNG a propósito: el PNG original pesaba 2 MB y en el
+        teléfono la foto tardaba y aparecía de golpe. El JPEG pesa ~190 KB
+        con la misma imagen. Al importarla (en vez de pasar la ruta como
+        texto) Next genera una miniatura borrosa que se muestra mientras
+        carga (`placeholder="blur"`), así la foto aparece suave.
       */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero/team.png"
+          src={teamPhoto}
           alt=""
           fill
           priority
+          placeholder="blur"
           sizes="100vw"
           className="object-cover"
         />
@@ -39,40 +52,24 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 py-20 text-center sm:py-28">
-        <motion.span
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-dark"
+        <span className="entrada rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-dark"
         >
           Codezun · Desarrollo de software
-        </motion.span>
+        </span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-6 max-w-3xl text-4xl font-bold tracking-tight text-dark sm:text-5xl md:text-6xl"
+        <h1 className="entrada mt-6 [animation-delay:80ms] max-w-3xl text-4xl font-bold tracking-tight text-dark sm:text-5xl md:text-6xl"
         >
           {TAGLINE}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-lg text-foreground/70"
+        <p className="entrada mt-6 [animation-delay:160ms] max-w-2xl text-lg text-foreground/70"
         >
           Construimos sitios web, tiendas online, landing pages, productos
           SaaS y sistemas a medida para negocios en Honduras y en cualquier
           parte del mundo, con más de 5 años de experiencia.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center"
+        <div className="entrada mt-10 [animation-delay:240ms] flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center"
         >
           <Link
             href="/#contacto"
@@ -99,7 +96,7 @@ export default function Hero() {
             <WhatsAppIcon size={20} className="text-[#25D366]" />
             Escríbanos por WhatsApp
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
