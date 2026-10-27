@@ -36,30 +36,32 @@ export default function Contact() {
         <div className="grid gap-12 md:grid-cols-2">
           <FadeIn>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Hablemos de tu proyecto
+              Hablemos de su proyecto
             </h2>
             <p className="mt-4 max-w-md text-lg text-white/70">
-              Contanos qué necesitás y te respondemos a la brevedad.
-              También podés escribirnos directamente por correo o
-              WhatsApp.
+              Cuéntenos qué necesita y le respondemos a la brevedad.
+              Si lo prefiere, escríbanos directamente por WhatsApp o por
+              correo.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Escríbanos por WhatsApp al ${WHATSAPP_DISPLAY} (se abre en una pestaña nueva)`}
+                data-whatsapp-cta
+                className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/20"
+              >
+                <WhatsAppIcon size={20} />
+                {WHATSAPP_DISPLAY}
+              </a>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20"
               >
                 <Mail size={20} />
                 {CONTACT_EMAIL}
-              </a>
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20"
-              >
-                <WhatsAppIcon size={20} />
-                {WHATSAPP_DISPLAY}
               </a>
             </div>
           </FadeIn>
@@ -83,7 +85,7 @@ export default function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-1.5 w-full rounded-lg border border-black/10 px-4 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder="Tu nombre"
+                  placeholder="Su nombre"
                 />
               </div>
 
@@ -101,7 +103,7 @@ export default function Contact() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="mt-1.5 w-full rounded-lg border border-black/10 px-4 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder="tu@email.com"
+                  placeholder="nombre@empresa.com"
                 />
               </div>
 
@@ -119,7 +121,7 @@ export default function Contact() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="mt-1.5 w-full resize-none rounded-lg border border-black/10 px-4 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder="Contanos sobre tu proyecto"
+                  placeholder="Cuéntenos sobre su proyecto"
                 />
               </div>
 

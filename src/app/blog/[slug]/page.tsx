@@ -32,7 +32,6 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
-    keywords: post.keywords,
     article: { publishedTime: post.date, modifiedTime: post.updated },
     /*
      * La tarjeta social de cada artículo la dibuja `opengraph-image.tsx` de este

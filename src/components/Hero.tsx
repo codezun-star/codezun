@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { WHATSAPP_LINK } from "@/lib/site-config";
 
 /**
  * Tagline del hero. Opciones de copy propuestas (elegí la que prefieras
@@ -61,27 +63,42 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 max-w-2xl text-lg text-foreground/70"
         >
-          Construimos productos SaaS, tiendas online, landing pages y
-          sitios web completos, con más de 5 años de experiencia
-          acompañando el crecimiento de nuestros clientes.
+          Construimos sitios web, tiendas online, landing pages, productos
+          SaaS y sistemas a medida para negocios en Honduras y en cualquier
+          parte del mundo, con más de 5 años de experiencia.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10"
+          className="mt-10 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center"
         >
           <Link
             href="/#contacto"
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/20 transition-all hover:bg-accent/90 hover:shadow-accent/30"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/20 transition-all hover:bg-accent/90 hover:shadow-accent/30"
           >
-            Conversemos de tu proyecto
+            Conversemos de su proyecto
             <ArrowRight
               size={18}
               className="transition-transform group-hover:translate-x-1"
             />
           </Link>
+          {/*
+            WhatsApp desde la primera pantalla, como botón secundario para
+            no competir en color con la llamada principal.
+          */}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Escríbanos por WhatsApp (se abre en una pestaña nueva)"
+            data-whatsapp-cta
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-dark shadow-sm ring-1 ring-dark/15 transition-colors hover:bg-secondary/40"
+          >
+            <WhatsAppIcon size={20} className="text-[#25D366]" />
+            Escríbanos por WhatsApp
+          </a>
         </motion.div>
       </div>
     </section>

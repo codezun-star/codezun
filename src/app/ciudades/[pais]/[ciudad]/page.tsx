@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   return pageMetadata({
     title: `Desarrollo de software en ${city.name}, ${country.name}`,
-    description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}. Trabajamos de forma 100% remota.`,
+    description: `Sitios web, tiendas online, landing pages, plataformas SaaS y sistemas a medida para negocios en ${city.name}, ${country.name}. Trabajamos de forma 100% remota.`,
     path: `/ciudades/${country.slug}/${city.slug}`,
   });
 }
@@ -75,7 +75,7 @@ export default async function CiudadPage({
       availableLanguage: ["Spanish"],
     },
     url: pageUrl,
-    description: `Sitios web, tiendas online, landing pages y plataformas SaaS a medida para negocios en ${city.name}, ${country.name}. Servicio 100% remoto, sin oficina física en la ciudad.`,
+    description: `Sitios web, tiendas online, landing pages, plataformas SaaS y sistemas a medida para negocios en ${city.name}, ${country.name}. Servicio 100% remoto, sin oficina física en la ciudad.`,
   };
 
   const faq = cityFaq(country, city);

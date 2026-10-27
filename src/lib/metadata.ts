@@ -50,7 +50,7 @@ const LOCALE = "es_HN";
 export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 export const OG_IMAGE_CONTENT_TYPE = "image/png";
 export const SITE_OG_IMAGE_ALT =
-  "Codezun — SaaS, e-commerce y sitios web a medida";
+  "Codezun — Desarrollo de software y sitios web a medida en Honduras";
 
 /**
  * La tarjeta del sitio, para las páginas que no tienen una propia.
@@ -77,7 +77,6 @@ export type PageMetadataInput = {
   description: string;
   /** Ruta absoluta desde la raíz ("/blog"). Alimenta la canónica y `og:url`. */
   path: string;
-  keywords?: string[];
   /**
    * Solo para artículos: cambia `og:type` a `article` y declara las fechas.
    * Son las mismas que el `Article` de datos estructurados, así que salen del
@@ -97,7 +96,6 @@ export function pageMetadata({
   title,
   description,
   path,
-  keywords,
   article,
   images,
 }: PageMetadataInput): Metadata {
@@ -106,7 +104,6 @@ export function pageMetadata({
   return {
     title,
     description,
-    ...(keywords && keywords.length > 0 ? { keywords } : {}),
     alternates: { canonical: path },
     openGraph: {
       type: article ? "article" : "website",

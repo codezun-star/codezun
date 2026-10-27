@@ -17,7 +17,7 @@ export default function TerminosYCondiciones() {
         Estos Términos y Condiciones regulan el uso del sitio web
         codezun.com (el &quot;Sitio&quot;), operado por Codezun
         (&quot;Codezun&quot;, &quot;nosotros&quot;). Al acceder o utilizar
-        el Sitio, aceptás quedar sujeto a estos términos.
+        el Sitio, usted acepta quedar sujeto a estos términos.
       </p>
 
       <h2>Uso del sitio</h2>
@@ -64,7 +64,7 @@ export default function TerminosYCondiciones() {
       <h2>Contacto</h2>
       <p>
         Ante cualquier consulta sobre estos Términos y Condiciones,
-        podés escribirnos a{" "}
+        puede escribirnos a{" "}
         <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary underline">
           {CONTACT_EMAIL}
         </a>

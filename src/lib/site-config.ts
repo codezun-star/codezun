@@ -35,7 +35,7 @@ export const GA_MEASUREMENT_ID: string = "G-C2DP9BD90V";
  * como en sitemap.xml, para no tener dos fuentes de verdad distintas.
  * Actualizala cuando el contenido de esas páginas cambie de verdad.
  */
-export const SITE_CONTENT_DATE = "2026-08-09";
+export const SITE_CONTENT_DATE = "2026-10-27";
 
 /**
  * WhatsApp / teléfono de contacto.
@@ -44,9 +44,31 @@ export const SITE_CONTENT_DATE = "2026-08-09";
  */
 export const WHATSAPP_NUMBER = "50432279672";
 export const WHATSAPP_DISPLAY = "+504 3227-9672";
-export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+export const WHATSAPP_LINK = whatsappLink(
   "Hola, quiero más información sobre sus servicios."
-)}`;
+);
+
+/**
+ * Enlace de wa.me con un mensaje prellenado propio. Lo usan las páginas
+ * de servicio para que la conversación llegue ya con el tema puesto
+ * (por ejemplo, la de sistemas para restaurantes).
+ */
+export function whatsappLink(message: string): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+/**
+ * Quién está detrás de Codezun (sección "Sobre nosotros").
+ *
+ * `photo` es la ruta dentro de /public. Si el archivo no existe, About.tsx
+ * no pinta ninguna imagen (muestra las iniciales), así que basta con subir
+ * la foto a public/team/jose.jpg para que aparezca, sin tocar código.
+ */
+export const TEAM_MEMBER = {
+  name: "Jose Zuniga",
+  role: "Desarrollador de software",
+  photo: "/team/jose.jpg",
+};
 
 /**
  * Proyectos del portafolio.

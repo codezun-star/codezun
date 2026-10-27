@@ -14,7 +14,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const TITLE = "Codezun — SaaS, e-commerce y sitios web a medida";
+const TITLE =
+  "Codezun — Desarrollo de software y sitios web a medida en Honduras";
 const DESCRIPTION = SITE_DESCRIPTION;
 
 /**
@@ -34,14 +35,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DESCRIPTION,
-  keywords: [
-    "desarrollo de software",
-    "desarrollo web Honduras",
-    "SaaS",
-    "e-commerce",
-    "landing pages",
-    "tienda online Honduras",
-  ],
   authors: [{ name: SITE_NAME }],
   alternates: {
     canonical: "/",

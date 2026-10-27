@@ -1,33 +1,35 @@
-import { Layers, ShoppingCart, Rocket, Globe } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Globe,
+  Layers,
+  LayoutDashboard,
+  Rocket,
+  ShoppingCart,
+  type LucideIcon,
+} from "lucide-react";
 import FadeIn from "./FadeIn";
+import { SERVICE_CATALOG } from "@/lib/schema";
 
-const SERVICES = [
-  {
-    icon: Layers,
-    title: "Productos SaaS",
-    description:
-      "Plataformas de software como servicio, desde el diseño de la arquitectura hasta el producto final.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "E-commerce",
-    description:
-      "Tiendas online a medida, pensadas para vender y para que sean fáciles de mantener.",
-  },
-  {
-    icon: Rocket,
-    title: "Landing pages",
-    description:
-      "Páginas de aterrizaje enfocadas en conversión, para lanzar campañas o productos rápido.",
-  },
-  {
-    icon: Globe,
-    title: "Sitios web completos",
-    description:
-      "Sitios institucionales y corporativos completos, a la medida de cada negocio.",
-  },
-];
+/**
+ * El texto de cada servicio sale de `SERVICE_CATALOG` (lib/schema.ts), que
+ * también alimenta el catálogo de la organización y /llms.txt. Aquí solo se
+ * le pone el icono.
+ */
+const ICONS: Record<string, LucideIcon> = {
+  "Productos SaaS": Layers,
+  "E-commerce": ShoppingCart,
+  "Landing pages": Rocket,
+  "Sitios web completos": Globe,
+  "Sistemas a medida": LayoutDashboard,
+};
 
+/*
+ * Cinco tarjetas en una rejilla de dos y de tres columnas: la última
+ * ("Sistemas a medida") ocupa dos columnas, así ninguna fila queda con una
+ * tarjeta suelta y el servicio que tiene página propia destaca con su
+ * enlace.
+ */
 export default function Services() {
   return (
     <section id="servicios" className="bg-secondary/30 py-20 sm:py-28">
@@ -42,22 +44,44 @@ export default function Services() {
           </p>
         </FadeIn>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((service, index) => (
-            <FadeIn key={service.title} delay={index * 0.1}>
-              <div className="h-full rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-md">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <service.icon size={24} />
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICE_CATALOG.map((service, index) => {
+            const Icon = ICONS[service.name] ?? Layers;
+            const href = service.href;
+
+            return (
+              <FadeIn
+                key={service.name}
+                delay={index * 0.1}
+                className={href ? "sm:col-span-2" : undefined}
+              >
+                <div className="h-full rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-md">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon size={24} />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-dark">
+                    {service.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                    {service.description}
+                  </p>
+
+                  {href && (
+                    <Link
+                      href={href}
+                      className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                    >
+                      Ver sistemas para restaurantes
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform group-hover:translate-x-1"
+                      />
+                    </Link>
+                  )}
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-dark">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-                  {service.description}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>

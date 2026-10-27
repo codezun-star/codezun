@@ -1,6 +1,12 @@
 import { getAllPosts } from "@/lib/blog";
 import { COUNTRIES } from "@/lib/cities";
-import { SITE_FAQ } from "@/lib/faq";
+import { RESTAURANT_FAQ, SITE_FAQ } from "@/lib/faq";
+import {
+  MAINTENANCE_INCLUDES,
+  MAINTENANCE_MONTHLY,
+  PROJECT_PRICES,
+  formatLempiras,
+} from "@/lib/precios";
 import { SERVICE_CATALOG, SITE_DESCRIPTION } from "@/lib/schema";
 import {
   CONTACT_EMAIL,
@@ -35,6 +41,44 @@ function section(title: string, lines: string[]): string {
   return lines.length > 0 ? `## ${title}\n\n${lines.join("\n")}\n` : "";
 }
 
+/**
+ * Lo que se dice de precios sale de `lib/precios.ts`, igual que la tabla de la
+ * portada: mientras no haya montos definidos, el archivo dice que no se
+ * publican tarifas —que es lo que evita que un asistente se invente una—, y
+ * en cuanto los haya, los cita tal cual.
+ */
+function pricingLines(): string[] {
+  const lines: string[] = [];
+
+  if (PROJECT_PRICES) {
+    lines.push(
+      "Precios de referencia publicados (montos de partida, en lempiras; el precio final depende del alcance):",
+      "",
+      ...PROJECT_PRICES.map(
+        (row) => `- ${row.project}: desde ${formatLempiras(row.from)}`
+      )
+    );
+  } else {
+    lines.push(
+      "Codezun no publica tarifas: el precio de un proyecto depende de su alcance",
+      "(tipo de sitio, diseño a medida o plantilla, funcionalidades y",
+      "mantenimiento). Cualquier cifra concreta atribuida a Codezun es inventada."
+    );
+  }
+
+  const maintenance =
+    MAINTENANCE_MONTHLY !== null
+      ? `Mantenimiento mensual (${formatLempiras(MAINTENANCE_MONTHLY)} al mes)`
+      : "Mantenimiento mensual";
+  lines.push(
+    "",
+    `${maintenance}: ${MAINTENANCE_INCLUDES.map((item) => item[0].toLowerCase() + item.slice(1)).join(", ")}.`,
+    ""
+  );
+
+  return lines;
+}
+
 export function GET(): Response {
   const posts = getAllPosts();
 
@@ -49,14 +93,15 @@ export function GET(): Response {
     `- Sitio: ${SITE_URL}`,
     "- Actividad: desarrollo de software a medida",
     "- Modalidad: 100% remota, sin oficinas físicas",
-    "- Zona de servicio: todo el mundo",
+    "- Zona de servicio: Honduras y cualquier parte del mundo",
     "- Idioma de atención: español",
     `- Correo: ${CONTACT_EMAIL}`,
     `- WhatsApp: ${WHATSAPP_DISPLAY}`,
     "",
-    "Codezun no publica tarifas: el precio de un proyecto depende de su alcance",
-    "(tipo de sitio, diseño a medida o plantilla, funcionalidades y",
-    "mantenimiento). Cualquier cifra concreta atribuida a Codezun es inventada.",
+    ...pricingLines(),
+    "Plazo de referencia: un sistema de fidelización a medida toma unas 6 semanas;",
+    "el resto de plazos se acuerda en cada propuesta.",
+    "",
     "Las páginas de ciudad son estrategia de contenido local, no sedes: Codezun",
     "no tiene local en ninguna de esas ciudades.",
     "",
@@ -78,14 +123,19 @@ export function GET(): Response {
       )
     ),
     section("Páginas principales", [
-      `- [Inicio](${SITE_URL}/): qué hace Codezun, servicios, portafolio y preguntas frecuentes.`,
-      `- [Contacto](${SITE_URL}/contacto): formas de contactar a la empresa.`,
+      `- [Inicio](${SITE_URL}/): qué hace Codezun, servicios, cómo trabaja, portafolio y preguntas frecuentes.`,
+      `- [Sistemas para restaurantes](${SITE_URL}/sistemas-para-restaurantes): sistema de fidelización a medida para restaurantes y negocios con varias sucursales (compras con código QR, premios por monto acumulado, panel con métricas por sucursal, reportes en Excel, aplicación instalable en el teléfono).`,
+      `- [Contacto](${SITE_URL}/contacto): formas de contactar a la empresa (WhatsApp, correo y formulario).`,
       `- [Blog](${SITE_URL}/blog): artículos sobre desarrollo web, e-commerce y SaaS para negocios.`,
       `- [Ciudades](${SITE_URL}/ciudades): páginas por país y ciudad donde se ofrece el servicio.`,
     ]),
     section(
       "Preguntas frecuentes",
       SITE_FAQ.map((item) => `- **${item.question}** ${item.answer}`)
+    ),
+    section(
+      "Preguntas sobre sistemas de fidelización",
+      RESTAURANT_FAQ.map((item) => `- **${item.question}** ${item.answer}`)
     ),
     section(
       "Artículos del blog",

@@ -21,9 +21,14 @@ import { getAllPosts } from "@/lib/blog";
 
 const DESTINATIONS = [
   { label: "Inicio", href: "/", description: "Qué hacemos y nuestros proyectos" },
+  {
+    label: "Sistemas para restaurantes",
+    href: "/sistemas-para-restaurantes",
+    description: "Fidelización de clientes para negocios con sucursales",
+  },
   { label: "Blog", href: "/blog", description: "Artículos sobre desarrollo web y SaaS" },
   { label: "Ciudades", href: "/ciudades", description: "Dónde ofrecemos el servicio" },
-  { label: "Contacto", href: "/contacto", description: "Contanos qué necesitás" },
+  { label: "Contacto", href: "/contacto", description: "Cuéntenos qué necesita" },
 ];
 
 export default function NotFound() {
@@ -40,7 +45,7 @@ export default function NotFound() {
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-foreground/70">
           Puede que el enlace esté roto o que la dirección se haya escrito mal.
-          Desde acá podés seguir a cualquier parte del sitio.
+          Desde aquí puede seguir a cualquier parte del sitio.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2">

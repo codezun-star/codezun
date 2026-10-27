@@ -42,7 +42,7 @@ export default async function Image() {
             letterSpacing: 1,
           }}
         >
-          SaaS · E-commerce · Landing Pages · Sitios web
+          Software y sitios web a medida · Honduras
         </div>
         <div
           style={{

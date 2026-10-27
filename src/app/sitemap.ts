@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/blog", changeFrequency: "weekly", priority: 0.7, lastModified: blogDate },
     // Contenido estático: usa la fecha real de la última edición
     // (SITE_CONTENT_DATE), no la fecha de cada build.
+    { path: "/sistemas-para-restaurantes", changeFrequency: "monthly", priority: 0.8, lastModified: contentDate },
     { path: "/contacto", changeFrequency: "yearly", priority: 0.6, lastModified: contentDate },
     { path: "/ciudades", changeFrequency: "yearly", priority: 0.5, lastModified: contentDate },
     { path: "/terminos-y-condiciones", changeFrequency: "yearly", priority: 0.2, lastModified: contentDate },

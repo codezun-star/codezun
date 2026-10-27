@@ -36,7 +36,7 @@ export default function Footer() {
               <Logo className="h-10" />
             </div>
             <p className="mt-3 max-w-xs text-sm text-white/70">
-              SaaS, e-commerce y sitios web a medida.
+              Desarrollo de software y sitios web a medida.
             </p>
 
             {/*
@@ -148,11 +148,26 @@ export default function Footer() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`WhatsApp ${WHATSAPP_DISPLAY} (se abre en una pestaña nueva)`}
               className="mt-2 flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-highlight"
             >
               <WhatsAppIcon size={16} />
               {WHATSAPP_DISPLAY}
             </a>
+
+            <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-white/60">
+              Soluciones
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link
+                  href="/sistemas-para-restaurantes"
+                  className="text-sm text-white/80 transition-colors hover:text-highlight"
+                >
+                  Sistemas para restaurantes
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 

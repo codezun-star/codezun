@@ -5,6 +5,8 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { WHATSAPP_LINK } from "@/lib/site-config";
 
 const NAV_LINKS = [
   { label: "Sobre nosotros", href: "/#sobre-nosotros" },
@@ -32,12 +34,20 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/#contacto"
-            className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
+          {/*
+            "Hablemos" abre WhatsApp, que es la vía más rápida de contacto.
+            El formulario sigue en la sección de contacto (enlace "Contacto").
+          */}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Hablemos por WhatsApp (se abre en una pestaña nueva)"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
           >
+            <WhatsAppIcon size={16} />
             Hablemos
-          </Link>
+          </a>
         </div>
 
         <button
@@ -71,13 +81,17 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/#contacto"
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hablemos por WhatsApp (se abre en una pestaña nueva)"
                 onClick={() => setIsOpen(false)}
-                className="rounded-full bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent/90"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent/90"
               >
+                <WhatsAppIcon size={16} />
                 Hablemos
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

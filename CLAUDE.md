@@ -4,7 +4,7 @@
 
 Landing page + blog + local-SEO pages for **Codezun**, a software
 development company (SaaS, e-commerce, landing pages, sitios web
-completos). Fully remote, serves clients worldwide — the blog/city
+completos, sistemas a medida). Fully remote, serves clients worldwide — the blog/city
 pages are a content-marketing strategy that starts with Honduras, not
 a scope limit (see "Ciudades" below).
 
@@ -14,6 +14,14 @@ a scope limit (see "Ciudades" below).
   `WHATSAPP_DISPLAY`, `WHATSAPP_LINK`)
 - Domain: `https://codezun.com` (`SITE_URL` in site-config.ts) — the
   live site today is a Vercel preview (`codezun.vercel.app`)
+- Person behind it: Jose Zuniga, "Desarrollador de software"
+  (`TEAM_MEMBER` in site-config.ts). His photo goes in
+  `public/team/jose.jpg`; `About.tsx` checks the file exists at build
+  time and shows initials instead, so there's never a broken `<img>`.
+- **All visible copy addresses the reader as "usted"** (escríbanos,
+  cuéntenos, necesita, puede, su negocio). The site used to be in voseo;
+  it was converted everywhere, blog posts included. Code comments may
+  still use voseo — that's fine, only visible text matters.
 - Deploys from the `main` branch. Push there directly; this repo does
   not use PR review for this project.
 
@@ -94,6 +102,19 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   the footer column, the portfolio JSON-LD and `/llms.txt`. Adding a
   project means one object here plus an icon in
   `/public/portfolio/`, nothing else.
+- `src/lib/casos.ts` — `CLIENT_CASES` and `TESTIMONIALS`, each entry
+  with a `published` flag. `ClientCases.tsx` / `Testimonials.tsx` render
+  only published entries and **disappear entirely when there are none**.
+  The Nicha's Burger case is a draft (`published: false`) until the
+  client gives permission. Never publish a case or testimonial without
+  the client's permission, and never write a result or a quote for them.
+- `src/lib/precios.ts` — reference prices in lempiras, as `null`
+  constants with TODO at the top of the file. The pricing table shows
+  only when **all four** project amounts are set; the maintenance block
+  only when its monthly amount is set. The same constants drive the
+  "¿Cuánto cuesta…?" FAQ answer and the pricing lines in `/llms.txt`
+  (which says "Codezun no publica tarifas" while they're `null`). Only
+  the user supplies these numbers.
 - `src/lib/blog.ts` — reads/parses `content/blog/*.md`
   (frontmatter: `title`, `description`, `date`, optional `updated`,
   `keywords`, optional `faq`). Add a post by dropping a new `.md` file
@@ -108,7 +129,9 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   the markup that isn't on the page violates the structured-data
   guidelines.
 - `src/lib/schema.ts` — every JSON-LD builder + `SERVICE_CATALOG` and
-  `SITE_DESCRIPTION`. `src/lib/crawlers.ts` — the answer-engine
+  `SITE_DESCRIPTION`. `SERVICE_CATALOG` is also what `Services.tsx`
+  renders (it only adds the icon); an entry with `href` gets a wide card
+  with a link to its own page. `src/lib/crawlers.ts` — the answer-engine
   user-agents listed in `robots.txt`.
 - `src/lib/cities.ts` — `COUNTRIES: Country[]`, each with nested
   `cities: City[]`. **Only Honduras exists today.** To add a country,
@@ -127,6 +150,8 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
 ```
 /                                        home (Hero/About/Services/Portfolio/Contact)
 /contacto                                same Contact section as a standalone page
+/sistemas-para-restaurantes              loyalty-system service page (WhatsApp CTA
+                                         with its own prefilled message)
 /blog                                    paginated list (?page=N, 5/page)
 /blog/[slug]                             post (markdown -> HTML via Prose)
 /ciudades                                countries index
@@ -143,6 +168,21 @@ manifest.ts                              web app manifest (/manifest.webmanifest
 `Services` and `Contact` are shared components reused as-is on city
 pages (same `id="servicios"`/`id="contacto"` anchors — harmless, each
 page is independent).
+
+Home page order: Hero, About, Services, Process ("Cómo trabajamos",
+4 steps), Portfolio, ClientCases, Testimonials, Pricing, FAQ, Contact.
+The only delivery time stated anywhere on the site is "un sistema de
+fidelización a medida toma unas 6 semanas" — don't add others without
+the user confirming them.
+
+**WhatsApp first.** The header's "Hablemos" opens WhatsApp (the form is
+still under "Contacto"); the hero has a secondary WhatsApp button; every
+WhatsApp link carries `target="_blank" rel="noopener noreferrer"` and an
+`aria-label`. Use `whatsappLink(message)` from site-config for a custom
+prefilled message. `FloatingWhatsApp.tsx` hides itself while the footer
+or any element marked `data-whatsapp-cta` is on screen (it would be a
+duplicate and, on mobile, it covered the button next to it) — mark new
+in-page WhatsApp CTAs with that attribute.
 
 `Breadcrumbs.tsx` renders the visible trail **and** emits its
 `BreadcrumbList` from the same array, the way `Faq.tsx` does — pass it
@@ -201,7 +241,12 @@ consent-gated, not just documented.
 
 - Root layout (`src/app/layout.tsx`) sets `metadataBase`, a title
   template (`%s | Codezun`), OpenGraph/Twitter defaults, and a
-  sitewide `Organization` JSON-LD script.
+  sitewide `Organization` JSON-LD script. Home title (and its social
+  title): "Codezun — Desarrollo de software y sitios web a medida en
+  Honduras". **No meta keywords** — removed on purpose (search engines
+  ignore them); `pageMetadata()` no longer accepts them. Post
+  frontmatter `keywords` still exist for `getRelatedPosts()` and the
+  `Article` schema.
 - **All JSON-LD goes through `src/lib/schema.ts` + `<JsonLd>`**, never
   hand-written per page. The builders share `@id`s
   (`#organizacion`, `#sitio`) so the blocks link into one graph
@@ -242,7 +287,11 @@ consent-gated, not just documented.
   **not** `LocalBusiness`: Codezun is fully remote with no physical
   office per city, and `LocalBusiness` implies a real address, which
   would be dishonest here. Keep using `Service` + `areaServed` for any
-  new local page).
+  new local page). The one exception is `professionalServiceSchema()`
+  (home + `/contacto`), which the user asked for explicitly: a
+  `ProfessionalService` node with name, phone, email and
+  `areaServed: Honduras`, **no address**, linked to `#organizacion` via
+  `parentOrganization`.
 - **Own products and the subdomains they live on.** Three of the four
   `PORTFOLIO_PROJECTS` are subdomains of codezun.com
   (`botagedrez.`, `genecv.`, `memecoin.`); Firmiu is its own domain.
@@ -305,6 +354,9 @@ consent-gated, not just documented.
   library has it.
 - Don't invent pricing figures anywhere (see the blog's pricing-guide
   article: it discusses *factors* affecting price, never a number).
+  Prices appear only through `lib/precios.ts`, filled in by the user.
+  Likewise no "más baratos del mercado"-type claims: they can't be
+  backed up.
 
 ## Known environment gotchas (from building this project)
 

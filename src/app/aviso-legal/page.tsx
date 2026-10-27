@@ -18,7 +18,7 @@ export default function AvisoLegal() {
       <p>
         El presente sitio web, codezun.com (el &quot;Sitio&quot;), es
         operado por Codezun, empresa de desarrollo de software. Para
-        cualquier consulta relacionada con este aviso legal, podés
+        cualquier consulta relacionada con este aviso legal, puede
         escribirnos a{" "}
         <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary underline">
           {CONTACT_EMAIL}
@@ -29,7 +29,8 @@ export default function AvisoLegal() {
       <h2>Objeto del sitio</h2>
       <p>
         El Sitio tiene como finalidad presentar a Codezun, sus servicios
-        de desarrollo de software (web, móvil y soluciones a medida) y
+        de desarrollo de software (sitios web, tiendas online, sistemas
+        a medida y aplicaciones web) y
         una selección de proyectos propios a modo de portafolio.
       </p>
 
@@ -47,8 +48,8 @@ export default function AvisoLegal() {
         que sirven para medir de forma estadística cuántas visitas
         recibe y qué páginas se leen. No se utilizan cookies
         publicitarias, de remarketing ni de redes sociales, y ninguna
-        cookie es necesaria para que el Sitio funcione: podés
-        bloquearlas o eliminarlas desde tu navegador sin perder acceso a
+        cookie es necesaria para que el Sitio funcione: puede
+        bloquearlas o eliminarlas desde su navegador sin perder acceso a
         ningún contenido.
       </p>
       <p>

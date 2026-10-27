@@ -29,7 +29,7 @@ export default function RelatedPosts({ posts }: { posts: BlogPostMeta[] }) {
             id="articulos-relacionados"
             className="text-2xl font-bold tracking-tight text-dark sm:text-3xl"
           >
-            Seguí leyendo
+            Siga leyendo
           </h2>
         </FadeIn>
 

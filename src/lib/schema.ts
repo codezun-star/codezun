@@ -37,16 +37,25 @@ export const WEBSITE_ID = `${SITE_URL}/#sitio`;
 export const organizationRef = { "@id": ORGANIZATION_ID } as const;
 
 export const SITE_DESCRIPTION =
-  "Codezun es una empresa de desarrollo de software con más de 5 años de experiencia creando productos SaaS, tiendas online, landing pages y sitios web completos. Trabajamos de forma 100% remota con clientes en cualquier parte del mundo.";
+  "Codezun es una empresa de desarrollo de software con más de 5 años de experiencia creando sitios web, tiendas online, landing pages, productos SaaS y sistemas a medida, como sistemas de fidelización y paneles administrativos. Trabajamos de forma 100% remota con clientes en Honduras y en cualquier parte del mundo.";
 
 /**
- * Los cuatro servicios, en un único lugar.
+ * Los servicios, en un único lugar.
  *
- * Son los mismos que se listan en `Services.tsx`; viven aquí porque además del
- * bloque visible alimentan el catálogo de la organización, y tener dos listas
- * que se copian a mano acaba con una desactualizada.
+ * `Services.tsx` los pinta desde aquí (solo le añade el icono); viven en este
+ * archivo porque además del bloque visible alimentan el catálogo de la
+ * organización y /llms.txt, y tener dos listas que se copian a mano acaba con
+ * una desactualizada.
+ *
+ * `href` es la página propia del servicio, cuando la tiene.
  */
-export const SERVICE_CATALOG = [
+export type CatalogService = {
+  name: string;
+  description: string;
+  href?: string;
+};
+
+export const SERVICE_CATALOG: readonly CatalogService[] = [
   {
     name: "Productos SaaS",
     description:
@@ -67,7 +76,13 @@ export const SERVICE_CATALOG = [
     description:
       "Sitios institucionales y corporativos completos, a la medida de cada negocio.",
   },
-] as const;
+  {
+    name: "Sistemas a medida",
+    description:
+      "Sistemas de fidelización, paneles administrativos y aplicaciones web instalables en el teléfono, hechos para la operación de cada negocio.",
+    href: "/sistemas-para-restaurantes",
+  },
+];
 
 /**
  * La organización.
@@ -99,6 +114,9 @@ export function organizationSchema(): Record<string, unknown> {
       "Comercio electrónico",
       "Landing pages",
       "Desarrollo web",
+      "Sistemas de fidelización",
+      "Paneles administrativos",
+      "Aplicaciones web progresivas",
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -121,6 +139,36 @@ export function organizationSchema(): Record<string, unknown> {
         },
       })),
     },
+  };
+}
+
+/**
+ * La empresa como servicio profesional en Honduras.
+ *
+ * `ProfessionalService` es un subtipo de `LocalBusiness`, y por eso va con
+ * cuidado: no declara dirección, porque Codezun no tiene oficina, y el
+ * `areaServed` es Honduras, que es el mercado al que se dirige el sitio (el
+ * nodo `Organization` sigue diciendo que se atiende en todo el mundo). Es un
+ * nodo propio, con su `@id`, enlazado a la organización por
+ * `parentOrganization` en lugar de repetirla.
+ *
+ * Nombre, teléfono y correo son los del pie de página, visibles en todo el
+ * sitio. Va en la portada y en /contacto.
+ */
+export function professionalServiceSchema(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/#servicio-profesional`,
+    name: SITE_NAME,
+    url: `${SITE_URL}/`,
+    image: `${SITE_URL}/opengraph-image`,
+    logo: `${SITE_URL}/logo/logo.png`,
+    description: SITE_DESCRIPTION,
+    telephone: WHATSAPP_DISPLAY,
+    email: CONTACT_EMAIL,
+    areaServed: { "@type": "Country", name: "Honduras" },
+    parentOrganization: organizationRef,
   };
 }
 
