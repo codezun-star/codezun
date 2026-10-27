@@ -108,13 +108,16 @@ stand-in (a `Phone` icon does not read as "WhatsApp").
   The Nicha's Burger case is a draft (`published: false`) until the
   client gives permission. Never publish a case or testimonial without
   the client's permission, and never write a result or a quote for them.
-- `src/lib/precios.ts` — reference prices in lempiras, as `null`
-  constants with TODO at the top of the file. The pricing table shows
+- `src/lib/precios.ts` — reference prices in lempiras, as constants
+  at the top of the file (`null` hides the section). Since 2026-10-27
+  they're set, at the user's request, slightly below published
+  Honduran agency prices — the sources and the reasoning per amount are
+  in the file's header comment. The pricing table shows
   only when **all four** project amounts are set; the maintenance block
   only when its monthly amount is set. The same constants drive the
   "¿Cuánto cuesta…?" FAQ answer and the pricing lines in `/llms.txt`
-  (which says "Codezun no publica tarifas" while they're `null`). Only
-  the user supplies these numbers.
+  (which says "Codezun no publica tarifas" while they're `null`). Change
+  them only when the user asks.
 - `src/lib/blog.ts` — reads/parses `content/blog/*.md`
   (frontmatter: `title`, `description`, `date`, optional `updated`,
   `keywords`, optional `faq`). Add a post by dropping a new `.md` file
@@ -322,8 +325,9 @@ consent-gated, not just documented.
     site map written for a model: what the company is, what it sells,
     plus one annotated line per page. Generated from `lib/blog.ts` /
     `lib/cities.ts` / `lib/faq.ts` so publishing a post updates it for
-    free. It states explicitly that Codezun publishes no prices and
-    has no physical office, which is what stops an assistant from
+    free. It states the reference prices from `lib/precios.ts` (or that
+    none are published, if they're `null`) and that Codezun has no
+    physical office, which is what stops an assistant from
     inventing either. Linked from the footer — that link is the only
     way the file gets discovered.
   - `robots.ts` — an explicit `allow` group for the answer-engine
@@ -354,7 +358,7 @@ consent-gated, not just documented.
   library has it.
 - Don't invent pricing figures anywhere (see the blog's pricing-guide
   article: it discusses *factors* affecting price, never a number).
-  Prices appear only through `lib/precios.ts`, filled in by the user.
+  Prices appear only through `lib/precios.ts`, set at the user's request.
   Likewise no "más baratos del mercado"-type claims: they can't be
   backed up.
 

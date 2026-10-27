@@ -2,7 +2,7 @@
 title: "¿Cuánto cuesta una página web en Honduras? Guía de precios"
 description: "Qué factores determinan el precio de una página web profesional en Honduras y cómo elegir la opción correcta para su presupuesto y su negocio."
 date: "2026-06-15"
-updated: "2026-07-30"
+updated: "2026-10-27"
 keywords:
   - precio página web Honduras
   - cuánto cuesta una página web
@@ -52,5 +52,7 @@ Antes de contratar, pida siempre que le detallen exactamente qué incluye la pro
 ## ¿Listo para cotizar su proyecto?
 
 En Codezun trabajamos con negocios en Honduras desarrollando sitios web, tiendas online, landing pages y plataformas a medida. Cuéntenos qué necesita y le armamos una propuesta clara, ajustada a su presupuesto real.
+
+Como punto de partida, en la portada publicamos nuestros [precios de referencia](/#precios): montos "desde" para cada tipo de proyecto, que se confirman en la propuesta una vez definido el alcance.
 
 [Escríbanos por WhatsApp o complete el formulario de contacto](/contacto) y conversemos sobre su proyecto.
